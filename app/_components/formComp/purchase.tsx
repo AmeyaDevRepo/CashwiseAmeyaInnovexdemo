@@ -85,7 +85,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
     setError,
   } = useForm<FormValues>({
     defaultValues: {
-      expanseDate: new Date(),
+      expenseDate: new Date(),
       siteName: "",
       todayWork: "",
       location: userLocation,

@@ -44,7 +44,6 @@ type FormValues = {
   description: string;
   remarks: string;
   documentNo:string;
-  expenseDate?: Date | null;
 };
 
 // animation constants at the top of  component
@@ -90,7 +89,6 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
     setError,
   } = useForm<FormValues>({
     defaultValues: {
-      expanseDate: new Date(),
       siteName: "",
       todayWork: "",
       location: userLocation,
@@ -175,7 +173,6 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
     formdata.append("siteName", data.siteName);
     formdata.append("todayWork", data.todayWork);
     formdata.append("location", JSON.stringify(userLocation.currentLocation));
-    formdata.append("expenseDate", data.expenseDate?.toString() || "");
     formdata.append("serviceProvider", data.serviceProvider);
     formdata.append("jobName", data.jobName);
     formdata.append("person", data.person);
@@ -283,38 +280,6 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
 
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
-                <motion.div
-                  className="space-y-1 w-full"
-                  initial={fadeIn.hidden}
-                  animate={fadeIn.visible}
-                  exit={fadeIn.exit}
-                >
-                  <label className="block font-semibold">Expense Date</label>
-                  <Controller
-                    control={control}
-                    name="expenseDate"
-                    render={({ field: { onChange, value } }) => (
-                      <div className="relative w-full">
-                        <DatePicker
-                          selected={value}
-                          onChange={onChange}
-                          dateFormat="dd/MM/yyyy"
-                          className="border p-2 rounded-md border-gray-400"
-                          placeholderText="Select Date"
-                          selectsStart
-                        />
-                      </div>
-                    )}
-                  />
-                  {errors.expenseDate && (
-                    <p className="text-red-500 text-sm">
-                      {errors.expenseDate.message}
-                    </p>
-                  )}
-                </motion.div>
-
-
-
                 {/* Site Selection */}
                 <motion.div
                   className="space-y-1"
@@ -619,8 +584,6 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                 {/* File Uploads */}
                <AntdFileUpload category={["Location","Payment","Invoice"]} />
 
-               
-                </motion.div>
 
                 {/* Form Actions */}
                 <motion.div

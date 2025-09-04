@@ -86,7 +86,7 @@ export default function Courier({ closeModal }: expenseFormProps) {
     setError,
   } = useForm<FormValues>({
     defaultValues: {
-      expanseDate: new Date(),
+      expenseDate: new Date(),
       siteName: "",
       todayWork: "",
       location: userLocation,

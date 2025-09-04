@@ -66,7 +66,7 @@ export default function DebitRow({ debitData, user,name }: CreditRowProps) {
                 whileHover={{ scale: 1.05 }}
                 className="font-bold text-red-500"
               >
-                -{detail.money?.toLocaleString('en-IN')} ₹
+                -{detail.money?.toLocaleString('en-IN')} AED
               </motion.div>
             </td>
             

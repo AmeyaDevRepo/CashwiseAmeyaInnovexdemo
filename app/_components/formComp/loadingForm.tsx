@@ -621,7 +621,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                               },
                             })}
                             className="w-full px-2 border border-gray-400 rounded-md focus:border-purple-500 outline-none"
-                            placeholder="₹"
+                            placeholder="AED"
                           />
                           {(errors as any).rate?.[loadingTypeKey] && (
                             <p className="text-red-500 text-sm mt-1">
@@ -645,9 +645,9 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Amount ₹</label>
+                  <label className="block font-semibold">Amount AED</label>
                   <input
-                    placeholder="₹"
+                    placeholder="AED"
                     type="amount"
                     min="0"
                     {...register("amount", { required: "Amount required" })}

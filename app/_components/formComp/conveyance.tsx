@@ -451,9 +451,9 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   transition={{ delay: 0.3 }}
                 >
                   {" "}
-                  <label className="block font-semibold">Amount ₹</label>
+                  <label className="block font-semibold">Amount AED</label>
                   <input
-                    placeholder="₹"
+                    placeholder="AED"
                     type="text"
                     min="0"
                     onKeyDown={(event) => {

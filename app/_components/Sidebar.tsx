@@ -24,7 +24,6 @@ import {
 } from "react-icons/md";
 import Image from "next/image";
 import logo from "@app/_images/cashwiselogo.png";
-import intertechlogo from "@app/_images/Intertech-removebg-preview.png";
 import client from "@createRequest";
 import { toast } from "react-toastify";
 import { useAppSelector } from "@redux/redux.hooks";
@@ -274,11 +273,7 @@ const Sidebar = () => {
             <div className="flex flex-col items-center gap-4">
               <span className="flex items-center gap-4 text-2xl border-b py-2 font-bold text-purple-500">
                 <span>
-                  <Image
-                    src={intertechlogo}
-                    alt="Intertech Logo"
-                    className="rounded-full border-2 border-purple-500 p-2 h-12 w-32"
-                  />
+                  Ameya
                 </span>
               </span>
               <span className="flex items-center gap-4 text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">

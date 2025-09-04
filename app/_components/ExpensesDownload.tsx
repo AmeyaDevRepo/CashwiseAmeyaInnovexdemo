@@ -110,12 +110,12 @@ const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
                         <Text>Site Name: {item.siteName}</Text>
                         <Text>Work: {item.todayWork}</Text>
                         <Text>Description: {item.description || "N/A"}</Text>
-                        <Text>Amount: ₹{item.amount}</Text>
+                        <Text>Amount: AED{item.amount}</Text>
                       </View>
                     ))}
                     <View style={styles.totalRow}>
                       <Text>Total:</Text>
-                      <Text>₹{officeTotals[category]}</Text>
+                      <Text>AED{officeTotals[category]}</Text>
                     </View>
                   </View>
                 )
@@ -141,12 +141,12 @@ const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
                         <Text>Site Name: {item.siteName}</Text>
                         <Text>Work: {item.todayWork}</Text>
                         <Text>Description: {item.description || "N/A"}</Text>
-                        <Text>Amount: ₹{item.amount}</Text>
+                        <Text>Amount: AED{item.amount}</Text>
                       </View>
                     ))}
                     <View style={styles.totalRow}>
                       <Text>Total:</Text>
-                      <Text>₹{travelTotals[category]}</Text>
+                      <Text>AED{travelTotals[category]}</Text>
                     </View>
                   </View>
                 )
@@ -155,7 +155,7 @@ const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
         )}
 
         <View style={styles.grandTotal}>
-          <Text>Grand Total: ₹{grandTotal}</Text>
+          <Text>Grand Total: AED{grandTotal}</Text>
         </View>
       </Page>
     </Document>

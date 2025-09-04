@@ -127,7 +127,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ onClose, rowData }) => {
                           <span className="text-lg font-bold ">
                             Amount:{" "}
                             <span className="text-violet-700">
-                              ₹{item.amount?.toLocaleString("en-IN")}
+                              AED{item.amount?.toLocaleString("en-IN")}
                             </span>
                           </span>
                         </div>
@@ -185,7 +185,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ onClose, rowData }) => {
           <div className="flex justify-between items-center">
             <span className="font-semibold text-violet-700">Total Amount:</span>
             <span className="text-xl font-bold text-violet-800">
-              ₹{totalAmount.toLocaleString("en-IN")}
+              AED{totalAmount.toLocaleString("en-IN")}
             </span>
           </div>
         </div>

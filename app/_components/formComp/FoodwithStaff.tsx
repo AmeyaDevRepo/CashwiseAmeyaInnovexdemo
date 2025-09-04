@@ -402,9 +402,9 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Food Amount ₹</label>
+                  <label className="block font-semibold">Food Amount AED</label>
                   <input
-                    placeholder="₹"
+                    placeholder="AED"
                     type="amount"
                     {...register("amount", { required: "Amount required" })}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"

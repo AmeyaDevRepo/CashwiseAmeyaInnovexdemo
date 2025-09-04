@@ -203,7 +203,7 @@ export default function TransactionSummaryDetailsModal({ closeModal, summaryData
                       Total {summaryData.type} Amount
                     </h3>
                     <p className={`text-3xl font-bold mt-1 ${colors.text}`}>
-                      ₹{totalExpense.toLocaleString("en-IN")}
+                      AED{totalExpense.toLocaleString("en-IN")}
                     </p>
                   </div>
                   <div className="text-sm text-gray-600 mt-2">
@@ -275,7 +275,7 @@ export default function TransactionSummaryDetailsModal({ closeModal, summaryData
                       <div className="flex items-center gap-4">
                         <div className="text-right">
                           <div className={`text-xl font-bold ${colors.text}`}>
-                            ₹{userExpense.toLocaleString("en-IN")}
+                            AED{userExpense.toLocaleString("en-IN")}
                           </div>
                           <div className="text-sm text-gray-500">
                             {transactions.length} transaction(s)
@@ -363,7 +363,7 @@ export default function TransactionSummaryDetailsModal({ closeModal, summaryData
                         </div>
                         <div className="text-right">
                           <div className={`text-xl font-bold ${colors.text}`}>
-                            ₹0
+                            AED0
                           </div>
                         </div>
                       </div>

@@ -225,7 +225,7 @@ export default function TransactionDetailsModal({
                         : "purple"
                     }-500`}
                   />
-                  Total Amount: ₹{totalAmount.toLocaleString("en-IN")}
+                  Total Amount: AED{totalAmount.toLocaleString("en-IN")}
                 </span>
                 <span className="flex items-center gap-1">
                   <FaUser className="text-blue-500" />
@@ -278,7 +278,7 @@ export default function TransactionDetailsModal({
                           ? "bg-blue-500 text-white"
                           : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                       }`}
-                      title={`₹${personTotal.toLocaleString("en-IN")} total`}
+                      title={`AED${personTotal.toLocaleString("en-IN")} total`}
                     >
                       {person.name} ({personTransactionCount})
                     </button>
@@ -326,7 +326,7 @@ export default function TransactionDetailsModal({
                             }-500 text-white`
                           : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                       }`}
-                      title={`₹${reasonTotal.toLocaleString("en-IN")} total`}
+                      title={`AED${reasonTotal.toLocaleString("en-IN")} total`}
                     >
                       {reason.toUpperCase()} ({reasonCount})
                     </button>
@@ -382,7 +382,7 @@ export default function TransactionDetailsModal({
                               : "purple"
                           }-600`}
                         >
-                          ₹
+                          AED
                           {calculateTotalAmount(transactions).toLocaleString(
                             "en-IN"
                           )}
@@ -444,7 +444,7 @@ export default function TransactionDetailsModal({
                                     : "purple"
                                 }-600`}
                               >
-                                ₹
+                                AED
                                 {item.transaction.money.toLocaleString("en-IN")}
                               </div>
                               <div className="text-xs text-gray-500">
@@ -602,7 +602,7 @@ export default function TransactionDetailsModal({
                         : "purple"
                     }-600`}
                   >
-                    ₹{totalAmount.toLocaleString("en-IN")}
+                    AED{totalAmount.toLocaleString("en-IN")}
                   </div>
                 </div>
               </div>

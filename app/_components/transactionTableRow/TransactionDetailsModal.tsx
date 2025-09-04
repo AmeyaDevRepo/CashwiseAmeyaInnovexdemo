@@ -143,7 +143,7 @@ const TransactionDetailsModal: React.FC<CloseTransactionModalProps> = ({
               <div>
                 <p className="font-semibold">Amount:</p>
                 <p className="mt-1 text-purple-500 font-bold">
-                  ₹{transactionData.amount?.toLocaleString('en-IN')}
+                  AED{transactionData.amount?.toLocaleString('en-IN')}
                 </p>
               </div>
               <div>

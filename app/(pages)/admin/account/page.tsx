@@ -239,7 +239,7 @@ export default function AdminAccount() {
                 Total Credit
               </h3>
               <p className="text-2xl font-bold mt-1 text-green-600">
-                ₹{overview.totalCredit.toLocaleString("en-IN")}
+                AED{overview.totalCredit.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -251,7 +251,7 @@ export default function AdminAccount() {
             >
               <h3 className="text-gray-600 text-sm font-medium">Total Debit</h3>
               <p className="text-2xl font-bold mt-1 text-red-600">
-                ₹{overview.totalDebit.toLocaleString("en-IN")}
+                AED{overview.totalDebit.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -265,7 +265,7 @@ export default function AdminAccount() {
                 Office Expense
               </h3>
               <p className="text-2xl font-bold mt-1">
-                ₹{overview.totalOfficeExpense.toLocaleString("en-IN")}
+                AED{overview.totalOfficeExpense.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -279,7 +279,7 @@ export default function AdminAccount() {
                 Travel Expense
               </h3>
               <p className="text-2xl font-bold mt-1">
-                ₹{overview.totalTravelExpense.toLocaleString("en-IN")}
+                AED{overview.totalTravelExpense.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -293,7 +293,7 @@ export default function AdminAccount() {
                 ToPay Expense
               </h3>
               <p className="text-2xl font-bold mt-1">
-                ₹{overview.totalToPayExpense.toLocaleString("en-IN")}
+                AED{overview.totalToPayExpense.toLocaleString("en-IN")}
               </p>
             </div>
           </div>
@@ -433,7 +433,7 @@ export default function AdminAccount() {
                               : "text-red-600"
                           }`}
                         >
-                          ₹{row.balance.toLocaleString("en-IN")}
+                          AED{row.balance.toLocaleString("en-IN")}
                         </span>
                         <button
                           className="ml-2 bg-purple-600 hover:bg-purple-700 rounded-full shadow-md p-2 border-0 text-white text-xs transition-all"
@@ -464,7 +464,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          ₹
+                          AED
                           {calculateCreditDebit(
                             row.creditDetails
                           ).toLocaleString("en-IN")}
@@ -482,7 +482,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          ₹
+                          AED
                           {calculateCreditDebit(
                             row.debitDetails
                           ).toLocaleString("en-IN")}
@@ -500,7 +500,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          ₹
+                          AED
                           {calculateExpenses(
                             row.officeExpenseDetails
                           ).toLocaleString("en-IN")}
@@ -518,7 +518,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          ₹
+                          AED
                           {calculateExpenses(
                             row.travelExpenseDetails
                           ).toLocaleString("en-IN")}
@@ -536,7 +536,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          ₹
+                          AED
                           {calculateExpenses(
                             row.toPayExpenseDetails
                           ).toLocaleString("en-IN")}
@@ -550,7 +550,7 @@ export default function AdminAccount() {
                             : "text-red-600"
                         }`}
                       >
-                        ₹{calculateUserPeriodNet(row).toLocaleString("en-IN")}
+                        AED{calculateUserPeriodNet(row).toLocaleString("en-IN")}
                       </td>
                     </tr>
                   );

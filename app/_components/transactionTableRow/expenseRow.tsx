@@ -122,7 +122,7 @@ const ExpenseRow: React.FC<ExpenseRowProps> = ({ expenseData, name, userName, us
                   whileHover={{ scale: 1.05 }}
                   className="font-bold text-red-500"
                 >
-                  -₹{transaction.amount?.toLocaleString("en-IN")}
+                  -AED{transaction.amount?.toLocaleString("en-IN")}
                 </motion.div>
               </td>
               <td

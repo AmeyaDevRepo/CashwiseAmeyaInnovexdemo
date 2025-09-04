@@ -294,7 +294,7 @@ const DataTable = ({
               <th className="border border-black p-2 dark:text-black">S No.</th>
               <th className="border border-black p-2 dark:text-black">Date</th>
               <th className="border border-black p-2 dark:text-black">
-                Advance (₹)
+                Advance (AED)
               </th>
               <th className="border border-black p-2 dark:text-black">
                 Site Name

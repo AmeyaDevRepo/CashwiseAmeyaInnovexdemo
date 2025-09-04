@@ -624,7 +624,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                               },
                             })}
                             className="w-full px-2 border border-gray-400 rounded-md focus:border-purple-500 outline-none"
-                            placeholder="₹"
+                            placeholder="AED"
                           />
                           {(errors as any).rate?.[workTypeKey] && (
                             <p className="text-red-500 text-sm mt-1">

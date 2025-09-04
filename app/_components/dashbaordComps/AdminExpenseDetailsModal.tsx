@@ -62,7 +62,7 @@ export default function AdminExpenseDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `₹${Number(value).toLocaleString("en-IN")}`;
+      return `AED${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -340,7 +340,7 @@ export default function AdminExpenseDetailsModal({
                           <strong>Amount:</strong>{" "}
                           <span className="text-blue-500">
                             {" "}
-                            ₹{items.amount}
+                            AED{items.amount}
                           </span>
                         </p>
                         {items?.adminMessage && (

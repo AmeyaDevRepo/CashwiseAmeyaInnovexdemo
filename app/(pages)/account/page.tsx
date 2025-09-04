@@ -311,7 +311,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalTravelCreditMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -326,7 +326,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalTravelDebitMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -341,7 +341,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOfficeCreditMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -356,7 +356,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOfficeDebitMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -371,7 +371,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalToPayCreditMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -386,7 +386,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalToPayDebitMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -401,7 +401,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOtherCreditMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -416,7 +416,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOtherDebitMoney
                                           }{" "}
-                                          ₹
+                                          AED
                                         </p>
                                       </div>
                                     )}
@@ -431,7 +431,7 @@ export default function Account() {
                                             : "text-red-500"
                                         }`}
                                       >
-                                        {calculateMoney(item).balance} ₹
+                                        {calculateMoney(item).balance} AED
                                       </p>
                                     </div>
                                   </>

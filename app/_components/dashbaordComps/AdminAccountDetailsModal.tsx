@@ -121,7 +121,7 @@ export default function AdminAccountDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `₹${Number(value).toLocaleString("en-IN")}`;
+      return `AED${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -404,7 +404,7 @@ export default function AdminAccountDetailsModal({
                   Total Records: {accountData?.expenseDetails?.length || 0}
                 </span>
                 <span className="flex items-center gap-1">
-                  💰 Total Amount: ₹
+                  💰 Total Amount: AED
                   {calculateTotalAmount(filteredExpenseDetails).toLocaleString(
                     "en-IN"
                   )}
@@ -506,7 +506,7 @@ export default function AdminAccountDetailsModal({
                       <div className="text-right">
                         <p className="text-sm text-gray-600">Day Total</p>
                         <p className="text-lg font-semibold text-green-600">
-                          ₹
+                          AED
                           {displayFields
                             .reduce((total, field) => {
                               const items = expenseDetail[field] || [];
@@ -623,7 +623,7 @@ export default function AdminAccountDetailsModal({
                                           Amount:
                                         </span>
                                         <span className="ml-2 text-xl font-bold text-green-600">
-                                          ₹
+                                          AED
                                           {Number(
                                             item.amount || 0
                                           ).toLocaleString("en-IN")}

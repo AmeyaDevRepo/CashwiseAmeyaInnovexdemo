@@ -287,7 +287,7 @@ export default function Page() {
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700 whitespace-nowrap">
                         {" "}
-                        ₹ {Math.round(calculateMoney(expense.user).balance)}
+                        AED {Math.round(calculateMoney(expense.user).balance)}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
                         {expense.type}
@@ -321,7 +321,7 @@ export default function Page() {
                                 {" "}
                                 <strong className="flex items-center gap-1">
                                   {" "}
-                                  ₹{total.toLocaleString()}{" "}
+                                  AED{total.toLocaleString()}{" "}
                                   <FaLongArrowAltRight
                                     onClick={() => {
                                       window.location.href = `/users/expenses/${expense.user._id}`;
@@ -349,52 +349,52 @@ export default function Page() {
                       })}
                       {/*                       
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.food)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.food)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.tea)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.tea)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.hotel)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.hotel)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.courier)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.courier)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.loading)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.loading)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.porter)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.porter)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.rider)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.rider)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.transport)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.transport)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.maintenance)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.maintenance)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.labour)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.labour)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.contractor)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.contractor)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.other))}
+                        AED{Math.round(calculateTotal(expense.other))}
                       </td> */}
                     </motion.tr>
                   ))}

@@ -127,7 +127,7 @@ export default function EmployeeDashboard() {
                     Office Expense
                   </p>
                   <p className="text-lg font-semibold text-purple-600">
-                    ₹{totalOfficeExpense.toLocaleString()}
+                    AED{totalOfficeExpense.toLocaleString()}
                   </p>
                 </div>
                 <div className="text-center">
@@ -135,7 +135,7 @@ export default function EmployeeDashboard() {
                     Travel Expense
                   </p>
                   <p className="text-lg font-semibold text-blue-600">
-                    ₹{totalTravelExpense.toLocaleString()}
+                    AED{totalTravelExpense.toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function EmployeeDashboard() {
                             key={key}
                             className="p-3 text-right text-sm text-gray-600 whitespace-nowrap text-center"
                           >
-                            {item[key].length} / ₹
+                            {item[key].length} / AED
                             {item[key].reduce(
                               (sum: number, i: any) => sum + (i.amount || 0),
                               0

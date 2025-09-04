@@ -248,79 +248,79 @@ export default function ToPayDashboard() {
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700 whitespace-nowrap">
                         {" "}
-                        ₹ {Math.round(calculateMoney(expense.user).balance)}
+                        AED {Math.round(calculateMoney(expense.user).balance)}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
                         {expense.type}
                       </td>
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
                       </td> */}
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
                       </td> */}
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.food)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.food)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.tea)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.tea)).toLocaleString()}
                       </td> */}
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.hotel)
                         ).toLocaleString()}
                       </td>
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.courier)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.courier)).toLocaleString()}
                       </td> */}
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.loading)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.porter)
                         ).toLocaleString()}
                       </td>
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.rider)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.rider)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
+                        AED{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
                       </td> */}
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.transport)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.maintenance)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.labour)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹
+                        AED
                         {Math.round(
                           calculateTotal(expense.contractor)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        ₹{Math.round(calculateTotal(expense.other))}
+                        AED{Math.round(calculateTotal(expense.other))}
                       </td>
                     </motion.tr>
                   ))}

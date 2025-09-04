@@ -253,10 +253,10 @@ export default function Page() {
             </div>
             <div className="flex flex-wrap items-center gap-4 text-xs md:text-lg ">
               <span className="font-semibold">
-                Expenses: ₹{Math.round(totalExpense)}
+                Expenses: AED{Math.round(totalExpense)}
               </span>
               <span className="font-semibold">
-                Balance: ₹
+                Balance: AED
                 {userData
                   ? Math.round(
                       calculateMoney(userData).balance
@@ -368,7 +368,7 @@ export default function Page() {
                             {total > 0 ? (
                               <span className="text-purple-500">
                                 {" "}
-                                ₹{total.toLocaleString()}
+                                AED{total.toLocaleString()}
                               </span>
                             ) : (
                               "-"

@@ -233,7 +233,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
                       Total {summaryData.type} Expenses
                     </h3>
                     <p className={`text-3xl font-bold mt-1 ${colors.text}`}>
-                      ₹{totalExpense.toLocaleString("en-IN")}
+                      AED{totalExpense.toLocaleString("en-IN")}
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -301,7 +301,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
                       <div className="flex items-center gap-4">
                         <div className="text-right">
                           <div className={`text-xl font-bold ${colors.text}`}>
-                            ₹{expense.toLocaleString("en-IN")}
+                            AED{expense.toLocaleString("en-IN")}
                           </div>
                         </div>
                         <button
@@ -377,7 +377,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
                       </div>
                       <div className="text-right">
                         <div className={`text-xl font-bold ${colors.text}`}>
-                          ₹0
+                          AED0
                         </div>
                       </div>
                     </div>

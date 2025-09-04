@@ -264,7 +264,7 @@ const DataTable = () => {
                           key={key}
                           className="p-3 text-right text-sm text-gray-600 whitespace-nowrap text-center"
                         >
-                          {item[key].length} / ₹
+                          {item[key].length} / AED
                           {item[key].reduce(
                             (sum: number, i: any) => sum + (i.amount || 0),
                             0
@@ -323,7 +323,7 @@ const DataTable = () => {
                           key={key}
                           className="p-3 text-right text-sm text-gray-600 whitespace-nowrap text-center"
                         >
-                          {item[key].length} / ₹
+                          {item[key].length} / AED
                           {item[key].reduce(
                             (sum: number, i: any) => sum + (i.amount || 0),
                             0

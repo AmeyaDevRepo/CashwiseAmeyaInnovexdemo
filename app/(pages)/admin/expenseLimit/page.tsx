@@ -234,28 +234,28 @@ const AnimatedTable = () => {
                           {item?.name}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600">
-                          ₹{item.conveyance}
+                          AED{item.conveyance}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          ₹{item.food}
+                          AED{item.food}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          ₹{item.hotel}
+                          AED{item.hotel}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          ₹{item.labour}
+                          AED{item.labour}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          ₹{item.daily_wages}
+                          AED{item.daily_wages}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600">
-                          ₹{item.transport}
+                          AED{item.transport}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          ₹{item.contractor}
+                          AED{item.contractor}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          ₹{item.max_limit}
+                          AED{item.max_limit}
                         </td>
                         <td
                           className={`px-4 py-3 text-sm ${
@@ -305,28 +305,28 @@ const AnimatedTable = () => {
                             {item?.name}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600">
-                            ₹{item.conveyance}
+                            AED{item.conveyance}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            ₹{item.food}
+                            AED{item.food}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            ₹{item.hotel}
+                            AED{item.hotel}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            ₹{item.labour}
+                            AED{item.labour}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            ₹{item.daily_wages}
+                            AED{item.daily_wages}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600">
-                            ₹{item.transport}
+                            AED{item.transport}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            ₹{item.contractor}
+                            AED{item.contractor}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            ₹{item.max_limit}
+                            AED{item.max_limit}
                           </td>
                           <td
                             className={`px-4 py-3 text-sm ${

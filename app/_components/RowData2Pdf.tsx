@@ -83,7 +83,7 @@ const RowData2Pdf = ({ rowData }: RowData2PdfProps) => {
               Date: {formatDate(rowData.date)}
             </p>
             <p className="text-lg text-gray-600">
-              Total Expenses: ₹{totalAmount.toLocaleString("en-IN")}
+              Total Expenses: AED{totalAmount.toLocaleString("en-IN")}
             </p>
           </div>
 
@@ -109,7 +109,7 @@ const RowData2Pdf = ({ rowData }: RowData2PdfProps) => {
                           <div>
                             <p className="font-medium text-gray-800">Amount</p>
                             <p className="text-violet-700 font-semibold">
-                              ₹{item.amount?.toLocaleString("en-IN")}
+                              AED{item.amount?.toLocaleString("en-IN")}
                             </p>
                           </div>
                           <div>
@@ -161,7 +161,7 @@ const RowData2Pdf = ({ rowData }: RowData2PdfProps) => {
             <div className="grid grid-cols-2 max-w-md">
               <p className="text-xl font-semibold">Total Amount:</p>
               <p className="text-xl font-bold text-violet-800 text-right">
-                ₹{totalAmount.toLocaleString("en-IN")}
+                AED{totalAmount.toLocaleString("en-IN")}
               </p>
             </div>
           </div>

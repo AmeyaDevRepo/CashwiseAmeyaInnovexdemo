@@ -42,7 +42,7 @@ type FormValues = {
   amount: number;
   description: string;
   remarks: string;
-  
+  expenseDate: Date | null;
 };
 
 //   animation constants at the top of  component
@@ -68,7 +68,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
   const path = usePathname();
-    const files= useAppSelector(selectFiles)
+  const files = useAppSelector(selectFiles);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const Error = (data: any) => toast.error(data);
   const Success = (data: any) => toast.success(data);
@@ -87,6 +87,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
     setError,
   } = useForm<FormValues>({
     defaultValues: {
+      expenseDate: new Date(),
       siteName: "",
       todayWork: "",
       location: userLocation,
@@ -99,7 +100,6 @@ export default function Cartage({ closeModal }: expenseFormProps) {
       amount: 0,
       description: "",
       remarks: "",
-     
     },
   });
 
@@ -133,7 +133,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
 
   const onSubmit = async (data: FormValues) => {
     const formdata = new FormData();
-  
+
     // Check if the user is not an admin and at least one file field is empty
     if (user.role !== "admin") {
       if (!files.Payment || files.Payment.length === 0) {
@@ -152,6 +152,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
     formdata.append("siteName", data.siteName);
     formdata.append("todayWork", data.todayWork);
     formdata.append("location", JSON.stringify(userLocation.currentLocation));
+    formdata.append("expenseDate", data.expenseDate?.toString() || "");
     formdata.append("customerName", data.customerName);
     formdata.append("purpose", data.purpose);
     formdata.append("documentType", data.documentType);
@@ -167,21 +168,21 @@ export default function Cartage({ closeModal }: expenseFormProps) {
     );
     formdata.append("description", data.description);
     formdata.append("remarks", data.remarks);
-     if (files.Location && Array.isArray(files.Location)) {
-        files.Location.forEach((file: any) => {
-          formdata.append("Location", file);
-        });
-      }
-      if (files.Payment && Array.isArray(files.Payment)) {
-        files.Payment.forEach((file: any) => {
-          formdata.append("Payment", file);
-        });
-      }
-      if (files.Invoice && Array.isArray(files.Invoice)) {
-        files.Invoice.forEach((file: any) => {
-          formdata.append("Invoice", file);
-        });
-      }
+    if (files.Location && Array.isArray(files.Location)) {
+      files.Location.forEach((file: any) => {
+        formdata.append("Location", file);
+      });
+    }
+    if (files.Payment && Array.isArray(files.Payment)) {
+      files.Payment.forEach((file: any) => {
+        formdata.append("Payment", file);
+      });
+    }
+    if (files.Invoice && Array.isArray(files.Invoice)) {
+      files.Invoice.forEach((file: any) => {
+        formdata.append("Invoice", file);
+      });
+    }
     try {
       setIsLoading(true);
       const response = await client.post(
@@ -207,8 +208,6 @@ export default function Cartage({ closeModal }: expenseFormProps) {
     setValue("siteName", site.name);
     // setValue("siteLocation", site.address);
   };
-
- 
 
   return (
     <section className="bg-[#f0ebf8] min-h-screen">
@@ -249,6 +248,35 @@ export default function Cartage({ closeModal }: expenseFormProps) {
 
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
+                <motion.div
+                  className="space-y-1 w-full"
+                  initial={fadeIn.hidden}
+                  animate={fadeIn.visible}
+                  exit={fadeIn.exit}
+                >
+                  <label className="block font-semibold">Expense Date</label>
+                  <Controller
+                    control={control}
+                    name="expenseDate"
+                    render={({ field: { onChange, value } }) => (
+                      <div className="relative w-full">
+                        <DatePicker
+                          selected={value}
+                          onChange={onChange}
+                          dateFormat="dd/MM/yyyy"
+                          className="border p-2 rounded-md border-gray-400"
+                          placeholderText="Select Date"
+                          selectsStart
+                        />
+                      </div>
+                    )}
+                  />
+                  {errors.expenseDate && (
+                    <p className="text-red-500 text-sm">
+                      {errors.expenseDate.message}
+                    </p>
+                  )}
+                </motion.div>
                 {/* Site Selection */}
                 <motion.div
                   className="space-y-1"
@@ -540,22 +568,9 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                   />
                 </motion.div>
 
-                <AntdFileUpload category={["Location","Payment","Invoice"]} />
+                <AntdFileUpload category={["Location", "Payment", "Invoice"]} />
 
-                {/* Notice Section */}
-                <motion.div
-                  className="bg-red-50 p-4 rounded-lg"
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3 className="text-md font-bold mb-2">NOTICE</h3>
-                  <p className="text-red-600 font-semibold">
-                    Form को Submit करने से पहले अपने खर्च का हिसाब-किताब अच्छी
-                    तरह जांच लें क्यूंकि एक बार Submit करने बाद Form को Edit
-                    नहीं किया जा सकता।
-                  </p>
-                </motion.div>
+               
 
                 {/* Form Actions */}
                 <motion.div

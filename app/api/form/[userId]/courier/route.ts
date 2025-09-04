@@ -40,7 +40,23 @@ export async function POST(
       .setZone("Asia/Kolkata")
       .startOf("day")
       .toISODate();
+ const expenseDateValue = body.get("expenseDate") as string | null;
 
+    if (!expenseDateValue) {
+      throw new Error("Expense date is required");
+    }
+
+    const jsDate = new Date(expenseDateValue);
+    const expenseDate = DateTime.fromJSDate(jsDate)
+      .setZone("Asia/Kolkata")
+      .startOf("day")
+      .toISODate();
+    if (!expenseDate) {
+      return NextResponse.json(
+        { type: "BAD_REQUEST", message: "Invalid date format!" },
+        { status: 400 }
+      );
+    }
     const courierData = {
       siteName: body.get("siteName"),
       todayWork: body.get("todayWork"),
@@ -63,7 +79,7 @@ export async function POST(
       result = await OfficeExpense.findOneAndUpdate(
         {
           createdBy: new mongoose.Types.ObjectId(userId),
-          date: today,
+          date: expenseDate,
         },
         { $push: { courier: courierData } },
         {
@@ -76,7 +92,7 @@ export async function POST(
       result = await TravelExpense.findOneAndUpdate(
         {
           createdBy: new mongoose.Types.ObjectId(userId),
-          date: today,
+          date: expenseDate,
         },
         { $push: { courier: courierData } },
         {
@@ -89,7 +105,7 @@ export async function POST(
       result = await ToPayExpense.findOneAndUpdate(
         {
           createdBy: new mongoose.Types.ObjectId(userId),
-          date: today,
+          date: expenseDate,
         },
         { $push: { courier: courierData } },
         {

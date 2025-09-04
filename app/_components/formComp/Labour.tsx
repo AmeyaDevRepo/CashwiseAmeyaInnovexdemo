@@ -447,20 +447,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                 {/* File Uploads */}
               <AntdFileUpload category={["Location","Payment","Invoice"]} />
 
-                {/* Notice Section */}
-                <motion.div
-                  className="bg-red-50 p-4 rounded-lg"
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3 className="text-md font-bold mb-2">NOTICE</h3>
-                  <p className="text-red-600 font-semibold">
-                    Form को Submit करने से पहले अपने खर्च का हिसाब-किताब अच्छी
-                    तरह जांच लें क्यूंकि एक बार Submit करने बाद Form को Edit
-                    नहीं किया जा सकता।
-                  </p>
-                </motion.div>
+                
 
                 {/* Form Actions */}
                 <motion.div

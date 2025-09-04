@@ -46,6 +46,7 @@ type FormValues = {
   description: string;
   remarks: "";
   documentNo:string;
+  expenseDate?: Date | null;
 };
 
 // animation constants at the top of  component
@@ -91,6 +92,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
     setError,
   } = useForm<FormValues>({
     defaultValues: {
+      expenseDate: new Date(),
       siteName: "",
       todayWork: "",
       location: userLocation,
@@ -175,6 +177,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
     formdata.append("siteName", data.siteName);
     formdata.append("todayWork", data.todayWork);
     formdata.append("location", JSON.stringify(userLocation.currentLocation));
+    formdata.append("expenseDate", data.expenseDate?.toString() || "");
     formdata.append("serviceProvider", data.serviceProvider);
     formdata.append("hotelName", data.hotelName);
     formdata.append(
@@ -285,6 +288,38 @@ export default function Hotel({ closeModal }: expenseFormProps) {
 
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
+                <motion.div
+                  className="space-y-1 w-full"
+                  initial={fadeIn.hidden}
+                  animate={fadeIn.visible}
+                  exit={fadeIn.exit}
+                >
+                  <label className="block font-semibold">Expense Date</label>
+                  <Controller
+                    control={control}
+                    name="expenseDate"
+                    render={({ field: { onChange, value } }) => (
+                      <div className="relative w-full">
+                        <DatePicker
+                          selected={value}
+                          onChange={onChange}
+                          dateFormat="dd/MM/yyyy"
+                          className="border p-2 rounded-md border-gray-400"
+                          placeholderText="Select Date"
+                          selectsStart
+                        />
+                      </div>
+                    )}
+                  />
+                  {errors.expenseDate && (
+                    <p className="text-red-500 text-sm">
+                      {errors.expenseDate.message}
+                    </p>
+                  )}
+                </motion.div>
+
+
+
                 {/* Site Selection */}
                 <motion.div
                   className="space-y-1"
@@ -639,20 +674,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                 {/* File Uploads */}
                 <AntdFileUpload category={["Location","Payment","Invoice"]} />
 
-                {/* Notice Section */}
-                <motion.div
-                  className="bg-red-50 p-4 rounded-lg"
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3 className="text-md font-bold mb-2">NOTICE</h3>
-                  <p className="text-red-600 font-semibold">
-                    Form को Submit करने से पहले अपने खर्च का हिसाब-किताब अच्छी
-                    तरह जांच लें क्यूंकि एक बार Submit करने बाद Form को Edit
-                    नहीं किया जा सकता।
-                  </p>
-                </motion.div>
+               
 
                 {/* Form Actions */}
                 <motion.div

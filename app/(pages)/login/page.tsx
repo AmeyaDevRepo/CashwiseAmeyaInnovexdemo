@@ -149,12 +149,12 @@ useEffect(() => {
                   height={90}
                   width={90}
                 />
-                <Image
+{/*                 <Image
                   src={intertechlogo}
                   alt="Logo"
                   height={100}
                   width={130}
-                />
+                /> */}
               </div>
               <div className="flex flex-col">
                 <h4 className="text-2xl text-center dark:text-white border-b font-bold mt-4 font-serif">

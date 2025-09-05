@@ -12,7 +12,7 @@ export async function expenseMessageAlert(
       message: "184060",
       variables_values: `${name}  | ${amount} |${id}`,
       route: "dlt",
-      numbers: `${7011616143},${9891402128}`,
+      numbers: ``,
       // numbers: '7542918414',
     }),
     {

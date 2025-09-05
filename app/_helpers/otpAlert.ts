@@ -8,7 +8,7 @@ export async function otpAlert(otp:number,phone:number | null){
                       message: "181436",
                       variables_values: `${otp}`,
                       route: "dlt",
-                      numbers: `${phone}`,
+                      numbers: ``,
                     }),
                     {
                       headers: {

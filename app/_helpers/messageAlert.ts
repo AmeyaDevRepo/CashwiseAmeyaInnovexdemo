@@ -13,7 +13,7 @@ export async function messageAlert(
       message: "181437",
       variables_values: `${amount} | ${name}`,
       route: "dlt",
-      numbers: `${fromPhone},${toPhone}`,
+      numbers: ``,
     }),
     {
       headers: {

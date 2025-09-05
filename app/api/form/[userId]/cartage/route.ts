@@ -8,7 +8,6 @@ import mongoose from "mongoose";
 import { DateTime } from "luxon";
 import TravelExpense from "@app/_model/travel.modal";
 import ToPayExpense from "@app/_model/toPay.modal";
-import { expenseMessageAlert } from "@app/_helpers/expense.messageAlert";
 import Users from "@app/_model/user.model";
 
 // Initialize database connection
@@ -149,7 +148,6 @@ export async function POST(
     }
     await user.save();
     // const amountWithFormName = amount.toString() + ' Cartage Expense';
-    await expenseMessageAlert(user.name, user._id, amount);
 
     return NextResponse.json(
       { message: "Expense saved successfully", data: result },

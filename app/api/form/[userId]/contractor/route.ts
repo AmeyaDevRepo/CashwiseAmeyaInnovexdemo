@@ -140,7 +140,6 @@ export async function POST(
       });
     }
     await user.save();
-    await expenseMessageAlert(user.name, user._id, amount);
 
     return NextResponse.json(
       { message: "Expense saved successfully", data: result },

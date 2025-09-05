@@ -8,7 +8,6 @@ import Users from "@app/_model/user.model";
 import ImageKit from "imagekit";
 import axios from "axios";
 import { messageAlert } from "@app/_helpers/messageAlert";
-import { creditMessageAlert } from "@app/_helpers/credit.mesageAlert";
 
 // Initialize database connection
 (async function initializeDB() {
@@ -88,14 +87,7 @@ export async function PUT(req: NextRequest) {
       const existingCredit = creditUser.credit.find(
         (entry: any) => entry.phone === fromPhone
       );
-      if (toPhone) {
-        await creditMessageAlert(
-          var1,
-          var2,
-          var3,
-          parseInt(toPhone.toString())
-        );
-      }
+      
       if (existingCredit) {
         existingCredit.transactionDetails.push(transactionDetails);
       } else {
@@ -108,14 +100,7 @@ export async function PUT(req: NextRequest) {
       }
       await creditUser.save();
 
-      if (toPhone) {
-        await creditMessageAlert(
-          var1,
-          var2,
-          var3,
-          parseInt(toPhone.toString())
-        );
-      }
+      
     } else {
       // Credit user (Receiver)
       const existingCredit = creditUser.credit.find(
@@ -124,15 +109,7 @@ export async function PUT(req: NextRequest) {
       if (existingCredit) {
         existingCredit.transactionDetails.push(transactionDetails);
         await creditUser.save();
-        // await messageAlert(amount, fromName, fromPhone ? parseInt(fromPhone) : null, toPhone ? parseInt(toPhone) : null)
-        if (toPhone) {
-          await creditMessageAlert(
-            var1,
-            var2,
-            var3,
-            parseInt(toPhone.toString())
-          );
-        }
+       
       } else {
         creditUser.credit.push({
           name: fromName,
@@ -142,14 +119,7 @@ export async function PUT(req: NextRequest) {
         });
         await creditUser.save();
         //    await messageAlert(amount, fromName, fromPhone ? parseInt(fromPhone) : null, toPhone ? parseInt(toPhone) : null)
-        if (toPhone) {
-          await creditMessageAlert(
-            var1,
-            var2,
-            var3,
-            parseInt(toPhone.toString())
-          );
-        }
+       
       }
 
       // Debit user (Sender)

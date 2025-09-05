@@ -171,6 +171,7 @@ useEffect(() => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-y-3 lg:gap-y-6"
           >
+            {/*
             <div className="flex flex-col sm:flex-row gap-2 mb-4">
               <button
                 type="button"
@@ -196,9 +197,10 @@ useEffect(() => {
                 }`}
               >
                 Phone Login
-              </button>
-            </div>
-
+              </button> 
+          
+</div>
+  */}
             {loginMethod === "email" ? (
               <>
                 <div className="flex flex-col gap-y-1 w-full">

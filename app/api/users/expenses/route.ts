@@ -7,7 +7,6 @@ import { DateTime } from 'luxon';
 import OfficeExpense from "@app/_model/office.modal";
 import TravelExpense from "@app/_model/travel.modal";
 import ToPayExpense from "@app/_model/toPay.modal";
-import { adminActionMessageAlert } from "@app/_helpers/adminAction.messageAlert";
 import { Document } from '@react-pdf/renderer';
 
 // Initialize database connection
@@ -104,9 +103,7 @@ import { Document } from '@react-pdf/renderer';
                 { status: 404 }
             );
         }
-if (phoneNumber !== null && status) {
-    await adminActionMessageAlert(expenseType, status, userId, phoneNumber);
-}
+
         return NextResponse.json(
             { type: 'SUCCESS', message: 'Expense updated successfully' },
             { status: 200 }

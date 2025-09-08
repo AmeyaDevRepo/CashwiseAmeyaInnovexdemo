@@ -104,9 +104,9 @@ useEffect(() => {
           UserRole === "admin"
             ? "/admin/account"
             : `/users/expenses/${response.data?.user?._id}`;
-        toast.success(response.data?.message);
+        toast.success(response?.data?.message);
         router.push(path);
-        window.location.reload()
+        router.refresh();
       }
     } catch (error) {
       toast.error(

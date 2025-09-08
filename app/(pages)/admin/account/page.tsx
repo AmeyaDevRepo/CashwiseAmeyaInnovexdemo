@@ -29,8 +29,7 @@ const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 export default function AdminAccount() {
-  const currency = useAppSelector(selectCurrency)
-  console.log("currency",currency)
+  const currency:any = useAppSelector(selectCurrency)
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [selectedFormTpe, setSelectedFormType] = useState<string[]>([]);
   const [expenseType, setExpenseType] = useState("all");
@@ -243,7 +242,7 @@ export default function AdminAccount() {
                 Total Credit
               </h3>
               <p className="text-2xl font-bold mt-1 text-green-600">
-                AED{overview.totalCredit.toLocaleString("en-IN")}
+                {currency?.currencySymbol}{overview.totalCredit.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -255,7 +254,7 @@ export default function AdminAccount() {
             >
               <h3 className="text-gray-600 text-sm font-medium">Total Debit</h3>
               <p className="text-2xl font-bold mt-1 text-red-600">
-                AED{overview.totalDebit.toLocaleString("en-IN")}
+                {currency?.currencySymbol}{overview.totalDebit.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -269,11 +268,11 @@ export default function AdminAccount() {
                 Office Expense
               </h3>
               <p className="text-2xl font-bold mt-1">
-                AED{overview.totalOfficeExpense.toLocaleString("en-IN")}
+                {currency?.currencySymbol}{overview.totalOfficeExpense.toLocaleString("en-IN")}
               </p>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 cursor-pointer"
+            {/* <div className="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 cursor-pointer"
               onClick={(e) => {
               e.stopPropagation();
               setSummaryData({data:resultData?.result,type:"Travel"});
@@ -283,7 +282,7 @@ export default function AdminAccount() {
                 Travel Expense
               </h3>
               <p className="text-2xl font-bold mt-1">
-                AED{overview.totalTravelExpense.toLocaleString("en-IN")}
+                {currency?.currencySymbol}{overview.totalTravelExpense.toLocaleString("en-IN")}
               </p>
             </div>
 
@@ -297,9 +296,9 @@ export default function AdminAccount() {
                 ToPay Expense
               </h3>
               <p className="text-2xl font-bold mt-1">
-                AED{overview.totalToPayExpense.toLocaleString("en-IN")}
+                {currency?.currencySymbol}{overview.totalToPayExpense.toLocaleString("en-IN")}
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="md:hidden flex  relative text-2xl text-blue-500 mb-4 cursor-pointer my-4 items-center justify-center animate-bounce  ">
             <FaArrowAltCircleDown />
@@ -377,12 +376,12 @@ export default function AdminAccount() {
                   <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">
                     Total Office Expense
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                  {/* <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">
                     Total Travel Expense
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">
                     Total ToPay Expense
-                  </th>
+                  </th> */}
                   <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">
                     Total
                   </th>
@@ -437,7 +436,7 @@ export default function AdminAccount() {
                               : "text-red-600"
                           }`}
                         >
-                          AED{row.balance.toLocaleString("en-IN")}
+                          {currency?.currencySymbol}{row.balance.toLocaleString("en-IN")}
                         </span>
                         <button
                           className="ml-2 bg-blue-600 hover:bg-blue-700 rounded-full shadow-md p-2 border-0 text-white text-xs transition-all"
@@ -468,7 +467,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          AED
+                          {currency?.currencySymbol}
                           {calculateCreditDebit(
                             row.creditDetails
                           ).toLocaleString("en-IN")}
@@ -486,7 +485,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          AED
+                          {currency?.currencySymbol}
                           {calculateCreditDebit(
                             row.debitDetails
                           ).toLocaleString("en-IN")}
@@ -504,14 +503,14 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          AED
+                          {currency?.currencySymbol}
                           {calculateExpenses(
                             row.officeExpenseDetails
                           ).toLocaleString("en-IN")}
                         </span>
                         <span className="text-xs text-black ">^</span>
                       </td>
-                      <td
+                      {/* <td
                         className="px-4 py-3 whitespace-nowrap text-sm text-red-500"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -522,7 +521,7 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          AED
+                          {currency?.currencySymbol}
                           {calculateExpenses(
                             row.travelExpenseDetails
                           ).toLocaleString("en-IN")}
@@ -540,13 +539,13 @@ export default function AdminAccount() {
                         }}
                       >
                         <span className="w-16">
-                          AED
+                          {currency?.currencySymbol}
                           {calculateExpenses(
                             row.toPayExpenseDetails
                           ).toLocaleString("en-IN")}
                         </span>
                         <span className="text-xs text-black ">^</span>
-                      </td>
+                      </td> */}
                       <td
                         className={`px-4 py-3 whitespace-nowrap text-sm font-medium ${
                           calculateUserPeriodNet(row) >= 0
@@ -554,7 +553,7 @@ export default function AdminAccount() {
                             : "text-red-600"
                         }`}
                       >
-                        AED{calculateUserPeriodNet(row).toLocaleString("en-IN")}
+                        {currency?.currencySymbol}{calculateUserPeriodNet(row).toLocaleString("en-IN")}
                       </td>
                     </tr>
                   );

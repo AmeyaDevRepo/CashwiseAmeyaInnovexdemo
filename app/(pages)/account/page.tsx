@@ -175,7 +175,7 @@ export default function Account() {
               </h1>
 
               <div className="flex gap-2">
-                <div className="border border-gray-400 p-2 rounded-md shadow-md">
+                {/* <div className="border border-gray-400 p-2 rounded-md shadow-md">
                   <select
                     className="border-none focus:outline-none focus:ring-0 px-2"
                     {...register("type")}
@@ -185,8 +185,8 @@ export default function Account() {
                     <option value="travel">Travel</option>
                     <option value="toPay">To Pay</option>
                   </select>
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <motion.button
                     whileTap={{ scale: 0.89 }}
                     className="text-white bg-purple-500 p-2 rounded-md shadow-md"
@@ -196,7 +196,7 @@ export default function Account() {
                   >
                     {showDetails ? "Hide Details" : "Show Details"}
                   </motion.button>
-                </div>
+                </div> */}
               </div>
               <div className="flex items-center relative">
                 <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl" />
@@ -248,10 +248,10 @@ export default function Account() {
                                 <div>
                                   <h3 className="text-lg font-semibold text-gray-800 capitalize">
                                     {item.name || "Anonymous"}{" "}
-                                    <span className="text-gray-500 text-sm">
+                                    {/* <span className="text-gray-500 text-sm">
                                       {" "}
                                       ({item.type})
-                                    </span>
+                                    </span> */}
                                   </h3>
                                   {showDetails && (
                                     <p className="text-sm text-gray-500 truncate">
@@ -300,7 +300,7 @@ export default function Account() {
                                   user.role === "manager" ||
                                   user.phone === item.phone) && (
                                   <>
-                                    {showDetails && (
+                                    {/* {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500 ">
                                           Travel Credit
@@ -314,8 +314,8 @@ export default function Account() {
                                           AED
                                         </p>
                                       </div>
-                                    )}
-                                    {showDetails && (
+                                    )} */}
+                                    {/* {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500">
                                           Travel Debit
@@ -329,11 +329,11 @@ export default function Account() {
                                           AED
                                         </p>
                                       </div>
-                                    )}
+                                    )} */}
                                     {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500 ">
-                                          Office Credit
+                                           Credit
                                         </span>
                                         <p className="font-medium text-green-500">
                                           +
@@ -348,7 +348,7 @@ export default function Account() {
                                     {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500">
-                                          Office Debit
+                                           Debit
                                         </span>
                                         <p className="font-medium text-red-500">
                                           -
@@ -360,7 +360,7 @@ export default function Account() {
                                         </p>
                                       </div>
                                     )}
-                                    {showDetails && (
+                                    {/* {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500 ">
                                           To Pay Credit
@@ -389,8 +389,8 @@ export default function Account() {
                                           AED
                                         </p>
                                       </div>
-                                    )}
-                                    {showDetails && (
+                                    )} */}
+                                    {/* {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500 ">
                                           Others Credit
@@ -419,7 +419,7 @@ export default function Account() {
                                           AED
                                         </p>
                                       </div>
-                                    )}
+                                    )} */}
                                     <div className="space-y-1 text-center">
                                       <span className="text-xs text-gray-500">
                                         Balance

@@ -273,7 +273,7 @@ export default function CreditModal({
             </motion.div>
 
             {/* Reason Selection */}
-            <motion.select
+            {/* <motion.select
               whileHover={{ scale: 1.01 }}
               whileFocus={{ scale: 1.02 }}
               className="w-full px-4 py-2 rounded-lg border border-violet-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 transition-colors"
@@ -288,14 +288,14 @@ export default function CreditModal({
               <option value="office">Office</option>
               <option value="TOF">TOF</option>
               <option value="toPay">To Pay</option>
-              {/* <option value="other">Other</option> */}
-            </motion.select>
-            {errors?.transactionDetails &&
+              <option value="other">Other</option>
+            </motion.select> */}
+            {/* {errors?.transactionDetails &&
               errors.transactionDetails[0]?.reason && (
                 <span className="text-red-500">
                   {errors.transactionDetails[0].reason.message}
                 </span>
-              )}
+              )} */}
 
             <motion.div
               initial={{ opacity: 0, x: -20 }}

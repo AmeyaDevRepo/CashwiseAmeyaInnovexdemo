@@ -28,6 +28,7 @@ import { IUsers } from "@app/_interface/user.interface";
 import { IoIosArrowDown } from "react-icons/io";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -76,6 +77,7 @@ const scaleUp = {
 export default function ToPayLabour({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
+  const { currency, error }:any = useCurrency();
   const path = usePathname();
     const files= useAppSelector(selectFiles)
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -581,8 +583,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                                 },
                               })}
                               className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
-                              placeholder="AED"
-                            />
+                    placeholder={currency?.currencySymbol}                            />
                             {(errors as any).rate?.[labourTypeKey] && (
                               <p className="text-red-500 text-sm mt-1">
                                 {

@@ -9,6 +9,9 @@ import DownloadReportModal from "@app/_components/reports/Reports";
 import { FaEye, FaLongArrowAltRight } from "react-icons/fa";
 import AdminExpenseDetailsModal from "@app/_components/dashbaordComps/AdminExpenseDetailsModal";
 import AdminDashboardFilterModal from "@app/_components/filter/AdminDashboardFilter";
+import { useAppSelector } from "@redux/redux.hooks";
+import { selectCurrency } from "@redux/currency/currencySlice";
+import useCurrency from "@hooks/useCurrency";
 
 const tableHeaders = [
   "Name",
@@ -124,6 +127,8 @@ const calculateMoney = (item: any) => {
 };
 export default function Page() {
   const router = useRouter();
+  const { currency, error }:any = useCurrency();
+  
   const [expenses, setExpenses] = React.useState<any[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [expenseDataModal, setExpenseDataModal] = React.useState(false);
@@ -287,7 +292,7 @@ export default function Page() {
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700 whitespace-nowrap">
                         {" "}
-                        AED {Math.round(calculateMoney(expense.user).balance)}
+                        {currency?.currencySymbol} {Math.round(calculateMoney(expense.user).balance)}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
                         {expense.type}
@@ -321,7 +326,7 @@ export default function Page() {
                                 {" "}
                                 <strong className="flex items-center gap-1">
                                   {" "}
-                                  AED{total.toLocaleString()}{" "}
+                                  {currency?.currencySymbol}{total.toLocaleString()}{" "}
                                   <FaLongArrowAltRight
                                     onClick={() => {
                                       window.location.href = `/users/expenses/${expense.user._id}`;
@@ -349,52 +354,52 @@ export default function Page() {
                       })}
                       {/*                       
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.food)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.food)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.tea)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.tea)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.hotel)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.hotel)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.courier)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.courier)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.loading)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.loading)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.porter)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.porter)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.rider)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.rider)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.transport)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.transport)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.maintenance)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.maintenance)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.labour)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.labour)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.contractor)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.contractor)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.other))}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.other))}
                       </td> */}
                     </motion.tr>
                   ))}

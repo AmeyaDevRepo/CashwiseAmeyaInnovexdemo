@@ -21,6 +21,7 @@ import useLocation from "@hooks/useLocation";
 import { usePathname } from "next/navigation";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -63,6 +64,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
   const path = usePathname();
+  const { currency, error }:any = useCurrency();
     const files= useAppSelector(selectFiles)
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const Error = (data: any) => toast.error(data);
@@ -402,10 +404,9 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Food Amount AED</label>
+                  <label className="block font-semibold">Food Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
-                    type="amount"
+                    placeholder={currency?.currencySymbol}                    type="amount"
                     {...register("amount", { required: "Amount required" })}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />

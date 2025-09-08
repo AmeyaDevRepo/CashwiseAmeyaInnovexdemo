@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "./users/userSlice";
+import currencyReducer from "./currency/currencySlice";
 import filesReducer from "./files/filesSlice";
 import { groupApi } from "@app/_api_query/group.api";
 import { searchApi } from "@app/_api_query/global.search.api";
@@ -11,6 +12,10 @@ const userPersistConfig = {
   key: "user", // Unique key for user reducer
   storage,
 };
+const currencyPersistConfig = {
+  key: "currency", // Unique key for user reducer
+  storage,
+};
 
 const filesPersistConfig = {
   key: "files",
@@ -18,11 +23,13 @@ const filesPersistConfig = {
 };
 // Persistent reducers
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
+const persistedCurrencyReducer = persistReducer(currencyPersistConfig, currencyReducer);
 
 // Configure store
 export const store = configureStore({
   reducer: {
     user: persistedUserReducer,
+    currency: persistedCurrencyReducer,
     files: filesReducer,
     [groupApi.reducerPath]: groupApi.reducer,
     [searchApi.reducerPath]: searchApi.reducer,

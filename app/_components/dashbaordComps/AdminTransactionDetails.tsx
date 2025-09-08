@@ -9,6 +9,7 @@ import {
   FaTimes,
   FaArrowLeft,
 } from "react-icons/fa";
+import useCurrency from "@hooks/useCurrency";
 
 type Transaction = {
   money: number;
@@ -45,6 +46,7 @@ export default function TransactionDetailsModal({
   closeModal,
   accountData,
 }: CreditDetailsModalProps) {
+    const { currency, error }:any = useCurrency();
   const [selectedPerson, setSelectedPerson] = useState<string>("");
   const [selectedReason, setSelectedReason] = useState<string>("");
   const [allPersons, setAllPersons] = useState<Person[]>([]);
@@ -225,7 +227,7 @@ export default function TransactionDetailsModal({
                         : "blue"
                     }-500`}
                   />
-                  Total Amount: AED{totalAmount.toLocaleString("en-IN")}
+                  Total Amount: {currency?.currencySymbol}{totalAmount.toLocaleString("en-IN")}
                 </span>
                 <span className="flex items-center gap-1">
                   <FaUser className="text-blue-500" />
@@ -278,7 +280,7 @@ export default function TransactionDetailsModal({
                           ? "bg-blue-500 text-white"
                           : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                       }`}
-                      title={`AED${personTotal.toLocaleString("en-IN")} total`}
+                      title={`{currency?.currencySymbol}${personTotal.toLocaleString("en-IN")} total`}
                     >
                       {person.name} ({personTransactionCount})
                     </button>
@@ -326,7 +328,7 @@ export default function TransactionDetailsModal({
                             }-500 text-white`
                           : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                       }`}
-                      title={`AED${reasonTotal.toLocaleString("en-IN")} total`}
+                      title={`{currency?.currencySymbol}${reasonTotal.toLocaleString("en-IN")} total`}
                     >
                       {reason.toUpperCase()} ({reasonCount})
                     </button>
@@ -382,7 +384,7 @@ export default function TransactionDetailsModal({
                               : "blue"
                           }-600`}
                         >
-                          AED
+                          {currency?.currencySymbol}
                           {calculateTotalAmount(transactions).toLocaleString(
                             "en-IN"
                           )}
@@ -444,7 +446,7 @@ export default function TransactionDetailsModal({
                                     : "blue"
                                 }-600`}
                               >
-                                AED
+                                {currency?.currencySymbol}
                                 {item.transaction.money.toLocaleString("en-IN")}
                               </div>
                               <div className="text-xs text-gray-500">
@@ -602,7 +604,7 @@ export default function TransactionDetailsModal({
                         : "blue"
                     }-600`}
                   >
-                    AED{totalAmount.toLocaleString("en-IN")}
+                    {currency?.currencySymbol}{totalAmount.toLocaleString("en-IN")}
                   </div>
                 </div>
               </div>

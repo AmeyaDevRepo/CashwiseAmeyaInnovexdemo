@@ -7,6 +7,7 @@ import { selectUser } from "@redux/users/userSlice";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import client from "@createRequest";
+import useCurrency from "@hooks/useCurrency";
 
 type MoneyTransferProps = {
   closeModal: () => void;
@@ -18,6 +19,7 @@ export default function CreditModal({
   userData,
 }: MoneyTransferProps) {
   const user = useAppSelector(selectUser);
+    const { currency, error }:any = useCurrency();
   const [loading, setLoading] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const {
@@ -204,7 +206,7 @@ export default function CreditModal({
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-violet-500">
-                  AED
+                  {currency?.currencySymbol}
                 </span>
                 <input
                   type="text"

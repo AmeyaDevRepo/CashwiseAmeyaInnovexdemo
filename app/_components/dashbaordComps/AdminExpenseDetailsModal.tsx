@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@redux/redux.hooks";
 import { selectUser } from "@redux/users/userSlice";
+import useCurrency from "@hooks/useCurrency";
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -26,6 +27,7 @@ export default function AdminExpenseDetailsModal({
     getValues,
     setValue,
   } = useForm();
+    const { currency, error }:any = useCurrency();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [messageModal, setMessageModal] = useState(false);
   const [expenseData, setExpenseData] = useState<any>();
@@ -62,7 +64,7 @@ export default function AdminExpenseDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `AED${Number(value).toLocaleString("en-IN")}`;
+      return `${currency?.currencySymbol}${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -340,7 +342,7 @@ export default function AdminExpenseDetailsModal({
                           <strong>Amount:</strong>{" "}
                           <span className="text-blue-500">
                             {" "}
-                            AED{items.amount}
+                            {currency?.currencySymbol}{items.amount}
                           </span>
                         </p>
                         {items?.adminMessage && (

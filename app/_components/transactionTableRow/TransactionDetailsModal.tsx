@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAppSelector } from '@redux/redux.hooks';
+import { selectCurrency } from '@redux/currency/currencySlice';
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -14,6 +16,7 @@ const TransactionDetailsModal: React.FC<CloseTransactionModalProps> = ({
   category,
   name,
 }) => {
+  const currency:any = useAppSelector(selectCurrency)
   // Common fields we're already displaying explicitly
   const excludedFields = [
     'amount', 
@@ -143,7 +146,7 @@ const TransactionDetailsModal: React.FC<CloseTransactionModalProps> = ({
               <div>
                 <p className="font-semibold">Amount:</p>
                 <p className="mt-1 text-blue-500 font-bold">
-                  AED{transactionData.amount?.toLocaleString('en-IN')}
+                  {currency?.currencySymbol}{transactionData.amount?.toLocaleString('en-IN')}
                 </p>
               </div>
               <div>

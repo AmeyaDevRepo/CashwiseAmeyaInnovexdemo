@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useCurrency from '@hooks/useCurrency';
+import { useAppSelector } from '@redux/redux.hooks';
+import { selectCurrency } from '@redux/currency/currencySlice';
 
 interface TransactionDetail {
   updatedAt: string;
@@ -32,6 +35,8 @@ const formatDate = (dateString: string) => {
 };
 
 export default function CreditRow({ creditData, user,name }: CreditRowProps) {
+const currency:any = useAppSelector(selectCurrency)
+
   return (
     <>
       {creditData?.map((creditItem, index) =>
@@ -66,7 +71,7 @@ export default function CreditRow({ creditData, user,name }: CreditRowProps) {
                 whileHover={{ scale: 1.05 }}
                 className="font-bold text-green-500"
               >
-                +{detail.money?.toLocaleString('en-IN')} AED
+                +{detail.money?.toLocaleString('en-IN')} {currency?.currencySymbol}
               </motion.div>
             </td>
             

@@ -23,6 +23,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import CustomFileUpload from "../AntdUpload";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -65,6 +66,7 @@ const scaleUp = {
 
 export default function Conveyance({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
+  const { currency, error }:any = useCurrency();
   const files= useAppSelector(selectFiles)
   const userLocation = useLocation();
   const path = usePathname();
@@ -451,9 +453,9 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   transition={{ delay: 0.3 }}
                 >
                   {" "}
-                  <label className="block font-semibold">Amount AED</label>
+                  <label className="block font-semibold">Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
+                    placeholder={currency?.currencySymbol}
                     type="text"
                     min="0"
                     onKeyDown={(event) => {

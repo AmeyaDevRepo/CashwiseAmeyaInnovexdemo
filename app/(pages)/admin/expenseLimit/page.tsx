@@ -9,8 +9,11 @@ import ExpenseLimitForm from "@app/_components/expenseLimit/ExpenseLimitForm";
 import { toast } from "react-toastify";
 import client from "@createRequest";
 import { TableData } from "@app/_interface/expenseLimit.interface";
+import useCurrency from "@hooks/useCurrency";
 
 const AnimatedTable = () => {
+    const { currency, error }:any = useCurrency();
+  
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("");
@@ -234,28 +237,28 @@ const AnimatedTable = () => {
                           {item?.name}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600">
-                          AED{item.conveyance}
+                          {currency?.currencySymbol}{item.conveyance}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.food}
+                          {currency?.currencySymbol}{item.food}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.hotel}
+                          {currency?.currencySymbol}{item.hotel}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.labour}
+                          {currency?.currencySymbol}{item.labour}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.daily_wages}
+                          {currency?.currencySymbol}{item.daily_wages}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600">
-                          AED{item.transport}
+                          {currency?.currencySymbol}{item.transport}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.contractor}
+                          {currency?.currencySymbol}{item.contractor}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.max_limit}
+                          {currency?.currencySymbol}{item.max_limit}
                         </td>
                         <td
                           className={`px-4 py-3 text-sm ${
@@ -305,28 +308,28 @@ const AnimatedTable = () => {
                             {item?.name}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600">
-                            AED{item.conveyance}
+                            {currency?.currencySymbol}{item.conveyance}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.food}
+                            {currency?.currencySymbol}{item.food}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.hotel}
+                            {currency?.currencySymbol}{item.hotel}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.labour}
+                            {currency?.currencySymbol}{item.labour}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.daily_wages}
+                            {currency?.currencySymbol}{item.daily_wages}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600">
-                            AED{item.transport}
+                            {currency?.currencySymbol}{item.transport}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.contractor}
+                            {currency?.currencySymbol}{item.contractor}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.max_limit}
+                            {currency?.currencySymbol}{item.max_limit}
                           </td>
                           <td
                             className={`px-4 py-3 text-sm ${

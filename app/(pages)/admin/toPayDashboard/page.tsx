@@ -7,6 +7,7 @@ import Sidebar from "@app/_components/Sidebar";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import DownloadReportModal from "@app/_components/reports/Reports";
+import useCurrency from "@hooks/useCurrency";
 
 const tableHeaders = [
   "Name",
@@ -123,6 +124,7 @@ const calculateMoney = (item: any) => {
 };
 export default function ToPayDashboard() {
   const router = useRouter();
+    const { currency, error }:any = useCurrency();
   const [expenses, setExpenses] = React.useState<any[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [expenseType, setExpenseType] = React.useState("all");
@@ -186,7 +188,7 @@ export default function ToPayDashboard() {
 
           <div className="flex flex-wrap justify-between items-center mt-12 md:mt-2 mb-4 gap-2">
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-2">
                 ToPay Expense Dashboard
               </h1>
               <p className="text-gray-600 mb-6 hidden md:block">
@@ -197,7 +199,7 @@ export default function ToPayDashboard() {
               <input
                 type="text"
                 placeholder="Search Name..."
-                className="bg-gray-200/50 border border-gray-600 rounded-md p-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                className="bg-gray-200/50 border border-gray-600 rounded-md p-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-400 focus:outline-none"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -248,79 +250,79 @@ export default function ToPayDashboard() {
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700 whitespace-nowrap">
                         {" "}
-                        AED {Math.round(calculateMoney(expense.user).balance)}
+                        {currency?.currencySymbol} {Math.round(calculateMoney(expense.user).balance)}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
                         {expense.type}
                       </td>
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.conveyance)).toLocaleString()}
                       </td> */}
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.purchase)).toLocaleString()}
                       </td> */}
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.food)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.food)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.tea)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.tea)).toLocaleString()}
                       </td> */}
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.hotel)
                         ).toLocaleString()}
                       </td>
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.courier)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.courier)).toLocaleString()}
                       </td> */}
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.loading)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.porter)
                         ).toLocaleString()}
                       </td>
                       {/* <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.cartage)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.rider)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.rider)).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.dailyWages)).toLocaleString()}
                       </td> */}
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.transport)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.maintenance)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.labour)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED
+                        {currency?.currencySymbol}
                         {Math.round(
                           calculateTotal(expense.contractor)
                         ).toLocaleString()}
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-700">
-                        AED{Math.round(calculateTotal(expense.other))}
+                        {currency?.currencySymbol}{Math.round(calculateTotal(expense.other))}
                       </td>
                     </motion.tr>
                   ))}

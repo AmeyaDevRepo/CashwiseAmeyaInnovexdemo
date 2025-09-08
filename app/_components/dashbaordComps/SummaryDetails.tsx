@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import TransactionDetailsModal from "./AdminTransactionDetails";
 import AdminAccountDetailsModal from "./AdminAccountDetailsModal";
+import useCurrency from "@hooks/useCurrency";
 type Transaction = {
   money: number;
   reason: string;
@@ -58,6 +59,8 @@ type SummaryDetailsModalProps = {
 };
 
 export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
+  
+  const { currency, error }:any = useCurrency();
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [showDetails, setShowDetails] = useState(false);
   const [currentData, setCurrentData] = useState<any>(null);
@@ -184,7 +187,6 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
       </div>
     );
   }
-
   return (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
@@ -233,7 +235,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
                       Total {summaryData.type} Expenses
                     </h3>
                     <p className={`text-3xl font-bold mt-1 ${colors.text}`}>
-                      AED{totalExpense.toLocaleString("en-IN")}
+                      {currency?.currencySymbol}{totalExpense.toLocaleString("en-IN")}
                     </p>
                   </div>
                   <div className="text-sm text-gray-600">
@@ -301,7 +303,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
                       <div className="flex items-center gap-4">
                         <div className="text-right">
                           <div className={`text-xl font-bold ${colors.text}`}>
-                            AED{expense.toLocaleString("en-IN")}
+                            {currency?.currencySymbol}{expense.toLocaleString("en-IN")}
                           </div>
                         </div>
                         <button
@@ -377,7 +379,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
                       </div>
                       <div className="text-right">
                         <div className={`text-xl font-bold ${colors.text}`}>
-                          AED0
+                          {currency?.currencySymbol} 0
                         </div>
                       </div>
                     </div>

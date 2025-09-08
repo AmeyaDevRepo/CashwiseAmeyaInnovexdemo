@@ -15,6 +15,11 @@ import { selectUser, setUser } from "@redux/users/userSlice";
 import { IUsers } from "@app/_interface/user.interface";
 import { useForm } from "react-hook-form";
 import { useAppSelector } from "@redux/redux.hooks";
+import Select from "antd/es/select";
+import { selectCurrency } from "@redux/currency/currencySlice";
+import useCurrency from "@hooks/useCurrency";
+
+const { Option } = Select;
 
 const iconVariants = {
   hover: { rotate: 90 },
@@ -29,10 +34,69 @@ const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
+
+const currencies = [
+  { code: "USD", name: "US Dollar", symbol: "$" },
+  { code: "EUR", name: "Euro", symbol: "€" },
+  { code: "GBP", name: "British Pound", symbol: "£" },
+  { code: "JPY", name: "Japanese Yen", symbol: "¥" },
+  { code: "CNY", name: "Chinese Yuan", symbol: "¥" },
+  { code: "INR", name: "Indian Rupee", symbol: "₹" },
+  { code: "AUD", name: "Australian Dollar", symbol: "A$" },
+  { code: "CAD", name: "Canadian Dollar", symbol: "C$" },
+  { code: "CHF", name: "Swiss Franc", symbol: "CHF" },
+  { code: "NZD", name: "New Zealand Dollar", symbol: "NZ$" },
+  { code: "SGD", name: "Singapore Dollar", symbol: "S$" },
+  { code: "ZAR", name: "South African Rand", symbol: "R" },
+  { code: "{currency?.currencySymbol}", name: "UAE Dirham", symbol: "د.إ" },
+  { code: "SAR", name: "Saudi Riyal", symbol: "﷼" },
+  { code: "BRL", name: "Brazilian Real", symbol: "R$" },
+  { code: "RUB", name: "Russian Ruble", symbol: "₽" },
+  { code: "HKD", name: "Hong Kong Dollar", symbol: "HK$" },
+  { code: "KRW", name: "South Korean Won", symbol: "₩" },
+  { code: "MXN", name: "Mexican Peso", symbol: "Mex$" },
+  { code: "TRY", name: "Turkish Lira", symbol: "₺" },
+  { code: "THB", name: "Thai Baht", symbol: "฿" },
+  { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp" },
+  { code: "MYR", name: "Malaysian Ringgit", symbol: "RM" },
+  { code: "PHP", name: "Philippine Peso", symbol: "₱" },
+  { code: "PLN", name: "Polish Zloty", symbol: "zł" },
+  { code: "SEK", name: "Swedish Krona", symbol: "kr" },
+  { code: "NOK", name: "Norwegian Krone", symbol: "kr" },
+  { code: "DKK", name: "Danish Krone", symbol: "kr" },
+  { code: "CZK", name: "Czech Koruna", symbol: "Kč" },
+];
+
+type CurrencySelectProps = {
+  value?: string;
+  onChange?: (value: string) => void;
+};
+
+const CurrencySelect: React.FC<CurrencySelectProps> = ({ value, onChange }) => {
+  return (
+    <Select
+      showSearch
+      placeholder="Select currency"
+      optionFilterProp="children"
+      value={value}
+      onChange={onChange}
+      style={{ width: "70%" }}
+    >
+      {currencies.map((currency) => (
+        <Option key={currency.code} value={currency.code}>
+          {currency.name}
+        </Option>
+      ))}
+    </Select>
+  );
+};
+
 export default function Account() {
+  const { currency, error }:any = useCurrency();
   const user = useAppSelector(selectUser);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState<IUsers>();
+  const [selectedCurrency, setSelectedCurrency] = useState<string>("USD");
   const [users, setUsers] = useState<IUsers[]>([]);
   const [creditModal, setCreditModal] = useState(false);
   const [showDetails, setShowDetails] = useState(true);
@@ -155,6 +219,31 @@ export default function Account() {
       balance,
     };
   };
+
+  const saveCurrency = async (currencyCode: string) => {
+    try {
+      setIsLoading(true);
+      const response = await client.post("/saveCurrency", {
+        userId: user?._id,
+        currencyName:
+          currencies.find((c) => c.code === currencyCode)?.name || "",
+        currencySymbol:
+          currencies.find((c) => c.code === currencyCode)?.symbol || "",
+        currencyCode: currencyCode,
+      });
+      if (response.status === 201 || response.status === 200) {
+        setSelectedCurrency(currencyCode);
+        toast.success("Currency updated successfully!");
+      } else {
+        toast.error("Failed to update currency!");
+      }
+    } catch (error) {
+      console.error("Currency update error:", error);
+      toast.error("Error updating currency. Try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="flex flex-col max-h-screen bg-gray-50">
       <div className="flex flex-col md:flex-row flex-grow">
@@ -173,7 +262,12 @@ export default function Account() {
               <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 Account
               </h1>
-
+              <div className="flex gap-2 w-64">
+                <CurrencySelect
+                  value={selectedCurrency}
+                  onChange={saveCurrency}
+                />
+              </div>
               <div className="flex gap-2">
                 {/* <div className="border border-gray-400 p-2 rounded-md shadow-md">
                   <select
@@ -311,7 +405,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalTravelCreditMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )} */}
@@ -326,14 +420,14 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalTravelDebitMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )} */}
                                     {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500 ">
-                                           Credit
+                                          Credit
                                         </span>
                                         <p className="font-medium text-green-500">
                                           +
@@ -341,14 +435,14 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOfficeCreditMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )}
                                     {showDetails && (
                                       <div className="space-y-1 text-center">
                                         <span className="text-xs text-gray-500">
-                                           Debit
+                                          Debit
                                         </span>
                                         <p className="font-medium text-red-500">
                                           -
@@ -356,7 +450,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOfficeDebitMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )}
@@ -371,7 +465,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalToPayCreditMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )}
@@ -386,7 +480,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalToPayDebitMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )} */}
@@ -401,7 +495,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOtherCreditMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )}
@@ -416,7 +510,7 @@ export default function Account() {
                                             calculateMoney(item)
                                               .totalOtherDebitMoney
                                           }{" "}
-                                          AED
+                                          {currency?.currencySymbol}
                                         </p>
                                       </div>
                                     )} */}
@@ -431,7 +525,7 @@ export default function Account() {
                                             : "text-red-500"
                                         }`}
                                       >
-                                        {calculateMoney(item).balance} AED
+                                        {calculateMoney(item).balance} {currency?.currencySymbol}
                                       </p>
                                     </div>
                                   </>

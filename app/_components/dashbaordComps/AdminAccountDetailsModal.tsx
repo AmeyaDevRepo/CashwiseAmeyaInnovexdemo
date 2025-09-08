@@ -17,6 +17,7 @@ import {
 import AntdFileUpload from "../AntdUpload";
 import { useAppDispatch } from "../../../redux/redux.hooks";
 import CalendarDateFilter from "./CalendarDateFilter";
+import useCurrency from "@hooks/useCurrency";
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -52,7 +53,7 @@ export default function AdminAccountDetailsModal({
     getValues,
     setValue,
   } = useForm();
-
+  const { currency, error }:any = useCurrency();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [messageModal, setMessageModal] = useState(false);
   const [expenseData, setExpenseData] = useState<any>();
@@ -121,7 +122,7 @@ export default function AdminAccountDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `AED${Number(value).toLocaleString("en-IN")}`;
+      return `${currency?.currencySymbol}${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -404,7 +405,7 @@ export default function AdminAccountDetailsModal({
                   Total Records: {accountData?.expenseDetails?.length || 0}
                 </span>
                 <span className="flex items-center gap-1">
-                  💰 Total Amount: AED
+                  💰 Total Amount: {currency?.currencySymbol}
                   {calculateTotalAmount(filteredExpenseDetails).toLocaleString(
                     "en-IN"
                   )}
@@ -506,7 +507,7 @@ export default function AdminAccountDetailsModal({
                       <div className="text-right">
                         <p className="text-sm text-gray-600">Day Total</p>
                         <p className="text-lg font-semibold text-green-600">
-                          AED
+                          {currency?.currencySymbol}
                           {displayFields
                             .reduce((total, field) => {
                               const items = expenseDetail[field] || [];
@@ -623,7 +624,7 @@ export default function AdminAccountDetailsModal({
                                           Amount:
                                         </span>
                                         <span className="ml-2 text-xl font-bold text-green-600">
-                                          AED
+                                          {currency?.currencySymbol}
                                           {Number(
                                             item.amount || 0
                                           ).toLocaleString("en-IN")}

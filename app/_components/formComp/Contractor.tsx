@@ -24,6 +24,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
 import exp from 'constants';
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -73,6 +74,7 @@ const scaleUp = {
 
 export default function Contractor({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
+  const { currency, error }:any = useCurrency();
   const userLocation = useLocation();
   const path = usePathname();
     const files= useAppSelector(selectFiles)
@@ -623,7 +625,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                               },
                             })}
                             className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
-                            placeholder="AED"
+                            placeholder={currency?.currencySymbol}
                           />
                           {(errors as any).rate?.[workTypeKey] && (
                             <p className="text-red-500 text-sm mt-1">

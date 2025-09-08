@@ -16,17 +16,21 @@ import { FaArrowAltCircleDown } from "react-icons/fa";
 import { motion } from "framer-motion";
 import AdminAccountDetailsModal from "@app/_components/dashbaordComps/AdminAccountDetailsModal";
 import { LuView } from "react-icons/lu";
-import { setUser } from "@redux/users/userSlice";
+import { selectUser, setUser } from "@redux/users/userSlice";
 import CreditModal from "@app/_components/AccountComp/CreditModal";
 import TransactionDetailsModal from "@app/_components/dashbaordComps/AdminTransactionDetails";
 import { stat } from "fs";
 import SummaryDetailsModal from "@app/_components/dashbaordComps/SummaryDetails";
 import TransactionSummaryDetailsModal from "@app/_components/dashbaordComps/TransactionSummaryDetails";
+import { useAppSelector } from "@redux/redux.hooks";
+import { selectCurrency } from "@redux/currency/currencySlice";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 export default function AdminAccount() {
+  const currency = useAppSelector(selectCurrency)
+  console.log("currency",currency)
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [selectedFormTpe, setSelectedFormType] = useState<string[]>([]);
   const [expenseType, setExpenseType] = useState("all");

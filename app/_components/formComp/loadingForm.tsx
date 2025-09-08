@@ -28,6 +28,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IUsers } from "@app/_interface/user.interface";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -74,6 +75,7 @@ const scaleUp = {
 
 export default function LoadingForm({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
+  const { currency, error }:any = useCurrency();
   const userLocation = useLocation();
   const path = usePathname();
     const files= useAppSelector(selectFiles)
@@ -621,8 +623,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                               },
                             })}
                             className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
-                            placeholder="AED"
-                          />
+                    placeholder={currency?.currencySymbol}                          />
                           {(errors as any).rate?.[loadingTypeKey] && (
                             <p className="text-red-500 text-sm mt-1">
                               {
@@ -645,9 +646,9 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Amount AED</label>
+                 <label className="block font-semibold">Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
+                    placeholder={currency?.currencySymbol}
                     type="amount"
                     min="0"
                     {...register("amount", { required: "Amount required" })}

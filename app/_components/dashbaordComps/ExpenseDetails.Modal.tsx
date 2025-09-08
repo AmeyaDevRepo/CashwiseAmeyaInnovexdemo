@@ -12,6 +12,7 @@ import { selectUser } from "@redux/users/userSlice";
 import AntdFileUpload from "../AntdUpload";
 import { clearArrayFiles, selectFiles } from "@redux/files/filesSlice";
 import { useUploadNewFilesMutation } from "@app/_api_query/group.api";
+import useCurrency from "@hooks/useCurrency";
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -29,7 +30,7 @@ export default function ExpenseDetailsModal({
     getValues,
     setValue,
   } = useForm();
-
+  const { currency, error }:any = useCurrency();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [messageModal, setMessageModal] = useState(false);
   const [expenseData, setExpenseData] = useState<any>();
@@ -70,7 +71,7 @@ export default function ExpenseDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `AED${Number(value).toLocaleString("en-IN")}`;
+      return `${currency?.currencySymbol}${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -357,7 +358,7 @@ export default function ExpenseDetailsModal({
                       )}
                       <p>
                         <strong>Amount:</strong>{" "}
-                        <span className="text-blue-500"> AED{items.amount}</span>
+                        <span className="text-blue-500"> {currency?.currencySymbol}{items.amount}</span>
                       </p>
                       {items?.adminMessage && (
                         <p>

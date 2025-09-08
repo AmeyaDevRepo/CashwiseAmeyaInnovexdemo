@@ -3,6 +3,7 @@ import { RiCloseLine } from "react-icons/ri";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import RowData2Pdf from "./RowData2Pdf";
+import useCurrency from "@hooks/useCurrency";
 
 type EmployeeTableProps = {
   rowData: any;
@@ -12,6 +13,7 @@ type EmployeeTableProps = {
 const EmployeeTable: React.FC<EmployeeTableProps> = ({ onClose, rowData }) => {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [isImage, setIsImage] = useState<boolean>(false);
+  const { currency, error }:any = useCurrency();
 
   const handleFileClick = (url: string) => {
     setSelectedFile(url);
@@ -127,7 +129,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ onClose, rowData }) => {
                           <span className="text-lg font-bold ">
                             Amount:{" "}
                             <span className="text-violet-700">
-                              AED{item.amount?.toLocaleString("en-IN")}
+                              {currency?.currencySymbol}{item.amount?.toLocaleString("en-IN")}
                             </span>
                           </span>
                         </div>
@@ -185,7 +187,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ onClose, rowData }) => {
           <div className="flex justify-between items-center">
             <span className="font-semibold text-violet-700">Total Amount:</span>
             <span className="text-xl font-bold text-violet-800">
-              AED{totalAmount.toLocaleString("en-IN")}
+              {currency?.currencySymbol}{totalAmount.toLocaleString("en-IN")}
             </span>
           </div>
         </div>

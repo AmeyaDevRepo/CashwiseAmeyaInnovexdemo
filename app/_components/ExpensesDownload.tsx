@@ -2,6 +2,7 @@ import React from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { RiDownload2Fill } from "react-icons/ri";
+import useCurrency from "@hooks/useCurrency";
 
 type ExpensesDownloadProp = {
   officeData: any[];
@@ -51,6 +52,8 @@ const styles = StyleSheet.create({
 
 // PDF Document Component
 const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
+    const { currency, error }:any = useCurrency();
+  
   const flattenData = (data: any[]) => {
     return data.reduce((acc, entry) => {
       Object.keys(entry).forEach((key) => {
@@ -110,12 +113,12 @@ const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
                         <Text>Site Name: {item.siteName}</Text>
                         <Text>Work: {item.todayWork}</Text>
                         <Text>Description: {item.description || "N/A"}</Text>
-                        <Text>Amount: AED{item.amount}</Text>
+                        <Text>Amount: {currency?.currencySymbol}{item.amount}</Text>
                       </View>
                     ))}
                     <View style={styles.totalRow}>
                       <Text>Total:</Text>
-                      <Text>AED{officeTotals[category]}</Text>
+                      <Text>{currency?.currencySymbol}{officeTotals[category]}</Text>
                     </View>
                   </View>
                 )
@@ -141,12 +144,12 @@ const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
                         <Text>Site Name: {item.siteName}</Text>
                         <Text>Work: {item.todayWork}</Text>
                         <Text>Description: {item.description || "N/A"}</Text>
-                        <Text>Amount: AED{item.amount}</Text>
+                        <Text>Amount: {currency?.currencySymbol}{item.amount}</Text>
                       </View>
                     ))}
                     <View style={styles.totalRow}>
                       <Text>Total:</Text>
-                      <Text>AED{travelTotals[category]}</Text>
+                      <Text>{currency?.currencySymbol}{travelTotals[category]}</Text>
                     </View>
                   </View>
                 )
@@ -155,7 +158,7 @@ const ExpenseDocument = ({ officeData, travelData }: ExpensesDownloadProp) => {
         )}
 
         <View style={styles.grandTotal}>
-          <Text>Grand Total: AED{grandTotal}</Text>
+          <Text>Grand Total: {currency?.currencySymbol}{grandTotal}</Text>
         </View>
       </Page>
     </Document>

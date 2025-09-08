@@ -11,6 +11,7 @@ import ExpenseDetailsModal from "@app/_components/dashbaordComps/ExpenseDetails.
 import { FaArrowLeft } from "react-icons/fa";
 import { useAppSelector } from "@redux/redux.hooks";
 import { selectUser } from "@redux/users/userSlice";
+import useCurrency from "@hooks/useCurrency";
 
 const tableHeaders = [
   "Date",
@@ -104,6 +105,7 @@ export default function Page() {
   const [fromDateState, setFromDate] = React.useState<string>(
     getDefaultDates().from
   );
+    const { currency, error }:any = useCurrency();
   const [toDateState, setToDate] = React.useState<string>(getDefaultDates().to);
   const [userData, setUserData] = React.useState<any>(null);
   const [currentExpenseData, setCurrentExpenseData] = React.useState<any>(null);
@@ -111,7 +113,6 @@ export default function Page() {
   const [totalExpense, setTotalExpense] = React.useState(0);
 
   const router = useRouter();
-
   const userId = pathname.split("/")[3];
 
   useEffect(() => {
@@ -253,10 +254,10 @@ export default function Page() {
             </div>
             <div className="flex flex-wrap items-center gap-4 text-xs md:text-lg ">
               <span className="font-semibold">
-                Expenses: AED{Math.round(totalExpense)}
+                Expenses: {currency?.currencySymbol}{Math.round(totalExpense)}
               </span>
               <span className="font-semibold">
-                Balance: AED
+                Balance: {currency?.currencySymbol}
                 {userData
                   ? Math.round(
                       calculateMoney(userData).balance
@@ -368,7 +369,7 @@ export default function Page() {
                             {total > 0 ? (
                               <span className="text-blue-500">
                                 {" "}
-                                AED{total.toLocaleString()}
+                                {currency?.currencySymbol}{total.toLocaleString()}
                               </span>
                             ) : (
                               "-"

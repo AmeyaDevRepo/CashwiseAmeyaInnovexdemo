@@ -17,10 +17,12 @@ import { useAppSelector } from "@redux/redux.hooks";
 import { selectUser } from "@redux/users/userSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import ExpensesDownload from "@app/_components/ExpensesDownload";
+import useCurrency from "@hooks/useCurrency";
 
 export default function EmployeeDashboard() {
   const Error = (data: any) => toast.error(data);
   const Success = (data: any) => toast.success(data);
+    const { currency, error }:any = useCurrency();
   const user = useAppSelector(selectUser);
   const [officeExpense, setOfficeExpense] = useState([]);
   const [travelExpense, setTravelExpense] = useState([]);
@@ -115,7 +117,7 @@ export default function EmployeeDashboard() {
               <h1 className="text-xl font-bold text-gray-800">
                 Expense Dashboard
               </h1>
-              <p className="text-md font-medium bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent ml-4 ">
+              <p className="text-md font-medium bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent ml-4 ">
                 [{user?.name || "User"}]
               </p>
             </div>
@@ -126,8 +128,8 @@ export default function EmployeeDashboard() {
                   <p className="text-sm font-medium text-gray-600">
                     Office Expense
                   </p>
-                  <p className="text-lg font-semibold text-blue-600">
-                    AED{totalOfficeExpense.toLocaleString()}
+                  <p className="text-lg font-semibold text-purple-600">
+                    {currency?.currencySymbol}{totalOfficeExpense.toLocaleString()}
                   </p>
                 </div>
                 <div className="text-center">
@@ -135,7 +137,7 @@ export default function EmployeeDashboard() {
                     Travel Expense
                   </p>
                   <p className="text-lg font-semibold text-blue-600">
-                    AED{totalTravelExpense.toLocaleString()}
+                    {currency?.currencySymbol}{totalTravelExpense.toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -259,7 +261,7 @@ export default function EmployeeDashboard() {
                             key={key}
                             className="p-3 text-right text-sm text-gray-600 whitespace-nowrap text-center"
                           >
-                            {item[key].length} / AED
+                            {item[key].length} / {currency?.currencySymbol}
                             {item[key].reduce(
                               (sum: number, i: any) => sum + (i.amount || 0),
                               0

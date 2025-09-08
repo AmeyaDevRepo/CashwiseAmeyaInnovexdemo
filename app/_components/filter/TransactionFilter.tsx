@@ -87,7 +87,7 @@ export default function TransactionFilterModal({
         className="flex items-center gap-2"
         onClick={() => setIsOpen(true)}
       >
-        <strong className="p-2 shadow-md rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500">
+        <strong className="p-2 shadow-md rounded-md text-white bg-gradient-to-r from-blue-500 to-blue-500">
           Filters 
         </strong>
       </motion.button>
@@ -109,7 +109,7 @@ export default function TransactionFilterModal({
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
                   Transaction Filters
                 </h2>
                 <button
@@ -135,7 +135,7 @@ export default function TransactionFilterModal({
                     </label>
                     <select
                       {...register("transactionType")}
-                      className="w-full bg-gray-300 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                      className="w-full bg-gray-300 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                     >
                       <option value="all">All</option>
                       <option value="credit">Credit</option>
@@ -160,7 +160,7 @@ export default function TransactionFilterModal({
                     <input
                       type="text"
                       {...register("name")}
-                      className="w-full bg-gray-300 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                      className="w-full bg-gray-300 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                     />
                   </motion.div>
 
@@ -172,7 +172,7 @@ export default function TransactionFilterModal({
                     transition={{ delay: 0.3 }}
                     className="space-y-2"
                   >
-                    <p className="text-sm font-medium text-purple-900">
+                    <p className="text-sm font-medium text-blue-900">
                       Quick Range
                     </p>
                     <div className="flex gap-2 flex-wrap">
@@ -183,7 +183,7 @@ export default function TransactionFilterModal({
                           whileHover={{ y: -2 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => setRange(days)}
-                          className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200 hover:border-purple-400 text-purple-700 transition-all"
+                          className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 hover:border-blue-400 text-blue-700 transition-all"
                         >
                           {days === 1
                             ? "Yesterday"
@@ -233,7 +233,7 @@ export default function TransactionFilterModal({
                             onClick={() =>
                               setQuarterRange(quarter.start, quarter.end)
                             }
-                            className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200 hover:border-purple-400 text-purple-700 transition-all"
+                            className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 hover:border-blue-400 text-blue-700 transition-all"
                           >
                             {quarter.label}
                           </motion.button>
@@ -262,7 +262,7 @@ export default function TransactionFilterModal({
                             selected={field.value}
                             dateFormat={"dd/MM/yyyy"}
                             onChange={(date) => field.onChange(date)}
-                            className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                            className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                             placeholderText="Select start date"
                           />
                         )}
@@ -280,7 +280,7 @@ export default function TransactionFilterModal({
                             selected={field.value}
                             dateFormat={"dd/MM/yyyy"}
                             onChange={(date) => field.onChange(date)}
-                            className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                            className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                             placeholderText="Select end date"
                           />
                         )}
@@ -304,7 +304,7 @@ export default function TransactionFilterModal({
                       <input
                         type="number"
                         {...register("minAmount")}
-                        className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                        className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                       />
                     </div>
                     <div>
@@ -314,7 +314,7 @@ export default function TransactionFilterModal({
                       <input
                         type="number"
                         {...register("maxAmount")}
-                        className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                        className="w-full px-4 bg-gray-300 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                       />
                     </div>
                   </motion.div>
@@ -332,7 +332,7 @@ export default function TransactionFilterModal({
                     </label>
                     <select
                       {...register("reason")}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm transition-all"
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
                     >
                       <option value="">All Reasons</option>
                       <option value="payment">Payment</option>
@@ -364,7 +364,7 @@ export default function TransactionFilterModal({
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-opacity shadow-md"
+                    className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-600 text-white hover:opacity-90 transition-opacity shadow-md"
                   >
                     Apply Filters
                   </button>

@@ -233,7 +233,7 @@ export default function Page() {
                 router.push("/admin/dashboard");
                 localStorage.removeItem("adminFilter");
               }}
-              className="flex items-center gap-2 text-purple-600 whitespace-nowrap mt-16 md:mt-0"
+              className="flex items-center gap-2 text-blue-600 whitespace-nowrap mt-16 md:mt-0"
             >
               <FaArrowLeft />
               Go Back
@@ -241,7 +241,7 @@ export default function Page() {
           )}
           <div className="flex justify-between items-center mt-2 ">
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-2">
                 Expense{" "}
                 <span className="text-md text-gray-400 capitalize">
                   {userData?.name}
@@ -268,7 +268,7 @@ export default function Page() {
           <div className="flex justify-between my-2 ">
             <div>
               <h2 className="text-sm ">Date Filter Applied</h2>
-              <p className="text-sm p-2 bg-purple-500 rounded-full shadow-md text-white">
+              <p className="text-sm p-2 bg-blue-500 rounded-full shadow-md text-white">
                 {(() => {
                   const from = new Date(fromDateState);
                   const to = new Date(toDateState);
@@ -366,7 +366,7 @@ export default function Page() {
                             }
                           >
                             {total > 0 ? (
-                              <span className="text-purple-500">
+                              <span className="text-blue-500">
                                 {" "}
                                 AED{total.toLocaleString()}
                               </span>

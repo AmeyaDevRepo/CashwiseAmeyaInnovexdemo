@@ -99,7 +99,7 @@ const UsersPage = () => {
             animate={{ y: 0 }}
             className="flex items-center justify-between mb-8"
           >
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
               User Management
             </h2>
 
@@ -109,23 +109,23 @@ const UsersPage = () => {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               <FiUserPlus className="text-lg" />
               <span>New User</span>
             </motion.button>
           </motion.div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-purple-100 overflow-hidden">
+          <div className="bg-white rounded-xl shadow-sm border border-blue-100 overflow-hidden">
             <div className="overflow-auto h-[70vh]">
               <table className="w-full border-separate border-spacing-0">
-                <thead className="bg-purple-50">
+                <thead className="bg-blue-50">
                   <tr>
                     {["Name", "Email", "Phone", "Role", "Type", "Actions"].map(
                       (header, index) => (
                         <th
                           key={index}
-                          className="sticky top-0 z-10 px-6 py-4 text-left text-sm font-semibold text-purple-800 bg-purple-50"
+                          className="sticky top-0 z-10 px-6 py-4 text-left text-sm font-semibold text-blue-800 bg-blue-50"
                         >
                           {header}
                         </th>
@@ -134,7 +134,7 @@ const UsersPage = () => {
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-purple-100">
+                <tbody className="divide-y divide-blue-100">
                   <AnimatePresence>
                     {users.map((user, index) => (
                       <motion.tr
@@ -143,7 +143,7 @@ const UsersPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0 }}
                         transition={{ delay: index * 0.05 }}
-                        className="hover:bg-purple-50/50"
+                        className="hover:bg-blue-50/50"
                       >
                         <td className="px-6 py-4 text-sm text-gray-700 whitespace-nowrap">
                           {user.name}
@@ -160,8 +160,8 @@ const UsersPage = () => {
                             {user.phone || "N/A"}
                           </a>
                         </td>
-                        <td className="px-6 py-4 text-sm text-purple-700 font-medium">
-                          <span className="px-3 py-1 bg-purple-100 rounded-full capitalize">
+                        <td className="px-6 py-4 text-sm text-blue-700 font-medium">
+                          <span className="px-3 py-1 bg-blue-100 rounded-full capitalize">
                             {user.role}
                           </span>
                         </td>
@@ -176,7 +176,7 @@ const UsersPage = () => {
                               setUserData(user);
                               openCreateUserModal();
                             }}
-                            className="flex items-center text-purple-600 hover:text-purple-700"
+                            className="flex items-center text-blue-600 hover:text-blue-700"
                           >
                             <FaPen />
                           </motion.button>

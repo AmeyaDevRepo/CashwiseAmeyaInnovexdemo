@@ -307,7 +307,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
               className="bg-white rounded-xl shadow-xl max-w-lg w-full overflow-hidden flex flex-col h-[90vh]"
             >
               {/* Modal Header */}
-              <div className="bg-purple-600 px-6 py-4 flex justify-between items-center">
+              <div className="bg-blue-600 px-6 py-4 flex justify-between items-center">
                 <div>
                   <h2 className="text-white text-2xl font-bold">
                     {tabParts[0]} {tabParts[1]}{" "}
@@ -319,7 +319,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                 </div>
                 <button
                   onClick={closeModal}
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   <ImCross className="w-5 h-5" />
                 </button>
@@ -339,7 +339,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -367,7 +367,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                                 handleSiteClick(site);
                                 setVisibleDropdown(null);
                               }}
-                              className="px-4 py-2 hover:bg-purple-50 cursor-pointer text-sm"
+                              className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm"
                             >
                               {site.name}
                             </li>
@@ -396,7 +396,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div> */}
 
@@ -411,7 +411,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                         {...register("serviceProvider", {
                           required: "Service Provider is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("serviceProvider")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -442,7 +442,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                                       handleServiceProviderClick(user);
                                       setVisibleDropdown(null);
                                     }}
-                                    className="px-4 py-2 hover:bg-purple-50 cursor-pointer text-sm"
+                                    className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm"
                                   >
                                     {user.name}
                                   </li>
@@ -468,7 +468,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                           onChange={field.onChange}
                           dateFormat="dd MMM yyyy"
                           placeholderText="DD/MMM/YYYY"
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         />
                       )}
                     />
@@ -487,7 +487,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                           onChange={field.onChange}
                           dateFormat="dd MMM yyyy"
                           placeholderText="DD/MMM/YYYY"
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         />
                       )}
                     />
@@ -521,7 +521,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                             <input
                               type="checkbox"
                               value={type}
-                              className="text-3xl p-2 accent-purple-500"
+                              className="text-3xl p-2 accent-blue-500"
                               {...register(`labourTypes.${labourTypeKey}`)}
                             />
                             <label className="text-sm font-medium text-gray-700">
@@ -547,7 +547,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                                   return true;
                                 },
                               })}
-                              className="w-full px-2 border border-gray-400 rounded-md focus:border-purple-500 outline-none"
+                              className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
                               placeholder="0"
                             />
                             {(errors as any).numberOfLabour?.[
@@ -580,7 +580,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                                   return true;
                                 },
                               })}
-                              className="w-full px-2 border border-gray-400 rounded-md focus:border-purple-500 outline-none"
+                              className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
                               placeholder="AED"
                             />
                             {(errors as any).rate?.[labourTypeKey] && (
@@ -617,7 +617,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                         }
                       }}
                       {...register("amount", { required: "Amount required" })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </div>
                 </div>
@@ -635,7 +635,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                           onChange={field.onChange}
                           dateFormat="dd MMM yyyy"
                           placeholderText="DD/MMM/YYYY"
-                          className="w-auto p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-auto p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         />
                       )}
                     />
@@ -649,7 +649,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </div>
                 {/* remarks */}
@@ -660,7 +660,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </div>
  {path && path === "/toPayExpense" && (
@@ -674,7 +674,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("documentNo")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 )}
@@ -708,7 +708,7 @@ export default function ToPayLabour({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

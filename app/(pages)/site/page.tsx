@@ -88,7 +88,7 @@ export default function SitePage() {
             animate={{ y: 0 }}
             className="flex items-center justify-between mb-4"
           >
-            <h2 className="text-lg md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-lg md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
               Site Management
             </h2>
 
@@ -98,23 +98,23 @@ export default function SitePage() {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               <FiUserPlus className="text-lg" />
               <span>New Site</span>
             </motion.button>
           </motion.div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-purple-100 overflow-hidden">
+          <div className="bg-white rounded-xl shadow-sm border border-blue-100 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-purple-50">
+                <thead className="bg-blue-50">
                   <tr>
                     {["Site Name", "Address", "Status", "Action"].map(
                       (header, index) => (
                         <th
                           key={index}
-                          className="px-6 py-4 text-left text-sm font-semibold text-purple-800"
+                          className="px-6 py-4 text-left text-sm font-semibold text-blue-800"
                         >
                           {header}
                         </th>
@@ -123,7 +123,7 @@ export default function SitePage() {
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-purple-100">
+                <tbody className="divide-y divide-blue-100">
                   <AnimatePresence>
                     {sites.map((site, index) => (
                       <motion.tr
@@ -132,7 +132,7 @@ export default function SitePage() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0 }}
                         transition={{ delay: index * 0.05 }}
-                        className={`hover:bg-purple-50/50 ${
+                        className={`hover:bg-blue-50/50 ${
                           site.status === "active" ? "" : "line-through"
                         }`}
                       >
@@ -142,9 +142,9 @@ export default function SitePage() {
                         <td className="px-6 py-4 text-sm text-gray-700">
                           {site.address ? site.address : "N/A"}
                         </td>
-                        <td className="px-6 py-4 text-sm text-purple-700 font-medium">
+                        <td className="px-6 py-4 text-sm text-blue-700 font-medium">
                           <span
-                            className={`px-3 py-1 bg-purple-100 rounded-full capitalize ${
+                            className={`px-3 py-1 bg-blue-100 rounded-full capitalize ${
                               site.status === "active"
                                 ? "bg-green-100 text-green-700"
                                 : "bg-red-100 text-red-700"
@@ -160,7 +160,7 @@ export default function SitePage() {
                             onClick={() => {
                               setSiteData(site), openCreateSiteModal();
                             }}
-                            className="flex items-center text-purple-600 hover:text-purple-700"
+                            className="flex items-center text-blue-600 hover:text-blue-700"
                           >
                             <FaPen />
                           </motion.button>

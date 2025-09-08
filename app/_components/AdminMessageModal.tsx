@@ -47,7 +47,7 @@ export default function AdminMessageModal({ onWriteMessage, expenseData,closeMod
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4 border-b pb-2">
-              <h2 className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
+              <h2 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 Admin Message
               </h2>
               <button
@@ -76,7 +76,7 @@ export default function AdminMessageModal({ onWriteMessage, expenseData,closeMod
                   className={`w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 ${
                     errors.adminMessage
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-gray-300 focus:ring-purple-500"
+                      : "border-gray-300 focus:ring-blue-500"
                   }`}
                 />
                 {errors.adminMessage && (
@@ -89,7 +89,7 @@ export default function AdminMessageModal({ onWriteMessage, expenseData,closeMod
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="bg-purple-500 text-white px-6 py-2 rounded-md hover:bg-purple-600 transition-colors flex items-center gap-2"
+                  className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors flex items-center gap-2"
                 >
                   <IoSend className="text-lg" />
                   Send Message

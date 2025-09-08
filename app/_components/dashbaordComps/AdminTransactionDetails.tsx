@@ -197,7 +197,7 @@ export default function TransactionDetailsModal({
             <div>
               <h2
                 className={`text-xl font-bold bg-gradient-to-r from-${
-                  accountData?.transactionType === "credit" ? "green" : "purple"
+                  accountData?.transactionType === "credit" ? "green" : "blue"
                 }-600 to-blue-600 bg-clip-text text-transparent`}
               >
                 <span className="capitalize">
@@ -212,7 +212,7 @@ export default function TransactionDetailsModal({
                     className={`${
                       accountData?.transactionType === "credit"
                         ? "text-green-500"
-                        : "text-purple-500"
+                        : "text-blue-500"
                     }`}
                   />
                   Total Transactions: {totalTransactions}
@@ -222,7 +222,7 @@ export default function TransactionDetailsModal({
                     className={`text-${
                       accountData?.transactionType === "credit"
                         ? "green"
-                        : "purple"
+                        : "blue"
                     }-500`}
                   />
                   Total Amount: AED{totalAmount.toLocaleString("en-IN")}
@@ -300,7 +300,7 @@ export default function TransactionDetailsModal({
                       ? `bg-${
                           accountData?.transactionType === "credit"
                             ? "green"
-                            : "purple"
+                            : "blue"
                         }-500 text-white`
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
@@ -322,7 +322,7 @@ export default function TransactionDetailsModal({
                           ? `bg-${
                               accountData?.transactionType === "credit"
                                 ? "green"
-                                : "purple"
+                                : "blue"
                             }-500 text-white`
                           : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                       }`}
@@ -358,9 +358,9 @@ export default function TransactionDetailsModal({
                               ? `bg-${
                                   accountData?.transactionType === "credit"
                                     ? "green"
-                                    : "purple"
+                                    : "blue"
                                 }-500`
-                              : "bg-purple-500"
+                              : "bg-blue-500"
                           }`}
                         ></div>
                         <div>
@@ -379,7 +379,7 @@ export default function TransactionDetailsModal({
                           className={`text-lg font-semibold text-${
                             accountData?.transactionType === "credit"
                               ? "green"
-                              : "purple"
+                              : "blue"
                           }-600`}
                         >
                           AED
@@ -403,7 +403,7 @@ export default function TransactionDetailsModal({
                           <div className="flex flex-col gap-2 justify-between items-start mb-3">
                             <div className="flex items-center gap-3">
                               <div
-                                className={`w-12 h-12 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg`}
+                                className={`w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg`}
                               >
                                 {item.personInfo.name.charAt(0).toUpperCase()}
                               </div>
@@ -428,7 +428,7 @@ export default function TransactionDetailsModal({
                                         accountData?.transactionType ===
                                         "credit"
                                           ? "green"
-                                          : "purple"
+                                          : "blue"
                                       }-500`}
                                     />
                                     {item.personInfo.phone}
@@ -441,7 +441,7 @@ export default function TransactionDetailsModal({
                                 className={`text-2xl font-bold text-${
                                   accountData?.transactionType === "credit"
                                     ? "green"
-                                    : "purple"
+                                    : "blue"
                                 }-600`}
                               >
                                 AED
@@ -469,9 +469,9 @@ export default function TransactionDetailsModal({
                                           accountData?.transactionType ===
                                           "credit"
                                             ? "green"
-                                            : "purple"
+                                            : "blue"
                                         }-800`
-                                      : "bg-purple-100 text-purple-800"
+                                      : "bg-blue-100 text-blue-800"
                                   }`}
                                 >
                                   {item.transaction.reason.toUpperCase()}
@@ -542,12 +542,12 @@ export default function TransactionDetailsModal({
                                           accountData?.transactionType ===
                                           "credit"
                                             ? "green"
-                                            : "purple"
+                                            : "blue"
                                         }-300 hover:border-${
                                           accountData?.transactionType ===
                                           "credit"
                                             ? "green"
-                                            : "purple"
+                                            : "blue"
                                         }-500 cursor-pointer`}
                                       />
                                     </a>
@@ -580,7 +580,7 @@ export default function TransactionDetailsModal({
           {filteredTransactions.length > 0 && (
             <div
               className={`mt-6 pt-4 border-t bg-gradient-to-r from-${
-                accountData?.transactionType === "credit" ? "green" : "purple"
+                accountData?.transactionType === "credit" ? "green" : "blue"
               }-50 to-blue-50 p-4 rounded-lg`}
             >
               <div className="flex justify-between items-center">
@@ -599,7 +599,7 @@ export default function TransactionDetailsModal({
                     className={`text-xl font-bold text-${
                       accountData?.transactionType === "credit"
                         ? "green"
-                        : "purple"
+                        : "blue"
                     }-600`}
                   >
                     AED{totalAmount.toLocaleString("en-IN")}

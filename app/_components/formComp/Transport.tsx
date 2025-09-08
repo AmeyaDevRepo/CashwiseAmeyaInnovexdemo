@@ -337,7 +337,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -388,7 +388,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div> */}
                 {/* Service Provider */}
@@ -403,7 +403,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                           {...register("serviceProvider", {
                             required: "Service Provider is Required",
                           })}
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
                         <span className="mt-4 -translate-x-4">
@@ -434,7 +434,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                                         handleServiceProviderClick(user);
                                         setVisibleDropdown(null);
                                       }}
-                                      className="px-4 py-2 hover:bg-purple-50 cursor-pointer text-sm"
+                                      className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm"
                                     >
                                       {user.name}
                                     </li>
@@ -459,7 +459,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                     {...register("customerName", {
                       required: "Customer Name required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -489,7 +489,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                                 required:
                                   "At least one purpose type is required!",
                               })}
-                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
                           </label>
@@ -535,7 +535,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                               required:
                                 "At least one document type is required!",
                             })}
-                            className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                            className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                           />
                           <span className="ml-2">{item}</span>
                         </label>
@@ -577,7 +577,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                             id="vehicleType"
                             value={item}
                             {...register("vehicleType")}
-                            className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                            className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                           />
                           <span className="ml-2">{item}</span>
                         </label>
@@ -608,7 +608,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                       {...register("startingPlace", {
                         required: "Starting Place required!",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </motion.div>
                   {/* Name of Restaurant */}
@@ -624,7 +624,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                       {...register("endingPlace", {
                         required: "Ending Place required!",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </motion.div>
                 </motion.div>
@@ -641,7 +641,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   placeholder="0 KM"
                     type="text"
                     {...register("distance")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* driver number */}
@@ -655,7 +655,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   <input
                     type="tel"
                     {...register("driverNumber")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -671,7 +671,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                     placeholder="AED"
                     type="text"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -694,7 +694,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* transport remarks */}
@@ -708,7 +708,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                  {/* document no */}
@@ -724,7 +724,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("documentNo")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 )}
@@ -745,7 +745,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

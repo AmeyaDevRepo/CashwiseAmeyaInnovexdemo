@@ -391,7 +391,7 @@ export default function AdminAccountDetailsModal({
           {/* Header */}
           <div className="flex justify-between items-center mb-6 pb-4 border-b">
             <div>
-              <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent capitalize">
+              <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent capitalize">
                 {accountData?.expenseType || "Office"} Expense Details{" "}
                 <span className="text-sm text-gray-600">
                   {" "}
@@ -655,7 +655,7 @@ export default function AdminAccountDetailsModal({
                                           <span className="font-medium text-gray-700">
                                             Admin Remarks:
                                           </span>{" "}
-                                          <span className="text-purple-500 capitalize">
+                                          <span className="text-blue-500 capitalize">
                                             {" "}
                                             {item?.adminMessage
                                               ? item?.adminMessage
@@ -811,7 +811,7 @@ export default function AdminAccountDetailsModal({
                                                   whileTap={{ scale: 0.95 }}
                                                   src={url}
                                                   alt={`Location ${i + 1}`}
-                                                  className="w-20 h-20 object-cover rounded-md border-2 border-purple-300 hover:border-purple-500 cursor-pointer"
+                                                  className="w-20 h-20 object-cover rounded-md border-2 border-blue-300 hover:border-blue-500 cursor-pointer"
                                                 />
                                               </a>
                                             )
@@ -845,7 +845,7 @@ export default function AdminAccountDetailsModal({
                                         />
 
                                         <button
-                                          className="p-2 rounded-md shadow-sm text-white bg-purple-500 float-end text-xs"
+                                          className="p-2 rounded-md shadow-sm text-white bg-blue-500 float-end text-xs"
                                           onClick={(e) => {
                                             e.stopPropagation(),
                                               handleNewFormSubmit({
@@ -1013,7 +1013,7 @@ export default function AdminAccountDetailsModal({
                       setSiteValue("");
                       closeSiteModal();
                     }}
-                    className="bg-purple-500 text-white px-6 py-2 rounded-md hover:bg-purple-600 transition-colors flex items-center gap-2"
+                    className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors flex items-center gap-2"
                   >
                     Submit
                   </button>

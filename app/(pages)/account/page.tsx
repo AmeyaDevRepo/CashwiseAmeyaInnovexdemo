@@ -170,7 +170,7 @@ export default function Account() {
           <div className="max-w-7xl mx-auto">
             {/* Header Section */}
             <div className="flex flex-col md:flex-row gap-2 items-center justify-around mb-4 border-b-2 pb-4">
-              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 Account
               </h1>
 
@@ -189,7 +189,7 @@ export default function Account() {
                 {/* <div>
                   <motion.button
                     whileTap={{ scale: 0.89 }}
-                    className="text-white bg-purple-500 p-2 rounded-md shadow-md"
+                    className="text-white bg-blue-500 p-2 rounded-md shadow-md"
                     onClick={() => {
                       setShowDetails(!showDetails);
                     }}
@@ -238,7 +238,7 @@ export default function Account() {
                           <div className="flex items-start gap-4">
                             {showDetails && (
                               <div className="flex-shrink-0">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-blue-400 flex items-center justify-center text-white font-bold">
+                                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-400 flex items-center justify-center text-white font-bold">
                                   {item.name?.charAt(0) || "U"}
                                 </div>
                               </div>

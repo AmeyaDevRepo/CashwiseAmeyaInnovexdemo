@@ -25,7 +25,7 @@ export default function GroupForm() {
     <div className="">
       <button
         onClick={() => setOpen(true)}
-        className="bg-purple-500  text-white font-semibold py-2 px-4 rounded-md"
+        className="bg-blue-500  text-white font-semibold py-2 px-4 rounded-md"
       >
         Create New Group
       </button>
@@ -33,7 +33,7 @@ export default function GroupForm() {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-gradient-to-br from-gray-100 to-gray-300 text-white p-6 rounded-2xl shadow-xl w-full max-w-md">
-            <h2 className="text-2xl text-purple-500 font-bold mb-4">
+            <h2 className="text-2xl text-blue-500 font-bold mb-4">
               Create New Group
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -63,7 +63,7 @@ export default function GroupForm() {
                 </button>
                 <button
                   type="submit"
-                  className="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded"
+                  className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded"
                 >
                   Submit
                 </button>

@@ -107,7 +107,7 @@ const TransactionDetailsModal: React.FC<CloseTransactionModalProps> = ({
         <div className="p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6 border-b pb-4">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
               Transaction Details
             </h2>
             <button
@@ -142,7 +142,7 @@ const TransactionDetailsModal: React.FC<CloseTransactionModalProps> = ({
               </div>
               <div>
                 <p className="font-semibold">Amount:</p>
-                <p className="mt-1 text-purple-500 font-bold">
+                <p className="mt-1 text-blue-500 font-bold">
                   AED{transactionData.amount?.toLocaleString('en-IN')}
                 </p>
               </div>

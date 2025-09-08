@@ -126,7 +126,7 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
       case "Office":
         return <FaBuilding className="text-orange-500" />;
       case "Travel":
-        return <FaPlane className="text-purple-500" />;
+        return <FaPlane className="text-blue-500" />;
       case "ToPay":
         return <FaMoneyBill className="text-yellow-500" />;
       default:
@@ -145,10 +145,10 @@ export default function SummaryDetailsModal({ closeModal, summaryData }: any) {
         };
       case "Travel":
         return {
-          border: "border-purple-500",
-          text: "text-purple-600",
-          bg: "bg-purple-50",
-          gradient: "from-purple-600 to-purple-400",
+          border: "border-blue-500",
+          text: "text-blue-600",
+          bg: "bg-blue-50",
+          gradient: "from-blue-600 to-blue-400",
         };
       case "ToPay":
         return {

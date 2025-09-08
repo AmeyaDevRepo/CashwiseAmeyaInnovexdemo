@@ -280,7 +280,7 @@ const DataTable = ({
 
                 <button
                   onClick={applyDateFilter}
-                  className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700"
+                  className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
                 >
                   Apply
                 </button>

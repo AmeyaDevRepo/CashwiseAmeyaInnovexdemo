@@ -36,7 +36,7 @@ export default function DownloadReportModal() {
     <>
       <button 
         onClick={() => setOpenModal(true)}
-        className="flex items-center gap-2 p-2 rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all"
+        className="flex items-center gap-2 p-2 rounded-md text-white bg-gradient-to-r from-blue-500 to-blue-500 hover:from-blue-600 hover:to-blue-600 transition-all"
       >
         <FaFileDownload /> Download Reports
       </button>
@@ -100,7 +100,7 @@ export default function DownloadReportModal() {
                 {/* <button className="w-full flex items-center justify-center gap-2 text-sm p-3 rounded-md text-white bg-green-500 hover:bg-green-600 transition-colors">
                   <FaFileDownload /> Expense Report
                 </button>
-                <button className="w-full flex items-center justify-center gap-2 text-sm p-3 rounded-md text-white bg-purple-500 hover:bg-purple-600 transition-colors">
+                <button className="w-full flex items-center justify-center gap-2 text-sm p-3 rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors">
                   <FaFileDownload /> Budget  Report
                 </button>
                 <button className="w-full flex items-center justify-center gap-2 text-sm p-3 rounded-md text-white bg-orange-500 hover:bg-orange-600 transition-colors">

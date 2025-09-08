@@ -115,7 +115,7 @@ export default function EmployeeDashboard() {
               <h1 className="text-xl font-bold text-gray-800">
                 Expense Dashboard
               </h1>
-              <p className="text-md font-medium bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent ml-4 ">
+              <p className="text-md font-medium bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent ml-4 ">
                 [{user?.name || "User"}]
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function EmployeeDashboard() {
                   <p className="text-sm font-medium text-gray-600">
                     Office Expense
                   </p>
-                  <p className="text-lg font-semibold text-purple-600">
+                  <p className="text-lg font-semibold text-blue-600">
                     AED{totalOfficeExpense.toLocaleString()}
                   </p>
                 </div>

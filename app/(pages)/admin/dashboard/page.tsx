@@ -204,7 +204,7 @@ export default function Page() {
 
           <div className="flex flex-wrap justify-between items-center mt-12 md:mt-2 mb-4 gap-2">
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-2">
                 Expense Dashboard
               </h1>
               <p className="text-gray-600 mb-6 hidden md:block">
@@ -215,7 +215,7 @@ export default function Page() {
               <input
                 type="text"
                 placeholder="Search Name..."
-                className="bg-gray-200/50 border border-gray-600 rounded-md p-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                className="bg-gray-200/50 border border-gray-600 rounded-md p-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -229,7 +229,7 @@ export default function Page() {
             />
             <div>
               <h2 className="text-sm ">Date Filter Applied</h2>
-              <p className="text-sm p-2 bg-purple-500 rounded-full shadow-md text-white">
+              <p className="text-sm p-2 bg-blue-500 rounded-full shadow-md text-white">
                 {(() => {
                   const from = new Date(fromDateState);
                   const to = new Date(toDateState);
@@ -326,7 +326,7 @@ export default function Page() {
                                     onClick={() => {
                                       window.location.href = `/users/expenses/${expense.user._id}`;
                                     }}
-                                    className="text-md  cursor-pointer text-purple-500"
+                                    className="text-md  cursor-pointer text-blue-500"
                                   />
                                 </strong>
                                 <FaEye

@@ -370,7 +370,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                                 required:
                                   "At least one rechargeType is required!",
                               })}
-                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
                           </label>
@@ -400,9 +400,9 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="space-y-4 border-l-4 border-purple-500 pl-4 bg-purple-50 p-3 rounded-r-lg"
+                      className="space-y-4 border-l-4 border-blue-500 pl-4 bg-blue-50 p-3 rounded-r-lg"
                     >
-                      <h3 className="text-md font-semibold text-purple-700">Mobile Recharge Details</h3>
+                      <h3 className="text-md font-semibold text-blue-700">Mobile Recharge Details</h3>
                       
                       {/* Phone Number */}
                       <motion.div
@@ -422,7 +422,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                               message: "Please enter a valid 10-digit phone number"
                             }
                           })}
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none bg-white"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none bg-white"
                         />
                         {errors.phoneNumber && (
                           <p className="text-red-500 text-sm">
@@ -448,7 +448,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                                 {...register("planType", {
                                   required: watchRechargeType === "Mobile" ? "Plan type is required" : false,
                                 })}
-                                className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                                className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                               />
                               <span className="ml-2">{planType}</span>
                             </label>
@@ -544,7 +544,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                     placeholder="₹"
                     type="text"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -568,7 +568,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 
@@ -583,7 +583,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -603,7 +603,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

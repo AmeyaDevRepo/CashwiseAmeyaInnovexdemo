@@ -296,7 +296,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -347,7 +347,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div> */}
 
@@ -363,7 +363,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                           {...register("serviceProvider", {
                             required: "Service Provider is Required",
                           })}
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
                         <span className="mt-4 -translate-x-4">
@@ -394,7 +394,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                                         handleServiceProviderClick(user);
                                         setVisibleDropdown(null);
                                       }}
-                                      className="px-4 py-2 hover:bg-purple-50 cursor-pointer text-sm"
+                                      className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm"
                                     >
                                       {user.name}
                                     </li>
@@ -419,7 +419,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("jobName", { required: "Job Name required!" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/*mobile Number of person */}
@@ -437,7 +437,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                     {...register("person", {
                       required: "Name of outside contractor/labour required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/*mobile Number of person */}
@@ -456,7 +456,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                       required:
                         "Mobile Number of main contractor/labour required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* Number of person */}
@@ -474,7 +474,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                     {...register("nameOfItem", {
                       required: "Name of Items Purchased required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
                         event.key === "ArrowUp" ||
@@ -500,7 +500,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                     {...register("totalLabour", {
                       required: "Number of ManDays/Labour required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
                         event.key === "ArrowUp" ||
@@ -524,7 +524,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                     placeholder="AED"
                     type="text"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -547,7 +547,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/*  remarks */}
@@ -561,7 +561,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                  {/* document no */}
@@ -577,7 +577,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("documentNo")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 )}
@@ -597,7 +597,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

@@ -19,8 +19,8 @@ import { FaFileInvoice } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import useLocation from "@hooks/useLocation";
 import { usePathname } from "next/navigation";
+import { IUsers } from "@app/_interface/user.interface";
 import { IoIosArrowDown } from "react-icons/io";
-import CustomFileUpload from "../AntdUpload";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
 
@@ -32,16 +32,24 @@ type expenseFormProps = {
 // form interface
 type FormValues = {
   siteName: string;
+  expenseDate: Date | null;
   todayWork: string;
   location: object;
-  modeOfTravel: string;
-  startingPlace: string;
-  endingPlace: string;
-  driverNumber: number | null;
+  rechargeType: string;
+  serviceProvider: string;
+  numberOfPerson: number;
+  nameOfRestaurant: string;
+  restaurantNumber: number | null;
   amount: number;
+  paymentMode: string;
+  bankName: string;
+  // New Mobile-specific fields
+  billDateFrom: Date | null;
+  billDateTo: Date | null;
+  phoneNumber: string;
+  planType: string;
   description: string;
   remarks: string;
-  expenseDate?: Date | null;
 };
 
 //   animation constants at the top of  component
@@ -63,16 +71,19 @@ const scaleUp = {
   exit: { scale: 0.95, opacity: 0 },
 };
 
-export default function Conveyance({ closeModal }: expenseFormProps) {
+export default function Recharge({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
-  const files= useAppSelector(selectFiles)
   const userLocation = useLocation();
+  const [includeGST, setIncludeGST] = useState(false);
+  const [GstFormModel, setGstFormModel] = useState(false);
   const path = usePathname();
+  const files = useAppSelector(selectFiles);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const Error = (data: any) => toast.error(data);
   const Success = (data: any) => toast.success(data);
   const [sites, setSites] = useState<SiteInterface[]>([]);
-  const [visibleDropdown, setVisibleDropdown] = useState<string | null>(null);
+  const [userData, setUserData] = useState<IUsers[]>([]);
+  const [visibleDropdown, setVisibleDropdown] = useState<string | null>(null); // Track which dropdown is visible
   const {
     register,
     watch,
@@ -86,22 +97,32 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
     setError,
   } = useForm<FormValues>({
     defaultValues: {
-      expenseDate: new Date(),
       siteName: "",
+      expenseDate: new Date(),
       todayWork: "",
       location: userLocation,
-      modeOfTravel: "",
-      startingPlace: "Okhla Industrial Estate",
-      endingPlace: "",
-      driverNumber: null,
+      rechargeType: "",
+      serviceProvider: "",
+      numberOfPerson: 0,
+      nameOfRestaurant: "",
+      restaurantNumber: null,
       amount: 0,
+      paymentMode: "",
+      bankName: "",
+      billDateFrom: null,
+      billDateTo: null,
+      phoneNumber: "",
+      planType: "",
       description: "",
       remarks: "",
     },
   });
 
   const watchSiteName = watch("siteName");
-  const watchMode = watch("modeOfTravel");
+  const watchServiceProvider = watch("serviceProvider");
+  const watchRechargeType = watch("rechargeType");
+
+  // function to get site name
   useEffect(() => {
     async function allProducts() {
       try {
@@ -110,6 +131,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
             siteName: watchSiteName,
           },
         });
+        console.log(response);
         if (response.status === 200) {
           const resultData = ((response as any)?.data as SiteInterface[]) || [];
           setSites(resultData);
@@ -123,62 +145,108 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
     allProducts();
   }, [watchSiteName, path]);
 
+  // function to set service provider name
+  useEffect(() => {
+    async function allUsers() {
+      try {
+        const response = await client.get("/users");
+        if (response.status === 200) {
+          const resultData = ((response as any)?.data as IUsers[]) || [];
+          setUserData(resultData);
+        }
+      } catch (error: any) {
+        Error(error.response?.data?.message || "Something went wrong!");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    allUsers();
+  }, [watchServiceProvider]);
+
+  // handle form name dynamically
   let tab = path.replace(/^\/|\/$/g, "");
   const tabParts = tab.split(/(?=[A-Z])/);
   tabParts[0] = tabParts[0].charAt(0).toUpperCase() + tabParts[0].slice(1);
 
+  const handleGSTToggle = () => {
+    const newValue = !includeGST;
+    setIncludeGST(newValue);
+    if (newValue) {
+      setGstFormModel(true); // open modal when including GST
+    } else {
+      setGstFormModel(false); // close modal when unchecking GST
+    }
+  };
+  const [gstData, setGstData] = useState<any>(null);
+  function handleGStForm(GstFormData: any) {
+    console.log("Gst form handled", GstFormData);
+    setValue("amount", Math.round(GstFormData.totalAmount));
+    setGstData(GstFormData);
+  }
+
   const onSubmit = async (data: FormValues) => {
     const formdata = new FormData();
     // Check if the user is not an admin and at least one file field is empty
-    if (user.role !== "admin") {
-      if (!files.Payment || files.Payment.length === 0) {
-        if (data.amount > 500) {
-          return toast.error("Paytm File is required!");
-        }
-        if (data.amount > 100) {
-          return toast.error("At least one File is required!");
-        }
-      }
+    const hasValidFile = ["Payment", "Location", "Invoice"].some(
+      (key) => Array.isArray(files[key]) && files[key].length > 0
+    );
+
+    if (!hasValidFile) {
+      return toast.error("At least one File is required!");
     }
-    formdata.append("conveyance", "conveyance");
-    formdata.append("user", user.name);
+    formdata.append("GstData", JSON.stringify(gstData));
+    formdata.append("recharge", "recharge");
     formdata.append("schema", path);
+    formdata.append("user", user.name);
     formdata.append("siteName", data.siteName);
+    formdata.append("expenseDate", data.expenseDate?.toString() || "");
     formdata.append("todayWork", data.todayWork);
     formdata.append("location", JSON.stringify(userLocation.currentLocation));
-    formdata.append("expenseDate", data.expenseDate?.toString() || "");
-    formdata.append("modeOfTravel", data.modeOfTravel);
-    formdata.append("startingPlace", data.startingPlace);
-    formdata.append("endingPlace", data.endingPlace);
+    formdata.append("rechargeType", data.rechargeType);
+    formdata.append("serviceProvider", data.serviceProvider);
+    formdata.append("numberOfPerson", data.numberOfPerson.toString());
+    formdata.append("nameOfRestaurant", data.nameOfRestaurant);
+    formdata.append("paymentMode", data.paymentMode);
+    formdata.append("bankName", data.bankName);
     formdata.append(
-      "driverNumber",
-      data.driverNumber !== null ? data.driverNumber.toString() : ""
+      "restaurantNumber",
+      data.restaurantNumber !== null ? data.restaurantNumber.toString() : ""
     );
     formdata.append(
       "amount",
       data.amount !== null ? data.amount.toString() : ""
     );
+    
+    // Add Mobile-specific fields to form data
+    if (data.rechargeType === "Mobile") {
+      formdata.append("billDateFrom", data.billDateFrom?.toString() || "");
+      formdata.append("billDateTo", data.billDateTo?.toString() || "");
+      formdata.append("phoneNumber", data.phoneNumber);
+      formdata.append("planType", data.planType);
+    }
+    
     formdata.append("description", data.description);
     formdata.append("remarks", data.remarks);
-      if (files.Location && Array.isArray(files.Location)) {
-        files.Location.forEach((file: any) => {
-          formdata.append("Location", file);
-        });
-      }
-      if (files.Payment && Array.isArray(files.Payment)) {
-        files.Payment.forEach((file: any) => {
-          formdata.append("Payment", file);
-        });
-      }
-      if (files.Invoice && Array.isArray(files.Invoice)) {
-        files.Invoice.forEach((file: any) => {
-          formdata.append("Invoice", file);
-        });
-      }
+    if (files.Location && Array.isArray(files.Location)) {
+      files.Location.forEach((file: any) => {
+        formdata.append("Location", file);
+      });
+    }
+    if (files.Payment && Array.isArray(files.Payment)) {
+      files.Payment.forEach((file: any) => {
+        formdata.append("Payment", file);
+      });
+    }
+    if (files.Invoice && Array.isArray(files.Invoice)) {
+      files.Invoice.forEach((file: any) => {
+        formdata.append("Invoice", file);
+      });
+    }
+
     try {
       setIsLoading(true);
       const response = await client.post(
-        `/form/${user._id}/conveyance`,
+        `/form/${user._id}/recharge`,
         formdata,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -200,8 +268,11 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
     setValue("siteName", site.name);
     // setValue("siteLocation", site.address);
   };
+  const handleServiceProviderClick = (user: SiteInterface) => {
+    setValue("serviceProvider", user.name);
+    // setValue("siteLocation", site.address);
+  };
 
-  
   return (
     <section className="bg-[#f0ebf8] min-h-screen">
       <div className="flex">
@@ -226,9 +297,10 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
               >
                 <h2 className="text-white text-2xl font-bold">
                   {tabParts[0]} {tabParts[1]} <br />{" "}
-                  <span className="text-gray-300 text-sm ">Conveyance/Fare</span>{" "}
+                  <span className="text-gray-300 text-sm ">Recharge</span>{" "}
                   <br />
                 </h2>
+
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -241,7 +313,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
 
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
-              <motion.div
+                <motion.div
                   className="space-y-1 w-full"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -271,105 +343,32 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   )}
                 </motion.div>
 
-
-
-                {/* Site Selection */}
-                {/* <motion.div
-                  className="space-y-1"
-                  initial={fadeIn.hidden}
-                  animate={fadeIn.visible}
-                  exit={fadeIn.exit}
-                >
-                  <label className="block text-md font-semibold">
-                    Site Name (जगह का नाम)
-                  </label>
-                  <div className="relative">
-                    <div className="flex items-center">
-                      <input
-                        {...register("siteName", {
-                          required: "Site Name is Required",
-                        })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
-                        onFocus={() => setVisibleDropdown("siteName")}
-                      />
-                      <span className="mt-4 -translate-x-4">
-                        <IoIosArrowDown />
-                      </span>
-                    </div>
-                    {visibleDropdown === "siteName" && sites.length > 0 && (
-                      <div className="absolute z-10 w-full mt-1 bg-white shadow-lg rounded-md">
-                        <div className="p-2 border-b flex justify-end bg-gray-200">
-                          <RxCross2
-                            className="text-red-400 cursor-pointer text-xl"
-                            onClick={() => setVisibleDropdown(null)}
-                          />
-                        </div>
-                        <ul className="max-h-40 overflow-auto bg-gray-200">
-                          {sites.map((site: any) => (
-                            <li
-                              key={site._id}
-                              onClick={() => {
-                                handleSiteClick(site);
-                                setVisibleDropdown(null);
-                              }}
-                              className="p-2 hover:bg-gray-300 cursor-pointer"
-                            >
-                              {site.name}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                  {errors.siteName && (
-                    <p className="text-red-500 text-sm">
-                      {errors.siteName.message as string}
-                    </p>
-                  )}
-                </motion.div> */}
-
-                {/* Work Details */}
-                {/* <motion.div
-                  className="space-y-1"
-                  initial={slideUp.hidden}
-                  animate={slideUp.visible}
-                  exit={slideUp.exit}
-                >
-                  <label className="block text-md font-semibold">
-                    Today&apos;s Work 
-                  </label>
-                  <input
-                    {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
-                  />
-                </motion.div> */}
-
-                {/* Conveyance Details */}
+                {/* Recharge Details */}
                 <motion.div
                   className="grid "
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
-                  {/* Mode of Conveyance  */}
+                  {/* rechargeType selection  */}
                   <motion.div
                     className="space-y-2 my-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 }}
                   >
-                    <p className="text-md font-semibold">Mode of Conveyance </p>
-                    {["Auto", "Shared Auto", "Bus", "Metro", "Taxi",'Train','Plane','own Vehicle','Other'].map(
+                    <p className="text-md font-semibold">Recharge Type</p>
+                    {["Wi-Fi", "Mobile", "Electricity"].map(
                       (item, index) => (
                         <div key={index} className="block">
                           <label className=" ">
                             <input
                               type="radio"
-                              id="mode"
-                              value={item} // Set the value for each checkbox
-                              {...register("modeOfTravel", {
+                              id="rechargeType"
+                              value={item}
+                              {...register("rechargeType", {
                                 required:
-                                  "At least one mode of conveyance is required!",
+                                  "At least one rechargeType is required!",
                               })}
                               className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
                             />
@@ -379,82 +378,173 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       )
                     )}
                     <AnimatePresence>
-                      {errors.modeOfTravel && (
+                      {errors.rechargeType && (
                         <motion.p
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           className="text-red-500 text-sm"
                         >
-                          {errors.modeOfTravel.message}
+                          {errors.rechargeType.message}
                         </motion.p>
                       )}
                     </AnimatePresence>
                   </motion.div>
                 </motion.div>
 
+                {/* Mobile-specific fields */}
                 <AnimatePresence>
-                  {watchMode === "Auto" ||
-                  watchMode === "Taxi" ||
-                  watchMode === "Shared Auto" ? (
+                  {watchRechargeType === "Mobile" && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="space-y-1 mt-4"
+                      transition={{ duration: 0.3 }}
+                      className="space-y-4 border-l-4 border-purple-500 pl-4 bg-purple-50 p-3 rounded-r-lg"
                     >
-                      <label className="block font-semibold">
-                        Driver Mobile Number
-                      </label>
-                      <input
-                        type="tel"
-                        {...register("driverNumber")}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
-                      />
+                      <h3 className="text-md font-semibold text-purple-700">Mobile Recharge Details</h3>
+                      
+                      {/* Phone Number */}
+                      <motion.div
+                        className="space-y-1"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                      >
+                        <label className="block font-semibold">Phone Number</label>
+                        <input
+                          type="tel"
+                          placeholder="Enter 10-digit phone number"
+                          {...register("phoneNumber", {
+                            required: watchRechargeType === "Mobile" ? "Phone number is required" : false,
+                            pattern: {
+                              value: /^[0-9]{10}$/,
+                              message: "Please enter a valid 10-digit phone number"
+                            }
+                          })}
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none bg-white"
+                        />
+                        {errors.phoneNumber && (
+                          <p className="text-red-500 text-sm">
+                            {errors.phoneNumber.message}
+                          </p>
+                        )}
+                      </motion.div>
+
+                      {/* Plan Type */}
+                      <motion.div
+                        className="space-y-2"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <p className="text-md font-semibold">Plan Type</p>
+                        {["Prepaid", "Postpaid"].map((planType, index) => (
+                          <div key={index} className="block">
+                            <label className="flex items-center">
+                              <input
+                                type="radio"
+                                value={planType}
+                                {...register("planType", {
+                                  required: watchRechargeType === "Mobile" ? "Plan type is required" : false,
+                                })}
+                                className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                              />
+                              <span className="ml-2">{planType}</span>
+                            </label>
+                          </div>
+                        ))}
+                        {errors.planType && (
+                          <p className="text-red-500 text-sm">
+                            {errors.planType.message}
+                          </p>
+                        )}
+                      </motion.div>
+
+                      {/* Bill Date From */}
+                      <motion.div
+                        className="space-y-1"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <label className="block font-semibold">Bill Date From</label>
+                        <Controller
+                          control={control}
+                          name="billDateFrom"
+                          rules={{
+                            required: watchRechargeType === "Mobile" ? "Bill date from is required" : false,
+                          }}
+                          render={({ field: { onChange, value } }) => (
+                            <div className="relative w-full">
+                              <DatePicker
+                                selected={value}
+                                onChange={onChange}
+                                dateFormat="dd/MM/yyyy"
+                                className="border p-2 rounded-md border-gray-400 w-full bg-white"
+                                placeholderText="Select From Date"
+                              />
+                            </div>
+                          )}
+                        />
+                        {errors.billDateFrom && (
+                          <p className="text-red-500 text-sm">
+                            {errors.billDateFrom.message}
+                          </p>
+                        )}
+                      </motion.div>
+
+                      {/* Bill Date To */}
+                      <motion.div
+                        className="space-y-1"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        <label className="block font-semibold">Bill Date To</label>
+                        <Controller
+                          control={control}
+                          name="billDateTo"
+                          rules={{
+                            required: watchRechargeType === "Mobile" ? "Bill date to is required" : false,
+                          }}
+                          render={({ field: { onChange, value } }) => (
+                            <div className="relative w-full">
+                              <DatePicker
+                                selected={value}
+                                onChange={onChange}
+                                dateFormat="dd/MM/yyyy"
+                                className="border p-2 rounded-md border-gray-400 w-full bg-white"
+                                placeholderText="Select To Date"
+                              />
+                            </div>
+                          )}
+                        />
+                        {errors.billDateTo && (
+                          <p className="text-red-500 text-sm">
+                            {errors.billDateTo.message}
+                          </p>
+                        )}
+                      </motion.div>
                     </motion.div>
-                  ) : null}
+                  )}
                 </AnimatePresence>
 
-                <motion.div
-                  className="grid grid-cols-2 pb-8 gap-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <div>
-                    <label className="block font-semibold">
-                      Starting Place(From){" "}
-                    </label>
-                    <input
-                      type="text"
-                      {...register("startingPlace", {
-                        required: "Starting Place required!",
-                      })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-semibold">Ending Place(To)</label>
-                    <input
-                      type="text"
-                      {...register("endingPlace", {
-                        required: "Ending Place required!",
-                      })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
-                    />
-                  </div>
-                </motion.div>
+                {/* Amount */}
                 <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  {" "}
-                  <label className="block font-semibold">Amount AED</label>
+                  <label className="flex justify-between font-semibold">
+                    Amount ₹
+                  </label>
                   <input
-                    placeholder="AED"
+                    placeholder="₹"
                     type="text"
+                    {...register("amount", { required: "Amount required" })}
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -464,10 +554,10 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                         event.preventDefault();
                       }
                     }}
-                    {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                   />
                 </motion.div>
+
+                {/* Description */}
                 <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0 }}
@@ -481,13 +571,15 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                   />
                 </motion.div>
+                
+                {/* Remarks */}
                 <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Remarks </label>
+                  <label className="block font-semibold">Remarks</label>
                   <input
                     type="text"
                     {...register("remarks")}
@@ -495,9 +587,10 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   />
                 </motion.div>
 
-                <AntdFileUpload category={["Location","Payment","Invoice"]} />
-               
+                {/* File Uploads */}
+                <AntdFileUpload category={["Location", "Payment", "Invoice"]} />
 
+               
                 {/* Form Actions */}
                 <motion.div
                   className="flex flex-col sm:flex-row justify-between gap-4 pt-4"

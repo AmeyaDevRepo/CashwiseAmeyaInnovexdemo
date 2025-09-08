@@ -61,11 +61,6 @@ const Sidebar = () => {
         label: "Group",
         path: "/group",
       },
-      {
-        icon: <MdOutlineContactPage />,
-        label: "Office Form",
-        path: "/officeExpense",
-      },
     ];
 
     if (isAdminOrManager) {
@@ -103,6 +98,11 @@ const Sidebar = () => {
           path: "/users",
         },
         {
+          icon: <MdOutlineContactPage />,
+          label: "Office Form",
+          path: "/officeExpense",
+        },
+        {
           type: "item",
           icon: <BiSolidReport />,
           label: "Reports",
@@ -120,32 +120,32 @@ const Sidebar = () => {
         //   label: "Site",
         //   path: "/site",
         // },
-        // {
-        //   type: "dropdown",
-        //   icon: <RiDashboardFill />,
-        //   label: "Form",
-        //   subitems: [
-        //     {
-        //       icon: <FaWpforms />,
-        //       label: "Travel Form",
-        //       path: "/travelExpense",
-        //     },
-        //     {
-        //       icon: <MdOutlineContactPage />,
-        //       label: "Office Form",
-        //       path: "/officeExpense",
-        //     },
-        //     ...(canAccessToPayForm
-        //       ? [
-        //           {
-        //             icon: <MdOutlineContactPage />,
-        //             label: "To Pay Form",
-        //             path: "/toPayExpense",
-        //           },
-        //         ]
-        //       : []),
-        //   ],
-        // },
+        {
+          type: "dropdown",
+          icon: <RiDashboardFill />,
+          label: "Form",
+          subitems: [
+            // {
+            //   icon: <FaWpforms />,
+            //   label: "Travel Form",
+            //   path: "/travelExpense",
+            // },
+            {
+              icon: <MdOutlineContactPage />,
+              label: "Office Form",
+              path: "/officeExpense",
+            },
+            ...(canAccessToPayForm
+              ? [
+                  // {
+                  //   icon: <MdOutlineContactPage />,
+                  //   label: "To Pay Form",
+                  //   path: "/toPayExpense",
+                  // },
+                ]
+              : []),
+          ],
+        },
         ...commonItems,
       ];
     } else {
@@ -156,33 +156,38 @@ const Sidebar = () => {
           label: "Dashboard",
           path: `/users/expenses/${user._id}`,
         },
-        // {
-        //   type: "dropdown",
-        //   icon: <RiDashboardFill />,
-        //   label: "Form",
-        //   subitems: [
-        //     ...(user.role === "toPay"
-        //       ? [
-        //           {
-        //             icon: <MdOutlineContactPage />,
-        //             label: "To Pay Form",
-        //             path: "/toPayExpense",
-        //           },
-        //         ]
-        //       : [
-        //           {
-        //             icon: <FaWpforms />,
-        //             label: "Travel Form",
-        //             path: "/travelExpense",
-        //           },
-        //           {
-        //             icon: <MdOutlineContactPage />,
-        //             label: "Office Form",
-        //             path: "/officeExpense",
-        //           },
-        //         ]),
-        //   ],
-        // },
+        {
+          icon: <MdOutlineContactPage />,
+          label: "Office Form",
+          path: "/officeExpense",
+        },
+        {
+          type: "dropdown",
+          icon: <RiDashboardFill />,
+          label: "Form",
+          subitems: [
+            ...(user.role === "toPay"
+              ? [
+                  // {
+                  //   icon: <MdOutlineContactPage />,
+                  //   label: "To Pay Form",
+                  //   path: "/toPayExpense",
+                  // },
+                ]
+              : [
+                  // {
+                  //   icon: <FaWpforms />,
+                  //   label: "Travel Form",
+                  //   path: "/travelExpense",
+                  // },
+                  {
+                    icon: <MdOutlineContactPage />,
+                    label: "Office Form",
+                    path: "/officeExpense",
+                  },
+                ]),
+          ],
+        },
         ...commonItems,
       ];
     }
@@ -277,10 +282,9 @@ const Sidebar = () => {
           <div className="flex items-center justify-between mb-8">
             <div className="flex flex-col items-center gap-4">
               <span className="flex items-center gap-4 text-2xl border-b py-2 font-bold text-purple-500">
-                
                 <div className="flex items-center gap-2">
                   <span>Ameya</span>
-                <Image src={AmeyaInnovexLogo} alt="" width={50} height={50}/>
+                  <Image src={AmeyaInnovexLogo} alt="" width={50} height={50} />
                 </div>
               </span>
               <span className="flex items-center gap-4 text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">

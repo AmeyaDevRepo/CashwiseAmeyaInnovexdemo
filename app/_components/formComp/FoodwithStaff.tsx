@@ -227,14 +227,14 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
                   exit={fadeIn.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Site Name (जगह का नाम)
+                    Site Name 
                   </label>
                   <div className="relative">
                     <input
@@ -274,23 +274,23 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* food Details */}
                 <motion.div

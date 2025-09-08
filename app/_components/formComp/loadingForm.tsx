@@ -330,7 +330,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -382,23 +382,23 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work
                   </label>
                   <input
                     {...register("todayWork")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Service Provider */}
                 {path && path === "/toPayExpense" && (
@@ -703,19 +703,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                <AntdFileUpload category={["Location","Payment","Invoice"]} />
 
                 {/* Notice Section */}
-                <motion.div
-                  className="bg-red-50 p-4 rounded-lg"
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3 className="text-md font-bold mb-2">NOTICE</h3>
-                  <p className="text-red-600 font-semibold">
-                    Form को Submit करने से पहले अपने खर्च का हिसाब-किताब अच्छी
-                    तरह जांच लें क्यूंकि एक बार Submit करने बाद Form को Edit
-                    नहीं किया जा सकता।
-                  </p>
-                </motion.div>
+               
 
                 {/* Form Actions */}
                 <motion.div

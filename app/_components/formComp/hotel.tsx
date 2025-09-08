@@ -321,7 +321,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
 
 
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -373,23 +373,23 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Service Provider */}
                 {path && path === "/toPayExpense" && (

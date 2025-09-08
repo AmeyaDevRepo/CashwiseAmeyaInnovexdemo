@@ -364,7 +364,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
 
 
                 {/* Site Selection */}
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700">
                     Site Name{" "}
                     <span className="text-gray-500">(जगह का नाम)</span>
@@ -417,10 +417,10 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </div>
+                </div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
@@ -428,14 +428,13 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                 >
                   <label className="block text-sm font-medium text-gray-700">
                     Today&apos;s Work{" "}
-                    <span className="text-gray-500">(आज का कार्य)</span>
                   </label>
                   <input
                     type="text"
                     {...register("todayWork")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Service Provider */}
                 <div className="space-y-2">

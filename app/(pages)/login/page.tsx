@@ -11,7 +11,6 @@ import { redirect, usePathname, useRouter } from "next/navigation";
 import Loader from "@app/_components/Loader";
 import { setCookie } from "cookies-next";
 
-
 import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
@@ -37,24 +36,23 @@ const Login = () => {
   const [loginMethod, setLoginMethod] = useState<"email" | "phone">("email");
   const [otpSent, setOtpSent] = useState(false);
 
-useEffect(() => {
-  const checkAuth = async () => {
-    const accessToken = getCookie("accessToken");
-    const role = getCookie("role");
+  useEffect(() => {
+    const checkAuth = async () => {
+      const accessToken = getCookie("accessToken");
+      const role = getCookie("role");
 
-    if (accessToken && role) {
-      const path =
-        role === "admin"
-          ? "/admin/account"
-          : `/users/expenses/${user?._id ?? ""}`;
-      router.push(path);
-      router.refresh();
-    }
-  };
+      if (accessToken && role) {
+        const path =
+          role === "admin"
+            ? "/admin/account"
+            : `/users/expenses/${user?._id ?? ""}`;
+        router.push(path);
+        window.location.reload();
+      }
+    };
 
-  checkAuth();
-}, [router, user?._id]);
-
+    checkAuth();
+  }, [router, user?._id]);
 
   const handleSendOtp = async () => {
     const phone = getValues("phone");
@@ -106,7 +104,7 @@ useEffect(() => {
             : `/users/expenses/${response.data?.user?._id}`;
         toast.success(response.data?.message);
         router.push(path);
-        router.refresh();
+        window.location.reload();
       }
     } catch (error) {
       toast.error(
@@ -128,7 +126,7 @@ useEffect(() => {
             ? "/admin/account"
             : `/users/expenses/${user?._id ?? ""}`;
         router.push(path);
-        router.refresh();
+        window.location.reload();
       }
     };
 
@@ -149,7 +147,7 @@ useEffect(() => {
                   height={90}
                   width={90}
                 />
-{/*                 <Image
+                {/*                 <Image
                   src={intertechlogo}
                   alt="Logo"
                   height={100}
@@ -327,7 +325,7 @@ useEffect(() => {
               height={90}
               width={90}
             />
-{/*             <Image src={intertechlogo} alt="Logo" height={100} width={150} /> */}
+            {/*             <Image src={intertechlogo} alt="Logo" height={100} width={150} /> */}
           </div>
           <h4 className="text-2xl text-center dark:text-white border-b-2 font-bold mt-4 font-serif">
             Welcome to{" "}

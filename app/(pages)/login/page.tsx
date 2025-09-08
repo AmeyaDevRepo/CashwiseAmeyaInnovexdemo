@@ -11,6 +11,7 @@ import { redirect, usePathname, useRouter } from "next/navigation";
 import Loader from "@app/_components/Loader";
 import { setCookie } from "cookies-next";
 
+
 import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
@@ -36,23 +37,24 @@ const Login = () => {
   const [loginMethod, setLoginMethod] = useState<"email" | "phone">("email");
   const [otpSent, setOtpSent] = useState(false);
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const accessToken = getCookie("accessToken");
-      const role = getCookie("role");
+useEffect(() => {
+  const checkAuth = async () => {
+    const accessToken = getCookie("accessToken");
+    const role = getCookie("role");
 
-      if (accessToken && role) {
-        const path =
-          role === "admin"
-            ? "/admin/account"
-            : `/users/expenses/${user?._id ?? ""}`;
-        router.push(path);
-        window.location.reload();
-      }
-    };
+    if (accessToken && role) {
+      const path =
+        role === "admin"
+          ? "/admin/account"
+          : `/users/expenses/${user?._id ?? ""}`;
+      router.push(path);
+      router.refresh();
+    }
+  };
 
-    checkAuth();
-  }, [router, user?._id]);
+  checkAuth();
+}, [router, user?._id]);
+
 
   const handleSendOtp = async () => {
     const phone = getValues("phone");
@@ -104,7 +106,7 @@ const Login = () => {
             : `/users/expenses/${response.data?.user?._id}`;
         toast.success(response.data?.message);
         router.push(path);
-        window.location.reload();
+        window.location.reload()
       }
     } catch (error) {
       toast.error(
@@ -126,7 +128,7 @@ const Login = () => {
             ? "/admin/account"
             : `/users/expenses/${user?._id ?? ""}`;
         router.push(path);
-        window.location.reload();
+        router.refresh();
       }
     };
 
@@ -147,7 +149,7 @@ const Login = () => {
                   height={90}
                   width={90}
                 />
-                {/*                 <Image
+{/*                 <Image
                   src={intertechlogo}
                   alt="Logo"
                   height={100}
@@ -157,7 +159,7 @@ const Login = () => {
               <div className="flex flex-col">
                 <h4 className="text-2xl text-center dark:text-white border-b font-bold mt-4 font-serif">
                   Welcome to{" "}
-                  <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
                     CashWise
                   </span>
                 </h4>
@@ -176,7 +178,7 @@ const Login = () => {
                 onClick={() => setLoginMethod("email")}
                 className={`w-full py-2 rounded-md font-semibold transition-colors ${
                   loginMethod === "email"
-                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white"
+                    ? "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
@@ -190,7 +192,7 @@ const Login = () => {
                 }}
                 className={`w-full py-2 rounded-md font-semibold transition-colors ${
                   loginMethod === "phone"
-                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white"
+                    ? "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
@@ -260,7 +262,7 @@ const Login = () => {
                       <button
                         type="button"
                         onClick={handleSendOtp}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
+                        className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-500 text-white rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
                         disabled={isLoading}
                       >
                         Send OTP
@@ -298,7 +300,7 @@ const Login = () => {
               className={`flex items-center justify-center gap-2 text-white font-semibold w-full py-2 mb-8 rounded-md transition-opacity ${
                 isLoading || (loginMethod === "phone" && !otpSent)
                   ? "opacity-50 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-blue-500 hover:opacity-90"
+                  : "bg-gradient-to-r from-blue-600 to-purple-500 hover:opacity-90"
               }`}
             >
               {isLoading ? (
@@ -325,11 +327,11 @@ const Login = () => {
               height={90}
               width={90}
             />
-            {/*             <Image src={intertechlogo} alt="Logo" height={100} width={150} /> */}
+{/*             <Image src={intertechlogo} alt="Logo" height={100} width={150} /> */}
           </div>
           <h4 className="text-2xl text-center dark:text-white border-b-2 font-bold mt-4 font-serif">
             Welcome to{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
               CashWise
             </span>
           </h4>

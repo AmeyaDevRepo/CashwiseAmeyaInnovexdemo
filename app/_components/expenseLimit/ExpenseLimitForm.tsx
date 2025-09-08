@@ -160,7 +160,7 @@ export default function ExpenseLimitForm({
         </button>
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-6">
-          <h2 className="text-2xl font-bold text-purple-600 mb-6 ">
+          <h2 className="text-2xl font-bold text-blue-600 mb-6 ">
             Expense Limit{" "}
             <span className="text-sm text-gray-400">
               {selectedUsersExpenseLimit.length > 0 ? getValues("name") : ``}
@@ -178,7 +178,7 @@ export default function ExpenseLimitForm({
                   whileFocus={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onFocus={() => setVisibleDropdown("name")}
                 />
                 {errors.name && (
@@ -199,7 +199,7 @@ export default function ExpenseLimitForm({
                         <li
                           key={item._id}
                           onClick={() => handleNameClick(item.name)}
-                          className="p-2 hover:bg-purple-50 cursor-pointer text-sm"
+                          className="p-2 hover:bg-blue-50 cursor-pointer text-sm"
                         >
                           {item.name}
                         </li>
@@ -230,7 +230,7 @@ export default function ExpenseLimitForm({
                     whileFocus={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </motion.div>
               );
@@ -248,7 +248,7 @@ export default function ExpenseLimitForm({
                 {...register("status")}
                 whileFocus={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="Active">Active</option>
                 <option value="In-Active">In-Active</option>
@@ -272,7 +272,7 @@ export default function ExpenseLimitForm({
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
               type="submit"
-              className=" p-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+              className=" p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
               onClick={() => setActionSave("permanent")}
             >
               Update Limit
@@ -282,7 +282,7 @@ export default function ExpenseLimitForm({
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
               type="submit"
-              className="p-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+              className="p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
               onClick={()=>setActionSave('temporary')}
             >
               Set Temporary

@@ -12,6 +12,7 @@ import { selectUser } from "@redux/users/userSlice";
 import AntdFileUpload from "../AntdUpload";
 import { clearArrayFiles, selectFiles } from "@redux/files/filesSlice";
 import { useUploadNewFilesMutation } from "@app/_api_query/group.api";
+import useCurrency from "@hooks/useCurrency";
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -29,7 +30,7 @@ export default function ExpenseDetailsModal({
     getValues,
     setValue,
   } = useForm();
-
+  const { currency, error }:any = useCurrency();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [messageModal, setMessageModal] = useState(false);
   const [expenseData, setExpenseData] = useState<any>();
@@ -70,7 +71,7 @@ export default function ExpenseDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `AED${Number(value).toLocaleString("en-IN")}`;
+      return `${currency?.currencySymbol}${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -250,7 +251,7 @@ export default function ExpenseDetailsModal({
             <FaArrowLeft size={20} /> Go Back
           </button>
           <div className="flex justify-between items-center mb-6 pb-4 border-b">
-            <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent capitalize">
+            <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent capitalize">
               {transactionData.expenseType} Details{" "}
               <span className="text-gray-400 text-sm">
                 [{transactionData.name}]
@@ -305,7 +306,7 @@ export default function ExpenseDetailsModal({
                               e.stopPropagation();
                               openMessageModal(items);
                             }}
-                            className="p-2 bg-purple-500 rounded-lg text-white cursor-pointer"
+                            className="p-2 bg-blue-500 rounded-lg text-white cursor-pointer"
                           >
                             Admin Message
                           </motion.span>
@@ -357,12 +358,12 @@ export default function ExpenseDetailsModal({
                       )}
                       <p>
                         <strong>Amount:</strong>{" "}
-                        <span className="text-blue-500"> AED{items.amount}</span>
+                        <span className="text-blue-500"> {currency?.currencySymbol}{items.amount}</span>
                       </p>
                       {items?.adminMessage && (
                         <p>
                           <strong>Admin Remarks:</strong>{" "}
-                          <span className="text-purple-500">
+                          <span className="text-blue-500">
                             {" "}
                             {items.adminMessage ? items.adminMessage : "N/A"}
                           </span>
@@ -534,7 +535,7 @@ export default function ExpenseDetailsModal({
                           />
 
                           <button
-                            className="p-2 rounded-md shadow-sm text-white bg-purple-500 float-end text-xs"
+                            className="p-2 rounded-md shadow-sm text-white bg-blue-500 float-end text-xs"
                             onClick={(e) => {
                               e.stopPropagation(),
                                 handleNewFormSubmit(items?._id);

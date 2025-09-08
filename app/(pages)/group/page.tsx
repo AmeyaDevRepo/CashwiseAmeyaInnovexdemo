@@ -23,7 +23,7 @@ export default function Group() {
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-2">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4  mt-8 md:mt-0">
               <div className="flex-1">
-                <h1 className="text-3xl font-bold  mb-1 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold  mb-1 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                   Groups
                 </h1>
                 <p className="text-gray-500">
@@ -42,7 +42,7 @@ export default function Group() {
           <div className="space-y-2">
             {isLoading && (
               <div className="flex justify-center items-center py-8 bg-white rounded-lg border border-gray-200">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                 <span className="ml-3 text-gray-600">Loading groups...</span>
               </div>
             )}

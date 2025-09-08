@@ -17,10 +17,12 @@ import { useAppSelector } from "@redux/redux.hooks";
 import { selectUser } from "@redux/users/userSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import ExpensesDownload from "@app/_components/ExpensesDownload";
+import useCurrency from "@hooks/useCurrency";
 
 export default function EmployeeDashboard() {
   const Error = (data: any) => toast.error(data);
   const Success = (data: any) => toast.success(data);
+    const { currency, error }:any = useCurrency();
   const user = useAppSelector(selectUser);
   const [officeExpense, setOfficeExpense] = useState([]);
   const [travelExpense, setTravelExpense] = useState([]);
@@ -127,7 +129,7 @@ export default function EmployeeDashboard() {
                     Office Expense
                   </p>
                   <p className="text-lg font-semibold text-purple-600">
-                    AED{totalOfficeExpense.toLocaleString()}
+                    {currency?.currencySymbol}{totalOfficeExpense.toLocaleString()}
                   </p>
                 </div>
                 <div className="text-center">
@@ -135,7 +137,7 @@ export default function EmployeeDashboard() {
                     Travel Expense
                   </p>
                   <p className="text-lg font-semibold text-blue-600">
-                    AED{totalTravelExpense.toLocaleString()}
+                    {currency?.currencySymbol}{totalTravelExpense.toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -259,7 +261,7 @@ export default function EmployeeDashboard() {
                             key={key}
                             className="p-3 text-right text-sm text-gray-600 whitespace-nowrap text-center"
                           >
-                            {item[key].length} / AED
+                            {item[key].length} / {currency?.currencySymbol}
                             {item[key].reduce(
                               (sum: number, i: any) => sum + (i.amount || 0),
                               0

@@ -21,6 +21,7 @@ import useLocation from "@hooks/useLocation";
 import { usePathname } from "next/navigation";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -63,6 +64,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
   const path = usePathname();
+  const { currency, error }:any = useCurrency();
     const files= useAppSelector(selectFiles)
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const Error = (data: any) => toast.error(data);
@@ -227,21 +229,21 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
                   exit={fadeIn.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Site Name (जगह का नाम)
+                    Site Name 
                   </label>
                   <div className="relative">
                     <input
                       {...register("siteName", {
                         required: "Site Name is Required",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                       onFocus={() => setVisibleDropdown("siteName")}
                     />
                     {visibleDropdown === "siteName" && sites.length > 0 && (
@@ -274,23 +276,23 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* food Details */}
                 <motion.div
@@ -319,7 +321,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                                 required:
                                   "At least one meal of food is required!",
                               })}
-                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
                           </label>
@@ -355,7 +357,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                     {...register("numberOfPerson", {
                       required: "Number of Person required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* Name of Restaurant */}
@@ -373,7 +375,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                     {...register("nameOfRestaurant", {
                       required: "Restaurant Name required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* Restaurant phone number */}
@@ -392,7 +394,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                     {...register("restaurantNumber", {
                       required: "Restaurant Number required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* food amount */}
@@ -402,12 +404,11 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Food Amount AED</label>
+                  <label className="block font-semibold">Food Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
-                    type="amount"
+                    placeholder={currency?.currencySymbol}                    type="amount"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* Food Description */}
@@ -423,7 +424,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -457,7 +458,7 @@ export default function FoodWithStaff({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

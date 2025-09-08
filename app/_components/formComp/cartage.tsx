@@ -22,6 +22,7 @@ import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -65,6 +66,7 @@ const scaleUp = {
 };
 
 export default function Cartage({ closeModal }: expenseFormProps) {
+  const { currency, error }:any = useCurrency();
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
   const path = usePathname();
@@ -278,7 +280,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                   )}
                 </motion.div>
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -293,7 +295,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -330,23 +332,23 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* customer name */}
                 <motion.div
@@ -361,7 +363,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                     {...register("customerName", {
                       required: "Customer Name required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -391,7 +393,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                                 required:
                                   "At least one purpose type is required!",
                               })}
-                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
                           </label>
@@ -437,7 +439,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                               required:
                                 "At least one document type is required!",
                             })}
-                            className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                            className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                           />
                           <span className="ml-2">{item}</span>
                         </label>
@@ -479,7 +481,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                       {...register("startingPlace", {
                         required: "Starting Place required!",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </motion.div>
                   {/* Name of Restaurant */}
@@ -495,7 +497,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                       {...register("endingPlace", {
                         required: "Ending Place required!",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </motion.div>
                 </motion.div>
@@ -511,7 +513,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                   <input
                     type="tel"
                     {...register("driverNumber")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -522,12 +524,12 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Amount AED</label>
+                  <label className="block font-semibold">Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
+                    placeholder={currency?.currencySymbol}
                     type="text"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -550,7 +552,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* cartage Description */}
@@ -564,7 +566,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -584,7 +586,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

@@ -4,13 +4,13 @@ import Users from "./user.model";
 // Base schema for common fields
 const BaseExpenseSchema = new Schema(
   {
-    siteName: { type: String, required: [true, "Site name is required!"] },
+    siteName: { type: String },
     todayWork: { type: String },
     location: { type: Object, required: [true, "Location is required!"] },
     amount: { type: Number, required: [true, "Amount is required!"] },
     description: { type: String },
     remarks: { type: String },
-    adminMessage: { type: String,default: "" },
+    adminMessage: { type: String, default: "" },
     status: {
       type: String,
       enum: ["pending", "approved", "rejected"],
@@ -23,7 +23,15 @@ const BaseExpenseSchema = new Schema(
   },
   { timestamps: true }
 );
-
+// recharge Schema
+const RechargeSchema = new Schema({
+  ...BaseExpenseSchema.obj,
+  rechargeType: { type: String },
+  phoneNumber: { type: String },
+  planType: { type: String },
+  billDateFrom: { type: Date },
+  billDateTo: { type: Date },
+});
 // Conveyance schema
 const ConveyanceSchema = new Schema({
   ...BaseExpenseSchema.obj, // Spread base schema fields
@@ -85,7 +93,6 @@ const HotelSchema = new Schema({
   days: { type: Number, required: [true, "Days to stay is required!"] },
   startingDate: { type: Date, required: [true, "Starting Date is required!"] },
   endingDate: { type: Date, required: [true, "Ending Date is required!"] },
-
 });
 // labour schema
 const LabourSchema = new Schema({
@@ -162,7 +169,7 @@ const PorterSchema = new Schema({
     type: String,
     required: [true, "Starting Place is required!"],
   },
-  distance:{type:String},
+  distance: { type: String },
   endingPlace: { type: String, required: [true, "Ending Place is required!"] },
   driverNumber: { type: Number },
 });
@@ -217,6 +224,7 @@ const OfficeExpenseSchema = new Schema(
     courier: { type: [CourierSchema], default: [] },
     loading: { type: [LoadingSchema], default: [] },
     porter: { type: [PorterSchema], default: [] },
+    recharge: { type: [RechargeSchema], default: [] },
     cartage: { type: [PorterSchema], default: [] },
     rider: { type: [RiderSchema], default: [] },
     dailyWages: { type: [LabourSchema], default: [] },

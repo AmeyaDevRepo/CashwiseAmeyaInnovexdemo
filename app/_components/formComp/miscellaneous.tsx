@@ -309,14 +309,14 @@ export default function Miscellaneous({ closeModal }: expenseFormProps) {
                   whileTap={{ scale: 0.8 }}
                   type="button"
                   onClick={() => reset()}
-                  className="text-purple-600 hover:underline ml-4"
+                  className="text-blue-600 hover:underline ml-4"
                 >
                   Clear form
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.8 }}
                   type="submit"
-                  className="bg-purple-600 text-white py-2 px-6 rounded-md font-semibold hover:bg-purple-700"
+                  className="bg-blue-600 text-white py-2 px-6 rounded-md font-semibold hover:bg-blue-700"
                 >
                   Submit
                 </motion.button>

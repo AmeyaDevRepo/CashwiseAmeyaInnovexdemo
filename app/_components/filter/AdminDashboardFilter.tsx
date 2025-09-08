@@ -100,7 +100,7 @@ export default function AdminDashboardFilterModal({
           background: "linear-gradient(to right, #3b82f6, #8b5cf6)",
         }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 p-2 rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500 transition-all"
+        className="flex items-center gap-2 p-2 rounded-md text-white bg-gradient-to-r from-blue-500 to-blue-500 transition-all"
         onClick={() => setIsOpen(true)}
       >
         <svg
@@ -125,17 +125,17 @@ export default function AdminDashboardFilterModal({
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm h-[90vh] mx-4 border border-purple-100 my-8 overflow-auto"
+              className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm h-[90vh] mx-4 border border-blue-100 my-8 overflow-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-between items-center mb-6 pb-4 border-b border-purple-50">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <div className="flex justify-between items-center mb-6 pb-4 border-b border-blue-50">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
                   Expense Filters
                 </h2>
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-purple-600 hover:text-purple-800 text-3xl transition-colors"
+                  className="text-blue-600 hover:text-blue-800 text-3xl transition-colors"
                 >
                   &times;
                 </motion.button>
@@ -149,12 +149,12 @@ export default function AdminDashboardFilterModal({
                   animate="visible"
                   transition={{ delay: 0.1 }}
                 >
-                  <label className="block text-sm font-medium text-purple-900 mb-2">
+                  <label className="block text-sm font-medium text-blue-900 mb-2">
                     Expense Type
                   </label>
                   <select
                     {...register("expenseType")}
-                    className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white transition-all"
                   >
                     <option value="all">All Expenses</option>
                     <option value="office">Office Expense</option>
@@ -170,12 +170,12 @@ export default function AdminDashboardFilterModal({
                   animate="visible"
                   transition={{ delay: 0.2 }}
                 >
-                  <label className="block text-sm font-medium text-purple-900 mb-2">
+                  <label className="block text-sm font-medium text-blue-900 mb-2">
                     Search Name
                   </label>
                   <input
                     {...register("name")}
-                    className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white transition-all"
                     placeholder="Enter user name..."
                   />
                 </motion.div>
@@ -188,7 +188,7 @@ export default function AdminDashboardFilterModal({
                   transition={{ delay: 0.3 }}
                   className="space-y-2"
                 >
-                  <p className="text-sm font-medium text-purple-900">
+                  <p className="text-sm font-medium text-blue-900">
                     Quick Range
                   </p>
                   <div className="flex gap-2 flex-wrap">
@@ -199,7 +199,7 @@ export default function AdminDashboardFilterModal({
                         whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setRange(days)}
-                        className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200 hover:border-purple-400 text-purple-700 transition-all"
+                        className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 hover:border-blue-400 text-blue-700 transition-all"
                       >
                         {days === 1
                           ? "Yesterday"
@@ -249,7 +249,7 @@ export default function AdminDashboardFilterModal({
                           onClick={() =>
                             setQuarterRange(quarter.start, quarter.end)
                           }
-                          className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200 hover:border-purple-400 text-purple-700 transition-all"
+                          className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 hover:border-blue-400 text-blue-700 transition-all"
                         >
                           {quarter.label}
                         </motion.button>
@@ -267,7 +267,7 @@ export default function AdminDashboardFilterModal({
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
                   <div>
-                    <label className="block text-sm font-medium text-purple-900 mb-2">
+                    <label className="block text-sm font-medium text-blue-900 mb-2">
                       From Date
                     </label>
                     <Controller
@@ -277,7 +277,7 @@ export default function AdminDashboardFilterModal({
                         <DatePicker
                           selected={field.value}
                           onChange={field.onChange}
-                          className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white transition-all"
+                          className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white transition-all"
                           placeholderText="Select start date"
                           dateFormat="dd/MM/yyyy"
                         />
@@ -285,7 +285,7 @@ export default function AdminDashboardFilterModal({
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-purple-900 mb-2">
+                    <label className="block text-sm font-medium text-blue-900 mb-2">
                       To Date
                     </label>
                     <Controller
@@ -295,7 +295,7 @@ export default function AdminDashboardFilterModal({
                         <DatePicker
                           selected={field.value}
                           onChange={field.onChange}
-                          className="w-full px-4 py-3 rounded-lg border border-purple-200 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white transition-all"
+                          className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white transition-all"
                           placeholderText="Select end date"
                           dateFormat="dd/MM/yyyy"
                         />
@@ -310,7 +310,7 @@ export default function AdminDashboardFilterModal({
                   initial="hidden"
                   animate="visible"
                   transition={{ delay: 0.5 }}
-                  className="flex justify-end gap-3 mt-8 pt-6 border-t border-purple-50"
+                  className="flex justify-end gap-3 mt-8 pt-6 border-t border-blue-50"
                 >
                   <motion.button
                     type="button"
@@ -320,7 +320,7 @@ export default function AdminDashboardFilterModal({
                       reset();
                       setIsOpen(false);
                     }}
-                    className="px-6 py-2 rounded-full border border-purple-200 text-purple-600 hover:bg-purple-50 transition-colors"
+                    className="px-6 py-2 rounded-full border border-blue-200 text-blue-600 hover:bg-blue-50 transition-colors"
                   >
                     Cancel
                   </motion.button>
@@ -328,7 +328,7 @@ export default function AdminDashboardFilterModal({
                     type="submit"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg"
+                    className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-600 text-white hover:from-blue-700 hover:to-blue-700 transition-all shadow-lg"
                   >
                     Apply Filters
                   </motion.button>

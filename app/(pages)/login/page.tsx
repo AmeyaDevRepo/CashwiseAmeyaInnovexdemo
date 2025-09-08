@@ -159,7 +159,7 @@ useEffect(() => {
               <div className="flex flex-col">
                 <h4 className="text-2xl text-center dark:text-white border-b font-bold mt-4 font-serif">
                   Welcome to{" "}
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                     CashWise
                   </span>
                 </h4>
@@ -178,7 +178,7 @@ useEffect(() => {
                 onClick={() => setLoginMethod("email")}
                 className={`w-full py-2 rounded-md font-semibold transition-colors ${
                   loginMethod === "email"
-                    ? "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
@@ -192,7 +192,7 @@ useEffect(() => {
                 }}
                 className={`w-full py-2 rounded-md font-semibold transition-colors ${
                   loginMethod === "phone"
-                    ? "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
                 }`}
               >
@@ -262,7 +262,7 @@ useEffect(() => {
                       <button
                         type="button"
                         onClick={handleSendOtp}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-500 text-white rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
+                        className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
                         disabled={isLoading}
                       >
                         Send OTP
@@ -300,7 +300,7 @@ useEffect(() => {
               className={`flex items-center justify-center gap-2 text-white font-semibold w-full py-2 mb-8 rounded-md transition-opacity ${
                 isLoading || (loginMethod === "phone" && !otpSent)
                   ? "opacity-50 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-purple-500 hover:opacity-90"
+                  : "bg-gradient-to-r from-blue-600 to-blue-500 hover:opacity-90"
               }`}
             >
               {isLoading ? (
@@ -331,7 +331,7 @@ useEffect(() => {
           </div>
           <h4 className="text-2xl text-center dark:text-white border-b-2 font-bold mt-4 font-serif">
             Welcome to{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
               CashWise
             </span>
           </h4>

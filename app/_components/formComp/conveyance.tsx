@@ -23,6 +23,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import CustomFileUpload from "../AntdUpload";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -65,6 +66,7 @@ const scaleUp = {
 
 export default function Conveyance({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
+  const { currency, error }:any = useCurrency();
   const files= useAppSelector(selectFiles)
   const userLocation = useLocation();
   const path = usePathname();
@@ -274,7 +276,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
 
 
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -289,7 +291,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -326,23 +328,23 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Conveyance Details */}
                 <motion.div
@@ -371,7 +373,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                                 required:
                                   "At least one mode of conveyance is required!",
                               })}
-                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-purple-500 accent-purple-500"
+                              className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
                           </label>
@@ -409,7 +411,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       <input
                         type="tel"
                         {...register("driverNumber")}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                       />
                     </motion.div>
                   ) : null}
@@ -430,7 +432,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       {...register("startingPlace", {
                         required: "Starting Place required!",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </div>
                   <div>
@@ -440,7 +442,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       {...register("endingPlace", {
                         required: "Ending Place required!",
                       })}
-                      className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                      className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </div>
                 </motion.div>
@@ -451,9 +453,9 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   transition={{ delay: 0.3 }}
                 >
                   {" "}
-                  <label className="block font-semibold">Amount AED</label>
+                  <label className="block font-semibold">Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
+                    placeholder={currency?.currencySymbol}
                     type="text"
                     min="0"
                     onKeyDown={(event) => {
@@ -465,7 +467,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       }
                     }}
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 <motion.div
@@ -478,7 +480,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 <motion.div
@@ -491,7 +493,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -510,7 +512,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

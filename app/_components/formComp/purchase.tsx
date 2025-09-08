@@ -22,6 +22,7 @@ import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -65,6 +66,7 @@ const scaleUp = {
 export default function Purchase({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
+  const { currency, error }:any = useCurrency();
   const path = usePathname();
     const files= useAppSelector(selectFiles)
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -274,7 +276,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
 
 
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -289,7 +291,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -326,23 +328,23 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* purchase Details */}
                 {/* items name  */}
@@ -358,7 +360,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                     {...register("nameOfItem", {
                       required: "Item name required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* item quantity */}
@@ -375,7 +377,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                     {...register("quantity", {
                       required: "Quantity required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
                         event.key === "ArrowUp" ||
@@ -399,7 +401,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                     {...register("nameOfShop", {
                       required: "Shop Name required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/*  shopkeeper number */}
@@ -417,7 +419,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                     {...register("shopNumber", {
                       required: "Shopkeeper Number required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* amount */}
@@ -427,12 +429,12 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                    <label className="block font-semibold">Amount AED</label>
+                   <label className="block font-semibold">Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
+                    placeholder={currency?.currencySymbol}
                     type="number"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -455,7 +457,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* remarks */}
@@ -469,7 +471,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
 
@@ -490,7 +492,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

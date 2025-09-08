@@ -22,6 +22,7 @@ import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -65,6 +66,7 @@ const scaleUp = {
 export default function Labour({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
   const userLocation = useLocation();
+  const { currency, error }:any = useCurrency();
   const path = usePathname();
     const files= useAppSelector(selectFiles)
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -243,7 +245,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
               {/* Form Content */}
               <div className="p-6 space-y-2 max-h-[80vh] overflow-y-auto text-sm">
                 {/* Site Selection */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={fadeIn.hidden}
                   animate={fadeIn.visible}
@@ -258,7 +260,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -295,23 +297,23 @@ export default function Labour({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </motion.div>
+                </motion.div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
                   exit={slideUp.exit}
                 >
                   <label className="block text-md font-semibold">
-                    Today&apos;s Work (आज का कार्य)
+                    Today&apos;s Work 
                   </label>
                   <input
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* labour Details */}
 
@@ -330,7 +332,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                     {...register("purposeOfLabour", {
                       required: "Purpose of Labour required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* name of master labour */}
@@ -348,7 +350,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                     {...register("masterLabourName", {
                       required: "Number of Master Labour required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* master labour number */}
@@ -366,7 +368,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                     {...register("masterLabourNumber", {
                       required: "Mater labour Number required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* Restaurant phone number */}
@@ -385,7 +387,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                     {...register("numberOfLabour", {
                       required: "Labour Numbers required!",
                     })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* labour amount */}
@@ -395,12 +397,12 @@ export default function Labour({ closeModal }: expenseFormProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block font-semibold">Labour Amount AED</label>
+                  <label className="block font-semibold">Amount {currency?.currencySymbol}</label>
                   <input
-                    placeholder="AED"
+                    placeholder={currency?.currencySymbol}
                     type="text"
                     {...register("amount", { required: "Amount required" })}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     min="0"
                     onKeyDown={(event) => {
                       if (
@@ -425,7 +427,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* labour remarks */}
@@ -439,7 +441,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 {/* document no */}
@@ -461,7 +463,7 @@ export default function Labour({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

@@ -66,10 +66,10 @@ export default function GroupCard({
       {groupData.map((item) => (
         <div
           key={item._id}
-          className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1"
+          className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200 transform hover:-translate-y-1"
         >
           {/* Header Section */}
-          <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 border-b border-gray-100">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-50 p-4 border-b border-gray-100">
             <div className="flex items-center justify-between mb-3 relative">
               <div className="flex items-center space-x-2">
                 <div className="flex -space-x-6">
@@ -166,7 +166,7 @@ export default function GroupCard({
               </div>
               {!hideJoinButton && (
                 <button
-                  className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-medium px-3 py-2 rounded-lg shadow-md text-xs transition-all duration-200 hover:shadow-lg"
+                  className="bg-gradient-to-r from-blue-500 to-blue-500 hover:from-blue-600 hover:to-blue-600 text-white font-medium px-3 py-2 rounded-lg shadow-md text-xs transition-all duration-200 hover:shadow-lg"
                   onClick={() => setNewJoin(item._id)}
                 >
                   Join Group
@@ -203,7 +203,7 @@ export default function GroupCard({
             {/* Join Form */}
             {newJoin === item._id && (
               <div className="space-y-4 animate-fadeIn">
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-200">
+                <div className="bg-gradient-to-r from-blue-50 to-blue-50 p-4 rounded-xl border border-blue-200">
                   <h3 className="font-semibold text-gray-800 mb-3 text-sm">
                     Select your role to join:
                   </h3>
@@ -219,9 +219,9 @@ export default function GroupCard({
                           value={role}
                           checked={selectedRole === role}
                           onChange={(e) => setSelectedRole(e.target.value)}
-                          className="w-4 h-4 text-purple-600 focus:ring-purple-500"
+                          className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                         />
-                        <span className="text-gray-700 group-hover:text-purple-700 transition-colors text-sm">
+                        <span className="text-gray-700 group-hover:text-blue-700 transition-colors text-sm">
                           {role}
                         </span>
                       </label>
@@ -241,7 +241,7 @@ export default function GroupCard({
                   </button>
                   <button
                     onClick={() => handleJoinGroup(item._id,loginUser?._id,selectedRole)}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-3 rounded-lg shadow-md transform transition-all duration-200 hover:scale-105 text-sm"
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white font-semibold py-2 px-3 rounded-lg shadow-md transform transition-all duration-200 hover:scale-105 text-sm"
                   >
                     Join Now
                   </button>

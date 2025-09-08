@@ -24,6 +24,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { selectFiles } from "@redux/files/filesSlice";
 import AntdFileUpload from "../AntdUpload";
 import exp from 'constants';
+import useCurrency from "@hooks/useCurrency";
 
 // modal handle
 type expenseFormProps = {
@@ -73,6 +74,7 @@ const scaleUp = {
 
 export default function Contractor({ closeModal }: expenseFormProps) {
   const user = useAppSelector(selectUser);
+  const { currency, error }:any = useCurrency();
   const userLocation = useLocation();
   const path = usePathname();
     const files= useAppSelector(selectFiles)
@@ -311,7 +313,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
               className="bg-white rounded-xl shadow-xl max-w-md w-full overflow-hidden flex flex-col h-[90vh]"
             >
               {/* Modal Header */}
-              <div className="bg-purple-600 px-6 py-4 flex justify-between items-center">
+              <div className="bg-blue-600 px-6 py-4 flex justify-between items-center">
                 <div>
                   <h2 className="text-white text-2xl font-bold">
                     {tabParts[0]} {tabParts[1]}{" "}
@@ -323,7 +325,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                 </div>
                 <button
                   onClick={closeModal}
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   <ImCross className="w-5 h-5" />
                 </button>
@@ -364,7 +366,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
 
 
                 {/* Site Selection */}
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700">
                     Site Name{" "}
                     <span className="text-gray-500">(जगह का नाम)</span>
@@ -375,7 +377,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                         {...register("siteName", {
                           required: "Site Name is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("siteName")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -403,7 +405,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                 handleSiteClick(site);
                                 setVisibleDropdown(null);
                               }}
-                              className="px-4 py-2 hover:bg-purple-50 cursor-pointer text-sm"
+                              className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm"
                             >
                               {site.name}
                             </li>
@@ -417,10 +419,10 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                       {errors.siteName.message as string}
                     </p>
                   )}
-                </div>
+                </div> */}
 
                 {/* Work Details */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-1"
                   initial={slideUp.hidden}
                   animate={slideUp.visible}
@@ -428,14 +430,13 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                 >
                   <label className="block text-sm font-medium text-gray-700">
                     Today&apos;s Work{" "}
-                    <span className="text-gray-500">(आज का कार्य)</span>
                   </label>
                   <input
                     type="text"
                     {...register("todayWork")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Service Provider */}
                 <div className="space-y-2">
@@ -448,7 +449,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                         {...register("serviceProvider", {
                           required: "Service Provider is Required",
                         })}
-                        className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                        className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("serviceProvider")}
                       />
                       <span className="mt-4 -translate-x-4">
@@ -479,7 +480,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                       handleServiceProviderClick(user);
                                       setVisibleDropdown(null);
                                     }}
-                                    className="px-4 py-2 hover:bg-purple-50 cursor-pointer text-sm"
+                                    className="px-4 py-2 hover:bg-blue-50 cursor-pointer text-sm"
                                   >
                                     {user.name}
                                   </li>
@@ -506,7 +507,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                           onChange={field.onChange}
                           dateFormat="dd MMM yyyy"
                           placeholderText="DD/MMM/YYYY"
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         />
                       )}
                     />
@@ -525,7 +526,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                           onChange={field.onChange}
                           dateFormat="dd MMM yyyy"
                           placeholderText="DD/MMM/YYYY"
-                          className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                          className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         />
                       )}
                     />
@@ -565,7 +566,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                           <input
                             type="checkbox"
                             value={type}
-                            className="text-3xl p-2 accent-purple-500"
+                            className="text-3xl p-2 accent-blue-500"
                             {...register(`workTypes.${workTypeKey}`)}
                           />
                           <label className="text-sm font-medium text-gray-700">
@@ -591,7 +592,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                 return true;
                               },
                             })}
-                            className="w-full px-2 border border-gray-400 rounded-md focus:border-purple-500 outline-none"
+                            className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
                             placeholder="0"
                           />
                           {(errors as any).quantity?.[workTypeKey] && (
@@ -623,8 +624,8 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                 return true;
                               },
                             })}
-                            className="w-full px-2 border border-gray-400 rounded-md focus:border-purple-500 outline-none"
-                            placeholder="AED"
+                            className="w-full px-2 border border-gray-400 rounded-md focus:border-blue-500 outline-none"
+                            placeholder={currency?.currencySymbol}
                           />
                           {(errors as any).rate?.[workTypeKey] && (
                             <p className="text-red-500 text-sm mt-1">
@@ -660,7 +661,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                        }
                                      }}
                                      {...register("amount", { required: "Amount required" })}
-                                     className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                                    />
                                  </div>
                                </div>
@@ -678,7 +679,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                          onChange={field.onChange}
                                          dateFormat="dd MMM yyyy"
                                          placeholderText="DD/MMM/YYYY"
-                                         className="w-auto p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                                         className="w-auto p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                                        />
                                      )}
                                    />
@@ -694,7 +695,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("description")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </div>
                 <div className="space-y-2">
@@ -704,7 +705,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("remarks")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </div>
                  {/* document no */}
@@ -720,7 +721,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     {...register("documentNo")}
-                    className="w-full p-2 border-b-2 border-gray-200 focus:border-purple-500 outline-none"
+                    className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
                 )}
@@ -741,7 +742,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       type="submit"
-                      className="bg-purple-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-purple-700 relative"
+                      className="bg-blue-600 text-white px-8 py-2 rounded-md font-semibold hover:bg-blue-700 relative"
                     >
                       {isLoading ? (
                         <motion.div

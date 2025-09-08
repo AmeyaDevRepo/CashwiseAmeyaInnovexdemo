@@ -250,7 +250,7 @@ export default function Report() {
     }
   };
   return (
-    <section className="flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
+    <section className="flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-blue-50 min-h-screen">
       <div className="flex flex-col md:flex-row flex-grow">
         <Sidebar />
         <div className="flex-1 p-4 overflow-hidden relative">
@@ -258,9 +258,9 @@ export default function Report() {
 
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
             <div
-              className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"
+              className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"
               style={{ animationDelay: "2s" }}
             ></div>
           </div>
@@ -272,13 +272,13 @@ export default function Report() {
           >
             {/* Header */}
             <div className="text-center mb-4 mt-2">
-              <h1 className="text-5xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent mb-4 tracking-tight">
+              <h1 className="text-5xl font-black bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 bg-clip-text text-transparent mb-4 tracking-tight">
                 Report Generator
               </h1>
               <p className="text-xl text-gray-600 font-light">
                 Generate comprehensive reports with advanced filtering options
               </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-500 mx-auto mt-4 rounded-full"></div>
             </div>
             {/* Main Card */}
             <div className="backdrop-blur-xl bg-white/70 rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] p-8 border border-white/20 hover:shadow-[0_25px_60px_rgba(8,_112,_184,_0.15)] transition-all duration-500">
@@ -292,7 +292,7 @@ export default function Report() {
                 style={stepDelay(1)}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
                     1
                   </div>
                   <h3 className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
@@ -306,7 +306,7 @@ export default function Report() {
                       onClick={() => setReportType(type)}
                       className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                         reportType === type
-                          ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25"
+                          ? "bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/25"
                           : "bg-gray-200 text-gray-700 hover:bg-white border border-gray-300 hover:shadow-md"
                       }`}
                     >
@@ -326,7 +326,7 @@ export default function Report() {
                 style={stepDelay(2)}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
                     2
                   </div>
                   <h3 className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
@@ -355,7 +355,7 @@ export default function Report() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
                         <div className="group">
-                          <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-purple-600 transition-colors">
+                          <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-blue-600 transition-colors">
                             📁 Fields Type
                           </label>
                           <Select
@@ -411,7 +411,7 @@ export default function Report() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="group">
-                          <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-purple-600 transition-colors">
+                          <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-blue-600 transition-colors">
                             📁 Report Type
                           </label>
                           <Select
@@ -427,7 +427,7 @@ export default function Report() {
                         </div>
                         {accountReportTypes === "expense" && (
                           <div className="group">
-                            <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-purple-600 transition-colors">
+                            <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-blue-600 transition-colors">
                               📁 Fields Type
                             </label>
                             <Select
@@ -489,7 +489,7 @@ export default function Report() {
 
                   {/* {reportType === "fields" && (
                     <div className="group">
-                      <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-purple-600 transition-colors">
+                      <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-blue-600 transition-colors">
                         📁 Fields Type
                       </label>
                       <Select
@@ -518,7 +518,7 @@ export default function Report() {
                 style={stepDelay(3)}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
                     3
                   </div>
                   <h3 className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
@@ -532,7 +532,7 @@ export default function Report() {
                   transition={{ delay: 0.3 }}
                   className="ml-6 flex flex-col md:flex-row md:items-center gap-4"
                 >
-                  <p className="text-sm font-medium text-purple-900">
+                  <p className="text-sm font-medium text-blue-900">
                     Quick Range
                   </p>
                   <div className="flex gap-2 flex-wrap">
@@ -543,7 +543,7 @@ export default function Report() {
                         whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setRange(days)}
-                        className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200 hover:border-purple-400 text-purple-700 transition-all"
+                        className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 hover:border-blue-400 text-blue-700 transition-all"
                       >
                         {days === 1
                           ? "Yesterday"
@@ -593,7 +593,7 @@ export default function Report() {
                           onClick={() =>
                             setQuarterRange(quarter.start, quarter.end)
                           }
-                          className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200 hover:border-purple-400 text-purple-700 transition-all"
+                          className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-blue-50 to-blue-50 border border-blue-200 hover:border-blue-400 text-blue-700 transition-all"
                         >
                           {quarter.label}
                         </motion.button>
@@ -601,7 +601,7 @@ export default function Report() {
                     </div>
                   </motion.div> */}
                 </motion.div>
-                <div className="bg-gradient-to-br from-white/50 to-purple-50/50 rounded-2xl p-6 backdrop-blur-sm border border-white/30">
+                <div className="bg-gradient-to-br from-white/50 to-blue-50/50 rounded-2xl p-6 backdrop-blur-sm border border-white/30">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="group">
                       <label className="block text-sm font-semibold text-blue-700 mb-3 group-hover:text-blue-800 transition-colors">
@@ -635,7 +635,7 @@ export default function Report() {
                     </div>
 
                     <div className="group">
-                      <label className="block text-sm font-semibold text-purple-700 mb-3 group-hover:text-purple-800 transition-colors">
+                      <label className="block text-sm font-semibold text-blue-700 mb-3 group-hover:text-blue-800 transition-colors">
                         📅 To Date *
                       </label>
                       <Controller
@@ -651,10 +651,10 @@ export default function Report() {
                             placeholderText="dd/mm/yyyy"
                             minDate={watchedFromDate ?? undefined}
                             maxDate={today} // Ensures today is selectable
-                            className={`border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-200 bg-white/80 backdrop-blur-sm ${
+                            className={`border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm ${
                               errors.toDate
                                 ? "border-red-400"
-                                : "border-gray-200 hover:border-purple-300"
+                                : "border-gray-200 hover:border-blue-300"
                             }`}
                           />
                         )}
@@ -672,7 +672,7 @@ export default function Report() {
               {/* Step 4: Limit */}
               {/* <div className={`mb-8 `} style={stepDelay(4)}>
                 <div className="flex items-center mb-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
                     4
                   </div>
                   <h3 className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
@@ -688,7 +688,7 @@ export default function Report() {
                         id="limitCheckbox"
                         checked={limit}
                         onChange={(e) => setLimit(e.target.checked)}
-                        className="mr-3 h-5 w-5  accent-purple-500 rounded transition-all duration-200"
+                        className="mr-3 h-5 w-5  accent-blue-500 rounded transition-all duration-200"
                       />
                       <label
                         htmlFor="limitCheckbox"
@@ -729,7 +729,7 @@ export default function Report() {
 
               {/* Step 5: Download */}
               <div
-                className={`border-t-2 border-gradient-to-r from-blue-200 to-purple-200 pt-8 transition-all duration-700 ease-out ${
+                className={`border-t-2 border-gradient-to-r from-blue-200 to-blue-200 pt-8 transition-all duration-700 ease-out ${
                   mounted
                     ? "translate-y-0 opacity-100"
                     : "translate-y-4 opacity-0"
@@ -737,7 +737,7 @@ export default function Report() {
                 style={stepDelay(5)}
               >
                 <div className="flex items-center mb-6">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
                     4
                   </div>
                   <div>
@@ -796,7 +796,7 @@ export default function Report() {
                       className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                         isDownloadDisabled() || loading
                           ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                          : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 shadow-lg hover:shadow-xl shadow-blue-500/25"
+                          : "bg-gradient-to-r from-blue-500 to-blue-500 text-white hover:from-blue-600 hover:to-blue-600 shadow-lg hover:shadow-xl shadow-blue-500/25"
                       }`}
                     >
                       {loading ? "⏳ Generating..." : "📋 Download CSV"}

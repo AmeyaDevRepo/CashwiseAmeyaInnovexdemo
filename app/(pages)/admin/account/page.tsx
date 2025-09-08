@@ -16,17 +16,21 @@ import { FaArrowAltCircleDown } from "react-icons/fa";
 import { motion } from "framer-motion";
 import AdminAccountDetailsModal from "@app/_components/dashbaordComps/AdminAccountDetailsModal";
 import { LuView } from "react-icons/lu";
-import { setUser } from "@redux/users/userSlice";
+import { selectUser, setUser } from "@redux/users/userSlice";
 import CreditModal from "@app/_components/AccountComp/CreditModal";
 import TransactionDetailsModal from "@app/_components/dashbaordComps/AdminTransactionDetails";
 import { stat } from "fs";
 import SummaryDetailsModal from "@app/_components/dashbaordComps/SummaryDetails";
 import TransactionSummaryDetailsModal from "@app/_components/dashbaordComps/TransactionSummaryDetails";
+import { useAppSelector } from "@redux/redux.hooks";
+import { selectCurrency } from "@redux/currency/currencySlice";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 export default function AdminAccount() {
+  const currency = useAppSelector(selectCurrency)
+  console.log("currency",currency)
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [selectedFormTpe, setSelectedFormType] = useState<string[]>([]);
   const [expenseType, setExpenseType] = useState("all");
@@ -185,7 +189,7 @@ export default function AdminAccount() {
 
     const typeMap: Record<string, { bg: string; text: string }> = {
       Office: { bg: "bg-blue-100", text: "text-blue-800" },
-      Travel: { bg: "bg-purple-100", text: "text-purple-800" },
+      Travel: { bg: "bg-blue-100", text: "text-blue-800" },
       ToPay: { bg: "bg-yellow-100", text: "text-yellow-800" },
       Multiple: { bg: "bg-cyan-100", text: "text-gray-800" },
       None: { bg: "bg-gray-100", text: "text-gray-800" },
@@ -269,7 +273,7 @@ export default function AdminAccount() {
               </p>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-4 border-l-4 border-purple-500 cursor-pointer"
+            <div className="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 cursor-pointer"
               onClick={(e) => {
               e.stopPropagation();
               setSummaryData({data:resultData?.result,type:"Travel"});
@@ -297,7 +301,7 @@ export default function AdminAccount() {
               </p>
             </div>
           </div>
-          <div className="md:hidden flex  relative text-2xl text-purple-500 mb-4 cursor-pointer my-4 items-center justify-center animate-bounce  ">
+          <div className="md:hidden flex  relative text-2xl text-blue-500 mb-4 cursor-pointer my-4 items-center justify-center animate-bounce  ">
             <FaArrowAltCircleDown />
           </div>
           <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
@@ -314,7 +318,7 @@ export default function AdminAccount() {
                 setStatus("");
               }}
               whileTap={{ rotate: 120 }}
-              className="text-3xl text-purple-500"
+              className="text-3xl text-blue-500"
             >
               <MdOutlineRefresh />
             </motion.span>
@@ -350,7 +354,7 @@ export default function AdminAccount() {
           {/* Transactions Table */}
           <div className="bg-white rounded-lg shadow overflow-x-auto max-h-[80vh] md:max-h-[70vh] overflow-auto mb-4">
             <table className="max-w-full divide-y divide-gray-200 ">
-              <thead className="bg-gradient-to-r from-purple-600 to-blue-500 text-white sticky z-10 top-0 left-0 overflow-hidden">
+              <thead className="bg-gradient-to-r from-blue-600 to-blue-500 text-white sticky z-10 top-0 left-0 overflow-hidden">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider">
                     Date
@@ -393,7 +397,7 @@ export default function AdminAccount() {
                     >
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700 flex flex-col gap-1">
                         {formatDateRange()}
-                        <span className="flex items-center justify-center rounded-full bg-purple-500 text-white">
+                        <span className="flex items-center justify-center rounded-full bg-blue-500 text-white">
                           {(() => {
                             const from = new Date(fromDate);
                             const to = new Date(toDate);
@@ -436,7 +440,7 @@ export default function AdminAccount() {
                           AED{row.balance.toLocaleString("en-IN")}
                         </span>
                         <button
-                          className="ml-2 bg-purple-600 hover:bg-purple-700 rounded-full shadow-md p-2 border-0 text-white text-xs transition-all"
+                          className="ml-2 bg-blue-600 hover:bg-blue-700 rounded-full shadow-md p-2 border-0 text-white text-xs transition-all"
                           onClick={() => {
                             setUserData({
                               _id: row._id,

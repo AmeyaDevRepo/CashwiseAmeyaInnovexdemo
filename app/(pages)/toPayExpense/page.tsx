@@ -109,13 +109,13 @@ export default function OfficeForm() {
         <div className="flex justify-between my-2 shadow-md p-4 ">
           <div className="p-2">
             <h2 className="text-xl">Date (तारीख)</h2>
-            <p className="text-purple-500">
+            <p className="text-blue-500">
               [{new Date().toLocaleDateString()}]
             </p>
           </div>
           <div className="hidden md:block">
             <h2 className="text-xl">CashWise Expenses for To Pay</h2>
-            <p className="text-purple-500">कार्यालय के लिए कैशवाइज व्यय</p>
+            <p className="text-blue-500">कार्यालय के लिए कैशवाइज व्यय</p>
           </div>
           <div className="p-2">
             <h2 className="text-xl">Balance</h2>
@@ -163,7 +163,7 @@ export default function OfficeForm() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => openModal(item)}
-              className="text-white bg-gradient-to-r from-purple-600 to-blue-500 p-2 shadow-md rounded-md hover:shadow-lg transition-shadow"
+              className="text-white bg-gradient-to-r from-blue-600 to-blue-500 p-2 shadow-md rounded-md hover:shadow-lg transition-shadow"
             >
               {item}
             </motion.button>

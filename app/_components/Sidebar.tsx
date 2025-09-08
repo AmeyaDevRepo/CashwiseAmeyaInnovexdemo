@@ -31,7 +31,7 @@ import { selectUser } from "@redux/users/userSlice";
 import Loader from "./Loader";
 import { GiPayMoney, GiPostOffice } from "react-icons/gi";
 import { TiGroup } from "react-icons/ti";
-
+import AmeyaInnovexLogo from "../_images/AmeyaInnovexLogo.png";
 const Sidebar = () => {
   const user = useAppSelector(selectUser);
   const [isOpen, setIsOpen] = useState(false);
@@ -77,18 +77,18 @@ const Sidebar = () => {
             },
             {
               icon: <GiPostOffice />,
-              label: "Travel/Office Dashboard",
+              label: "Office Dashboard",
               path: "/admin/dashboard",
             },
-            ...(canAccessToPayForm
-              ? [
-                  {
-                    icon: <MdOutlineContactPage />,
-                    label: "To Pay Form",
-                    path: "/toPayExpense",
-                  },
-                ]
-              : []),
+            // ...(canAccessToPayForm
+            //   ? [
+            //       {
+            //         icon: <MdOutlineContactPage />,
+            //         label: "To Pay Form",
+            //         path: "/toPayExpense",
+            //       },
+            //     ]
+            //   : []),
           ],
         },
         {
@@ -96,6 +96,11 @@ const Sidebar = () => {
           icon: <FaUser />,
           label: "Users",
           path: "/users",
+        },
+        {
+          icon: <MdOutlineContactPage />,
+          label: "Office Form",
+          path: "/officeExpense",
         },
         {
           type: "item",
@@ -109,22 +114,22 @@ const Sidebar = () => {
           label: "Expense Limit",
           path: "/admin/expenseLimit",
         },
-        {
-          type: "item",
-          icon: <FaSitemap />,
-          label: "Site",
-          path: "/site",
-        },
+        // {
+        //   type: "item",
+        //   icon: <FaSitemap />,
+        //   label: "Site",
+        //   path: "/site",
+        // },
         {
           type: "dropdown",
           icon: <RiDashboardFill />,
           label: "Form",
           subitems: [
-            {
-              icon: <FaWpforms />,
-              label: "Travel Form",
-              path: "/travelExpense",
-            },
+            // {
+            //   icon: <FaWpforms />,
+            //   label: "Travel Form",
+            //   path: "/travelExpense",
+            // },
             {
               icon: <MdOutlineContactPage />,
               label: "Office Form",
@@ -132,11 +137,11 @@ const Sidebar = () => {
             },
             ...(canAccessToPayForm
               ? [
-                  {
-                    icon: <MdOutlineContactPage />,
-                    label: "To Pay Form",
-                    path: "/toPayExpense",
-                  },
+                  // {
+                  //   icon: <MdOutlineContactPage />,
+                  //   label: "To Pay Form",
+                  //   path: "/toPayExpense",
+                  // },
                 ]
               : []),
           ],
@@ -152,24 +157,29 @@ const Sidebar = () => {
           path: `/users/expenses/${user._id}`,
         },
         {
+          icon: <MdOutlineContactPage />,
+          label: "Office Form",
+          path: "/officeExpense",
+        },
+        {
           type: "dropdown",
           icon: <RiDashboardFill />,
           label: "Form",
           subitems: [
             ...(user.role === "toPay"
               ? [
-                  {
-                    icon: <MdOutlineContactPage />,
-                    label: "To Pay Form",
-                    path: "/toPayExpense",
-                  },
+                  // {
+                  //   icon: <MdOutlineContactPage />,
+                  //   label: "To Pay Form",
+                  //   path: "/toPayExpense",
+                  // },
                 ]
               : [
-                  {
-                    icon: <FaWpforms />,
-                    label: "Travel Form",
-                    path: "/travelExpense",
-                  },
+                  // {
+                  //   icon: <FaWpforms />,
+                  //   label: "Travel Form",
+                  //   path: "/travelExpense",
+                  // },
                   {
                     icon: <MdOutlineContactPage />,
                     label: "Office Form",
@@ -246,7 +256,7 @@ const Sidebar = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <FaBars className="text-purple-600" size={24} />
+        <FaBars className="text-blue-600" size={24} />
       </motion.button>
 
       <AnimatePresence>
@@ -265,33 +275,34 @@ const Sidebar = () => {
         initial={{ x: -300 }}
         animate={{ x: isOpen ? 0 : -300 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="fixed top-0 left-0 h-full bg-gradient-to-b from-purple-50 to-white shadow-xl z-50 w-64 overflow-auto"
+        className="fixed top-0 left-0 h-full bg-gradient-to-b from-blue-50 to-white shadow-xl z-50 w-64 overflow-auto"
       >
         <div className="flex flex-col h-full p-4">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex flex-col items-center gap-4">
-              <span className="flex items-center gap-4 text-2xl border-b py-2 font-bold text-purple-500">
-                <span>
-                  Ameya
-                </span>
+              <span className="flex items-center gap-4 text-2xl border-b py-2 font-bold text-blue-500">
+                <div className="flex items-center gap-2">
+                  <span>Ameya</span>
+                  <Image src={AmeyaInnovexLogo} alt="" width={50} height={50} />
+                </div>
               </span>
-              <span className="flex items-center gap-4 text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+              <span className="flex items-center gap-4 text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 CASHWISE{" "}
                 <span>
-                  <Image
+                  {/* <Image
                     src={logo}
                     width={48}
                     height={48}
                     alt="Cashwise Logo"
-                    className="rounded-full border-2 border-purple-500"
-                  />
+                    className="rounded-full border-2 border-blue-500"
+                  /> */}
                 </span>
               </span>
             </div>
             <button
               onClick={toggleSidebar}
-              className="md:hidden p-2 hover:bg-purple-300 rounded-full"
+              className="md:hidden p-2 hover:bg-blue-300 rounded-full"
             >
               <FaTimes className="text-gray-600" size={20} />
             </button>
@@ -301,10 +312,10 @@ const Sidebar = () => {
           <nav className="flex-1 space-y-1">{renderNavItems()}</nav>
 
           {/* User Profile */}
-          <div className="border-t border-purple-100 pt-4 mt-auto mb-8">
+          <div className="border-t border-blue-100 pt-4 mt-auto mb-8">
             <Popover className="relative">
-              <PopoverButton className="w-full flex items-center gap-3 p-2 hover:bg-purple-200 rounded-xl transition-colors">
-                <FaUserCircle className="text-purple-600" size={32} />
+              <PopoverButton className="w-full flex items-center gap-3 p-2 hover:bg-blue-200 rounded-xl transition-colors">
+                <FaUserCircle className="text-blue-600" size={32} />
                 <div className="text-left flex-1">
                   <p className="text-sm font-medium truncate">{user.name}</p>
                   <p className="text-xs text-gray-500 capitalize">
@@ -348,13 +359,13 @@ const NavItem = ({ icon, label, path }: any) => {
         whileTap={{ scale: 0.98 }}
         className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${
           isActive
-            ? "bg-purple-200 text-purple-700"
-            : "text-gray-700 hover:bg-purple-100"
+            ? "bg-blue-200 text-blue-700"
+            : "text-gray-700 hover:bg-blue-100"
         }`}
       >
         <span
           className={`text-xl ${
-            isActive ? "text-purple-700" : "text-purple-600"
+            isActive ? "text-blue-700" : "text-blue-600"
           }`}
         >
           {icon}
@@ -382,13 +393,13 @@ const NavDropdown = ({ icon, label, subitems }: any) => {
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${
           hasActivePath
-            ? "bg-purple-200 text-purple-700"
-            : "text-gray-700 hover:bg-purple-100"
+            ? "bg-blue-200 text-blue-700"
+            : "text-gray-700 hover:bg-blue-100"
         }`}
       >
         <span
           className={`text-xl ${
-            hasActivePath ? "text-purple-700" : "text-purple-600"
+            hasActivePath ? "text-blue-700" : "text-blue-600"
           }`}
         >
           {icon}
@@ -397,7 +408,7 @@ const NavDropdown = ({ icon, label, subitems }: any) => {
         <FaCaretDown
           className={`transform transition-transform ${
             isOpen ? "rotate-180" : ""
-          } ${hasActivePath ? "text-purple-700" : "text-gray-400"}`}
+          } ${hasActivePath ? "text-blue-700" : "text-gray-400"}`}
         />
       </motion.button>
       <AnimatePresence>

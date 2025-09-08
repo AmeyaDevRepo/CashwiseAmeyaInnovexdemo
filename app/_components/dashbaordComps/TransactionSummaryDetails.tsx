@@ -13,6 +13,7 @@ import {
   FaMoneyBill,
 } from "react-icons/fa";
 import TransactionDetailsModal from "./AdminTransactionDetails";
+import useCurrency from "@hooks/useCurrency";
 
 
 // Define the userTotalExpense function
@@ -34,6 +35,7 @@ const userTotalExpense = (transactions: any[]) => {
 };
 
 export default function TransactionSummaryDetailsModal({ closeModal, summaryData }: any) {
+  const { currency, error }:any = useCurrency();
   const [accountData, setAccountData] = useState<any>(null);
   const [showUsersWithoutExpenses, setShowUsersWithoutExpenses] = useState(false);
 
@@ -203,7 +205,7 @@ export default function TransactionSummaryDetailsModal({ closeModal, summaryData
                       Total {summaryData.type} Amount
                     </h3>
                     <p className={`text-3xl font-bold mt-1 ${colors.text}`}>
-                      AED{totalExpense.toLocaleString("en-IN")}
+                      {currency?.currencySymbol}{totalExpense.toLocaleString("en-IN")}
                     </p>
                   </div>
                   <div className="text-sm text-gray-600 mt-2">
@@ -275,7 +277,7 @@ export default function TransactionSummaryDetailsModal({ closeModal, summaryData
                       <div className="flex items-center gap-4">
                         <div className="text-right">
                           <div className={`text-xl font-bold ${colors.text}`}>
-                            AED{userExpense.toLocaleString("en-IN")}
+                            {currency?.currencySymbol}{userExpense.toLocaleString("en-IN")}
                           </div>
                           <div className="text-sm text-gray-500">
                             {transactions.length} transaction(s)
@@ -363,7 +365,7 @@ export default function TransactionSummaryDetailsModal({ closeModal, summaryData
                         </div>
                         <div className="text-right">
                           <div className={`text-xl font-bold ${colors.text}`}>
-                            AED0
+                            {currency?.currencySymbol}0
                           </div>
                         </div>
                       </div>

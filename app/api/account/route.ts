@@ -80,7 +80,7 @@ export async function PUT(req: NextRequest) {
       remarks,
       imageUrl: filesUrl,
     };
-    let var1 = `AED${amount} by ${fromName}`;
+    let var1 = `${amount} by ${fromName}`;
     let var2 = `${toName}'s`;
     let var3 = creditUser?._id;
     if (toPhone === fromPhone) {

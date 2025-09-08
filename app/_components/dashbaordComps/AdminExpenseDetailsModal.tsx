@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@redux/redux.hooks";
 import { selectUser } from "@redux/users/userSlice";
+import useCurrency from "@hooks/useCurrency";
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -26,6 +27,7 @@ export default function AdminExpenseDetailsModal({
     getValues,
     setValue,
   } = useForm();
+    const { currency, error }:any = useCurrency();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [messageModal, setMessageModal] = useState(false);
   const [expenseData, setExpenseData] = useState<any>();
@@ -62,7 +64,7 @@ export default function AdminExpenseDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `AED${Number(value).toLocaleString("en-IN")}`;
+      return `${currency?.currencySymbol}${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -216,7 +218,7 @@ export default function AdminExpenseDetailsModal({
             <FaArrowLeft size={20} /> Go Back
           </button>
           <div className="flex justify-between items-center mb-6 pb-4 border-b">
-            <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent capitalize">
+            <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent capitalize">
               {userExpenseData.expenseType} Details{" "}
               <span className="text-gray-400 text-sm">
                 [{userExpenseData.name}]
@@ -286,7 +288,7 @@ export default function AdminExpenseDetailsModal({
                           e.stopPropagation();
                           openMessageModal(items);
                         }}
-                        className="p-2 bg-purple-500 rounded-lg text-white cursor-pointer"
+                        className="p-2 bg-blue-500 rounded-lg text-white cursor-pointer"
                       >
                         Admin Message
                       </motion.span>
@@ -340,13 +342,13 @@ export default function AdminExpenseDetailsModal({
                           <strong>Amount:</strong>{" "}
                           <span className="text-blue-500">
                             {" "}
-                            AED{items.amount}
+                            {currency?.currencySymbol}{items.amount}
                           </span>
                         </p>
                         {items?.adminMessage && (
                           <p>
                             <strong>Admin Remarks:</strong>{" "}
-                            <span className="text-purple-500">
+                            <span className="text-blue-500">
                               {" "}
                               {items.adminMessage ? items.adminMessage : "N/A"}
                             </span>

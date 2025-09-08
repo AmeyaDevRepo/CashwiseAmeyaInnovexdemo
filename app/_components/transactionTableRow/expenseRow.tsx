@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import TransactionDetailsModal from "./TransactionDetailsModal";
 import ExpenseDetailsModal from "../dashbaordComps/ExpenseDetails.Modal";
+import { useAppSelector } from "@redux/redux.hooks";
+import { selectCurrency } from "@redux/currency/currencySlice";
 
 interface ExpenseTransaction {
   amount: number;
@@ -59,6 +61,7 @@ const formatDate = (dateString: string) => {
 };
 
 const ExpenseRow: React.FC<ExpenseRowProps> = ({ expenseData, name, userName, userId }) => {
+  const currency:any = useAppSelector(selectCurrency)
   
   const [transactionModal, setTransactionModal] = React.useState(false);
   // const [currentExpenseDetails, setCurrentExpenseDetails] = React.useState<{
@@ -122,7 +125,7 @@ const ExpenseRow: React.FC<ExpenseRowProps> = ({ expenseData, name, userName, us
                   whileHover={{ scale: 1.05 }}
                   className="font-bold text-red-500"
                 >
-                  -AED{transaction.amount?.toLocaleString("en-IN")}
+                  -{currency?.currencySymbol}{transaction.amount?.toLocaleString("en-IN")}
                 </motion.div>
               </td>
               <td

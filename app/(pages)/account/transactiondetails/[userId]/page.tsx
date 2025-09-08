@@ -99,7 +99,7 @@ export default function TransactionDetails() {
               onClick={(e) => {
                 router.push("/account");
               }}
-              className="flex items-center gap-2 text-purple-600 whitespace-nowrap"
+              className="flex items-center gap-2 text-blue-600 whitespace-nowrap"
             >
               <FaArrowLeft />
               Go Back
@@ -108,7 +108,7 @@ export default function TransactionDetails() {
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-6 text-center"
+                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-6 text-center"
               >
                 Transaction History <br />
                 <span className="text-sm text-gray-500">

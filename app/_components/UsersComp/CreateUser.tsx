@@ -231,11 +231,11 @@ const CreateUser = ({ closeModal, userData }: CreateUserProps) => {
                   <motion.option value="employee" whileHover={{ scale: 1.05 }}>
                     Employee
                   </motion.option>
-                  <motion.option value="toPay" whileHover={{ scale: 1.05 }}>
+                  {/* <motion.option value="toPay" whileHover={{ scale: 1.05 }}>
                     To Pay
-                  </motion.option>
+                  </motion.option> */}
                 </motion.select>
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, x: -20, scale: 0.95 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   transition={{
@@ -271,7 +271,7 @@ const CreateUser = ({ closeModal, userData }: CreateUserProps) => {
                       To Pay
                     </motion.option>
                   </motion.select>
-                </motion.div>
+                </motion.div> */}
                 <AnimatePresence>
                   {errors.role && (
                     <motion.p

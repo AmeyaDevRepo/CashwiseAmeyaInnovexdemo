@@ -1,6 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { IoIosRefresh } from "react-icons/io";
+
 export default function Home() {
   const router = useRouter();
   useEffect(() => {
@@ -11,6 +13,8 @@ export default function Home() {
       <h1 className="font-semibold text-sm text-red-600">
         Please wait redirecting to login page
       </h1>
+      <p>OR</p>
+      <button className="p-2 bg-blue-500 rounded-lg shadow-lg text-white"  onClick={()=>{window.location.reload()}}><IoIosRefresh/>  Refresh</button>
     </main>
   );
 }

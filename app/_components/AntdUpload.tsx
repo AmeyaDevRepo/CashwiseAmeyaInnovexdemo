@@ -176,7 +176,7 @@ const SingleCategoryUpload = ({ category }: { category: string }) => {
 
   return (
     <div style={{ marginBottom: 24 }}>
-      <h4 style={{ marginBottom: 8 }} className="text-purple-500">{category}</h4>
+      <h4 style={{ marginBottom: 8 }} className="text-blue-500">{category}</h4>
       <Upload
         customRequest={createCustomRequest()}
         fileList={fileList}

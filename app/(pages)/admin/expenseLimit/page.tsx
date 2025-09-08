@@ -9,8 +9,11 @@ import ExpenseLimitForm from "@app/_components/expenseLimit/ExpenseLimitForm";
 import { toast } from "react-toastify";
 import client from "@createRequest";
 import { TableData } from "@app/_interface/expenseLimit.interface";
+import useCurrency from "@hooks/useCurrency";
 
 const AnimatedTable = () => {
+    const { currency, error }:any = useCurrency();
+  
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("");
@@ -131,7 +134,7 @@ const AnimatedTable = () => {
           {loading && <Loader />}
 
           <div className="flex flex-col md:flex-row items-center justify-between my-4 px-4 gap-4">
-            <h1 className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent text-2xl font-semibold mb-4 md:mb-0">
+            <h1 className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent text-2xl font-semibold mb-4 md:mb-0">
               User Expense Limit
             </h1>
             <input
@@ -146,7 +149,7 @@ const AnimatedTable = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.04 }}
-              className="p-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg shadow-lg"
+              className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg"
               onClick={() => handleUpdateClick()}
             >
               Update Limit
@@ -166,7 +169,7 @@ const AnimatedTable = () => {
                       <span className="whitespace-nowrap flex gap-1">
                         <input
                           type="checkbox"
-                          className="accent-purple-500 float-left pt-2"
+                          className="accent-blue-500 float-left pt-2"
                           checked={selectAllChecked}
                           onChange={handleSelectAll}
                         />
@@ -222,40 +225,40 @@ const AnimatedTable = () => {
                         transition={{ delay: index * 0.02 }}
                         className="group hover:bg-gray-50 cursor-pointer"
                       >
-                        <td className="px-4 py-3 text-sm font-medium text-purple-600">
+                        <td className="px-4 py-3 text-sm font-medium text-blue-600">
                           <input
                             type="checkbox"
-                            className="accent-purple-500"
+                            className="accent-blue-500"
                             checked={selectedUsers.has(item)}
                             onChange={() => handleSelect(item)}
                           />
                         </td>
-                        <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-purple-600">
+                        <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-blue-600">
                           {item?.name}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600">
-                          AED{item.conveyance}
+                          {currency?.currencySymbol}{item.conveyance}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.food}
+                          {currency?.currencySymbol}{item.food}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.hotel}
+                          {currency?.currencySymbol}{item.hotel}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.labour}
+                          {currency?.currencySymbol}{item.labour}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.daily_wages}
+                          {currency?.currencySymbol}{item.daily_wages}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600">
-                          AED{item.transport}
+                          {currency?.currencySymbol}{item.transport}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.contractor}
+                          {currency?.currencySymbol}{item.contractor}
                         </td>
                         <td className="px-4 py-3 text-sm text-blue-600 ">
-                          AED{item.max_limit}
+                          {currency?.currencySymbol}{item.max_limit}
                         </td>
                         <td
                           className={`px-4 py-3 text-sm ${
@@ -268,7 +271,7 @@ const AnimatedTable = () => {
                         >
                           {item.status}
                         </td>
-                        <td className="whitespace-nowrap px-4 py-3 text-sm text-purple-600 ">
+                        <td className="whitespace-nowrap px-4 py-3 text-sm text-blue-600 ">
                           {item?.createdBy?.name}
                         </td>
                       </motion.tr>
@@ -293,40 +296,40 @@ const AnimatedTable = () => {
                           transition={{ delay: index * 0.02 }}
                           className="group hover:bg-gray-50 cursor-pointer"
                         >
-                          <td className="px-4 py-3 text-sm font-medium text-purple-600">
+                          <td className="px-4 py-3 text-sm font-medium text-blue-600">
                             <input
                               type="checkbox"
-                              className="accent-purple-500"
+                              className="accent-blue-500"
                               checked={selectedUsers.has(item._id)}
                               onChange={() => handleSelect(item)}
                             />
                           </td>
-                          <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-purple-600">
+                          <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-blue-600">
                             {item?.name}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600">
-                            AED{item.conveyance}
+                            {currency?.currencySymbol}{item.conveyance}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.food}
+                            {currency?.currencySymbol}{item.food}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.hotel}
+                            {currency?.currencySymbol}{item.hotel}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.labour}
+                            {currency?.currencySymbol}{item.labour}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.daily_wages}
+                            {currency?.currencySymbol}{item.daily_wages}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600">
-                            AED{item.transport}
+                            {currency?.currencySymbol}{item.transport}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.contractor}
+                            {currency?.currencySymbol}{item.contractor}
                           </td>
                           <td className="px-4 py-3 text-sm text-blue-600 ">
-                            AED{item.max_limit}
+                            {currency?.currencySymbol}{item.max_limit}
                           </td>
                           <td
                             className={`px-4 py-3 text-sm ${
@@ -339,7 +342,7 @@ const AnimatedTable = () => {
                           >
                             {item.status}
                           </td>
-                          <td className="whitespace-nowrap px-4 py-3 text-sm text-purple-600 ">
+                          <td className="whitespace-nowrap px-4 py-3 text-sm text-blue-600 ">
                             {item?.createdBy?.name}
                           </td>
                         </motion.tr>

@@ -67,7 +67,6 @@ const usersSchema = new Schema(
     },
     type: {
       type: String,
-      required: [true, "User Type is required!"],
     },
     otp: {
       type: Number,

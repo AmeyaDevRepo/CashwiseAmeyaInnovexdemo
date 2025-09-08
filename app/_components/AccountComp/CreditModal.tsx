@@ -7,6 +7,7 @@ import { selectUser } from "@redux/users/userSlice";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import client from "@createRequest";
+import useCurrency from "@hooks/useCurrency";
 
 type MoneyTransferProps = {
   closeModal: () => void;
@@ -18,6 +19,7 @@ export default function CreditModal({
   userData,
 }: MoneyTransferProps) {
   const user = useAppSelector(selectUser);
+    const { currency, error }:any = useCurrency();
   const [loading, setLoading] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const {
@@ -138,7 +140,7 @@ export default function CreditModal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent mb-2"
+            className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-2"
           >
             Credit Money
           </motion.h2>
@@ -204,7 +206,7 @@ export default function CreditModal({
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-violet-500">
-                  AED
+                  {currency?.currencySymbol}
                 </span>
                 <input
                   type="text"
@@ -273,7 +275,7 @@ export default function CreditModal({
             </motion.div>
 
             {/* Reason Selection */}
-            <motion.select
+            {/* <motion.select
               whileHover={{ scale: 1.01 }}
               whileFocus={{ scale: 1.02 }}
               className="w-full px-4 py-2 rounded-lg border border-violet-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 transition-colors"
@@ -288,14 +290,14 @@ export default function CreditModal({
               <option value="office">Office</option>
               <option value="TOF">TOF</option>
               <option value="toPay">To Pay</option>
-              {/* <option value="other">Other</option> */}
-            </motion.select>
-            {errors?.transactionDetails &&
+              <option value="other">Other</option>
+            </motion.select> */}
+            {/* {errors?.transactionDetails &&
               errors.transactionDetails[0]?.reason && (
                 <span className="text-red-500">
                   {errors.transactionDetails[0].reason.message}
                 </span>
-              )}
+              )} */}
 
             <motion.div
               initial={{ opacity: 0, x: -20 }}

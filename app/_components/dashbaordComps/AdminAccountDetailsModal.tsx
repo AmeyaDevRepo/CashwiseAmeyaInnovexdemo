@@ -17,6 +17,7 @@ import {
 import AntdFileUpload from "../AntdUpload";
 import { useAppDispatch } from "../../../redux/redux.hooks";
 import CalendarDateFilter from "./CalendarDateFilter";
+import useCurrency from "@hooks/useCurrency";
 
 type CloseTransactionModalProps = {
   closeModal: () => void;
@@ -52,7 +53,7 @@ export default function AdminAccountDetailsModal({
     getValues,
     setValue,
   } = useForm();
-
+  const { currency, error }:any = useCurrency();
   const [loading, setLoading] = React.useState<boolean>(false);
   const [messageModal, setMessageModal] = useState(false);
   const [expenseData, setExpenseData] = useState<any>();
@@ -121,7 +122,7 @@ export default function AdminAccountDetailsModal({
     }
 
     if (key.toLowerCase() === "amount") {
-      return `AED${Number(value).toLocaleString("en-IN")}`;
+      return `${currency?.currencySymbol}${Number(value).toLocaleString("en-IN")}`;
     }
 
     if (key.toLowerCase().includes("number") && typeof value === "number") {
@@ -391,7 +392,7 @@ export default function AdminAccountDetailsModal({
           {/* Header */}
           <div className="flex justify-between items-center mb-6 pb-4 border-b">
             <div>
-              <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent capitalize">
+              <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent capitalize">
                 {accountData?.expenseType || "Office"} Expense Details{" "}
                 <span className="text-sm text-gray-600">
                   {" "}
@@ -404,7 +405,7 @@ export default function AdminAccountDetailsModal({
                   Total Records: {accountData?.expenseDetails?.length || 0}
                 </span>
                 <span className="flex items-center gap-1">
-                  💰 Total Amount: AED
+                  💰 Total Amount: {currency?.currencySymbol}
                   {calculateTotalAmount(filteredExpenseDetails).toLocaleString(
                     "en-IN"
                   )}
@@ -506,7 +507,7 @@ export default function AdminAccountDetailsModal({
                       <div className="text-right">
                         <p className="text-sm text-gray-600">Day Total</p>
                         <p className="text-lg font-semibold text-green-600">
-                          AED
+                          {currency?.currencySymbol}
                           {displayFields
                             .reduce((total, field) => {
                               const items = expenseDetail[field] || [];
@@ -623,7 +624,7 @@ export default function AdminAccountDetailsModal({
                                           Amount:
                                         </span>
                                         <span className="ml-2 text-xl font-bold text-green-600">
-                                          AED
+                                          {currency?.currencySymbol}
                                           {Number(
                                             item.amount || 0
                                           ).toLocaleString("en-IN")}
@@ -655,7 +656,7 @@ export default function AdminAccountDetailsModal({
                                           <span className="font-medium text-gray-700">
                                             Admin Remarks:
                                           </span>{" "}
-                                          <span className="text-purple-500 capitalize">
+                                          <span className="text-blue-500 capitalize">
                                             {" "}
                                             {item?.adminMessage
                                               ? item?.adminMessage
@@ -811,7 +812,7 @@ export default function AdminAccountDetailsModal({
                                                   whileTap={{ scale: 0.95 }}
                                                   src={url}
                                                   alt={`Location ${i + 1}`}
-                                                  className="w-20 h-20 object-cover rounded-md border-2 border-purple-300 hover:border-purple-500 cursor-pointer"
+                                                  className="w-20 h-20 object-cover rounded-md border-2 border-blue-300 hover:border-blue-500 cursor-pointer"
                                                 />
                                               </a>
                                             )
@@ -845,7 +846,7 @@ export default function AdminAccountDetailsModal({
                                         />
 
                                         <button
-                                          className="p-2 rounded-md shadow-sm text-white bg-purple-500 float-end text-xs"
+                                          className="p-2 rounded-md shadow-sm text-white bg-blue-500 float-end text-xs"
                                           onClick={(e) => {
                                             e.stopPropagation(),
                                               handleNewFormSubmit({
@@ -1013,7 +1014,7 @@ export default function AdminAccountDetailsModal({
                       setSiteValue("");
                       closeSiteModal();
                     }}
-                    className="bg-purple-500 text-white px-6 py-2 rounded-md hover:bg-purple-600 transition-colors flex items-center gap-2"
+                    className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors flex items-center gap-2"
                   >
                     Submit
                   </button>

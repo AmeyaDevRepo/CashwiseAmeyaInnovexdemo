@@ -33,7 +33,7 @@ import { GiPayMoney, GiPostOffice } from "react-icons/gi";
 import { TiGroup } from "react-icons/ti";
 import AmeyaInnovexLogo from "../_images/AmeyaInnovexLogo.png";
 const Sidebar = () => {
-  const user = useAppSelector(selectUser);
+  const user:any = useAppSelector(selectUser);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();

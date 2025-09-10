@@ -117,24 +117,7 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const accessToken = localStorage.getItem("accessToken");
-      const role = localStorage.getItem("role");
 
-      if (accessToken && role) {
-        const path =
-          role === "admin"
-            ? "/admin/account"
-            : `/users/expenses/${user?._id ?? ""}`;
-        // router.push(path);
-        // router.refresh();
-        window.location.href = path;
-      }
-    };
-
-    checkAuth();
-  }, [router, user?._id]);
 
   return (
     <div className="w-screen h-screen lg:h-screen py-5 lg:py-0 justify-end lg:justify-start flex lg:flex-row flex-col-reverse lg:gap-5 bg-[#ffffff] dark:bg-slate-950 overflow-hidden">

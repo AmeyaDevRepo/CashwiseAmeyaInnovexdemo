@@ -48,7 +48,7 @@ const Login = () => {
             : `/users/expenses/${user?._id ?? ""}`;
         // router.push(path);
         // router.refresh();
-        window.location.href = path;
+        window.location.replace(path);
       }
     };
 
@@ -99,6 +99,9 @@ const Login = () => {
         const UserRole = response.data?.user?.role;
         localStorage.setItem("accessToken", response?.data?.accessToken);
         localStorage.setItem("role", UserRole);
+        setCookie("accessToken", response?.data?.accessToken);
+        setCookie("role", UserRole);
+
         const path =
           UserRole === "admin"
             ? "/admin/account"
@@ -106,7 +109,7 @@ const Login = () => {
         toast.success(response?.data?.message);
         // router.push(path);
         // router.refresh();
-        window.location.href = path;
+        window.location.replace(path);
       }
     } catch (error) {
       toast.error(
@@ -116,8 +119,6 @@ const Login = () => {
       setIsLoading(false);
     }
   };
-
-
 
   return (
     <div className="w-screen h-screen lg:h-screen py-5 lg:py-0 justify-end lg:justify-start flex lg:flex-row flex-col-reverse lg:gap-5 bg-[#ffffff] dark:bg-slate-950 overflow-hidden">

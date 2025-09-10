@@ -95,7 +95,7 @@ export default function Courier({ closeModal }: expenseFormProps) {
       customerName: "",
       deliveryMode: "",
       packetType: "",
-      startingPlace: "Okhla Industrial Estate",
+      startingPlace: "",
       endingPlace: "",
       amount: 0,
       description: "",

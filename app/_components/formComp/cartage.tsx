@@ -96,7 +96,7 @@ export default function Cartage({ closeModal }: expenseFormProps) {
       customerName: "",
       purpose: "",
       documentType: "",
-      startingPlace: "Okhla Industrial Estate",
+      startingPlace: "",
       endingPlace: "",
       driverNumber: null,
       amount: 0,

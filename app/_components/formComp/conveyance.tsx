@@ -93,7 +93,7 @@ export default function Conveyance({ closeModal }: expenseFormProps) {
       todayWork: "",
       location: userLocation,
       modeOfTravel: "",
-      startingPlace: "Okhla Industrial Estate",
+      startingPlace: "",
       endingPlace: "",
       driverNumber: null,
       amount: 0,

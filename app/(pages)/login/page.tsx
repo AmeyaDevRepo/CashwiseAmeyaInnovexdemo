@@ -48,7 +48,7 @@ const Login = () => {
             : `/users/expenses/${user?._id ?? ""}`;
         // router.push(path);
         // router.refresh();
-        window.location.replace(path);
+        window.location.replace("/officeExpense");
       }
     };
 
@@ -109,7 +109,7 @@ const Login = () => {
         toast.success(response?.data?.message);
         // router.push(path);
         // router.refresh();
-        window.location.replace(path);
+        window.location.replace("/officeExpense");
       }
     } catch (error) {
       toast.error(

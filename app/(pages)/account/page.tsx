@@ -432,8 +432,8 @@ export default function Account() {
                                         <p className="font-medium text-green-500">
                                           +
                                           {
-                                            calculateMoney(item)
-                                              .totalOfficeCreditMoney
+                                           Math.floor(calculateMoney(item)
+                                              .totalOfficeCreditMoney)
                                           }{" "}
                                           {currency?.currencySymbol}
                                         </p>
@@ -520,7 +520,7 @@ export default function Account() {
                                       </span>
                                       <p
                                         className={`font-medium text-gray-700 ${
-                                          calculateMoney(item).balance > 0
+                                           Math.round(calculateMoney(item).balance) > 0
                                             ? "text-green-400"
                                             : "text-red-500"
                                         }`}

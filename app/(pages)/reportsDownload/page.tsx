@@ -210,14 +210,27 @@ export default function Report() {
         fromDate: watchedFromDate?.toISOString(),
         toDate: watchedToDate?.toISOString(),
       };
-      const response = await axios.post("/api/reports/userReports", reportData);
+      const response = await axios.post(
+        `/api/reports/${
+          accountReportTypes === "credit-debit"
+            ? "userReports"
+            : "downloadExcel"
+        }`,
+        reportData
+      );
+      console.log("response", response);
       if (response.status === 200) {
-        setResultData(response.data.data);
-        const result = await downloadExcel({
-          data: response.data.data,
-          format: "excel",
-        });
-
+        {
+          accountReportTypes === "credit-debit" &&
+            setResultData(response.data.data);
+        }
+        {
+          accountReportTypes === "expense" &&
+            (await downloadExcel({
+              data: response.data.data,
+              format: "excel",
+            }));
+        }
         // if (result.success) {
         //   console.log("Download completed successfully");
         // } else {
@@ -599,9 +612,9 @@ export default function Report() {
                     </div>
                   </motion.div> */}
                 </motion.div>
-                <div className="bg-gradient-to-br from-white/50 to-blue-50/50 rounded-2xl p-6 backdrop-blur-sm border border-white/30">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="group">
+                <div className="bg-gradient-to-br from-white/50 to-blue-50/50 rounded-2xl p-6 backdrop-blur-sm border border-white/30 ">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+                    <div className="group ">
                       <label className="block text-sm font-semibold text-blue-700 mb-3 group-hover:text-blue-800 transition-colors">
                         📅 From Date *
                       </label>
@@ -617,7 +630,7 @@ export default function Report() {
                             dateFormat="d MMM yyyy"
                             placeholderText="dd/mm/yyyy"
                             minDate={new Date("2025-01-01")}
-                            className={`border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm z-30 ${
+                            className={`date-picker-popper border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm  ${
                               errors.fromDate
                                 ? "border-red-400"
                                 : "border-gray-200 hover:border-blue-300"
@@ -649,7 +662,7 @@ export default function Report() {
                             placeholderText="dd/mm/yyyy"
                             minDate={watchedFromDate ?? undefined}
                             maxDate={today} // Ensures today is selectable
-                            className={`border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm ${
+                            className={`date-picker-popper border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm  ${
                               errors.toDate
                                 ? "border-red-400"
                                 : "border-gray-200 hover:border-blue-300"
@@ -727,15 +740,12 @@ export default function Report() {
 
               {/* Step 5: Download */}
               <div
-                className={`border-t-2 border-gradient-to-r from-blue-200 to-blue-200 pt-8 transition-all duration-700 ease-out ${
-                  mounted
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }`}
+                className={` z-0 border-t-2 border-gradient-to-r from-blue-200 to-blue-200 pt-8 transition-all duration-700 ease-out
+                   `}
                 style={stepDelay(5)}
               >
-                <div className="flex items-center mb-6">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                <div className="flex items-center mb-6 ">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3 ">
                     4
                   </div>
                   <div>
@@ -748,11 +758,11 @@ export default function Report() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/60 to-blue-50/60 rounded-2xl p-6 backdrop-blur-sm border border-white/40">
+                <div className="bg-gradient-to-br from-white/60 to-blue-50/60 rounded-2xl p-6  border border-white/40">
                   <div className="flex flex-wrap gap-4 justify-center">
                     <button
                       onClick={resetFilters}
-                      className="px-6 py-3 bg-gradient-to-r from-gray-400 to-gray-500 text-white rounded-2xl font-semibold hover:from-gray-500 hover:to-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      className="px-6 py-3 bg-gradient-to-r from-gray-400 to-gray-500 text-white rounded-2xl font-semibold hover:from-gray-500 hover:to-gray-600   shadow-lg hover:shadow-xl"
                     >
                       🔄 Reset Filters
                     </button>
@@ -773,10 +783,10 @@ export default function Report() {
                       <button
                         onClick={() => handleReportDownload("pdf")}
                         disabled={isDownloadDisabled() || loading}
-                        className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                        className={`px-8  py-3 rounded-2xl font-semibold ${
                           isDownloadDisabled() || loading
                             ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                            : "bg-gradient-to-r from-red-500 to-pink-500 text-white hover:from-red-600 hover:to-pink-600 shadow-lg hover:shadow-xl shadow-red-500/25"
+                            : "bg-gradient-to-r from-red-500 to-pink-500 text-white hover:from-red-600 hover:to-pink-600 shadow-lg hover:shadow-xl "
                         }`}
                       >
                         {loading ? "⏳ Generating..." : "📄 Generate PDF"}
@@ -825,7 +835,9 @@ export default function Report() {
           border-color: #3b82f6 !important;
           box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
         }
-
+        :global(.date-picker-popper) {
+          z-index: 9999 !important;
+        }
         @keyframes springIn {
           0% {
             transform: translateY(20px) scale(0.95);

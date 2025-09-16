@@ -362,9 +362,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                     <div className="relative">
                       <div className="flex items-center">
                         <input
-                          {...register("serviceProvider", {
-                            required: "Service Provider is Required",
-                          })}
+                          {...register("serviceProvider")}
                           className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
@@ -420,7 +418,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Job Name </label>
                   <input
                     type="text"
-                    {...register("jobName", { required: "Job Name required!" })}
+                    {...register("jobName")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -436,9 +434,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("person", {
-                      required: "Name of outside contractor/labour required!",
-                    })}
+                    {...register("person")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -454,10 +450,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("numberOfPerson", {
-                      required:
-                        "Mobile Number of main contractor/labour required!",
-                    })}
+                    {...register("numberOfPerson")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -473,9 +466,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("nameOfItem", {
-                      required: "Name of Items Purchased required!",
-                    })}
+                    {...register("nameOfItem")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
@@ -499,9 +490,7 @@ export default function Maintenance({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("totalLabour", {
-                      required: "Number of ManDays/Labour required!",
-                    })}
+                    {...register("totalLabour")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (

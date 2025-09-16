@@ -366,9 +366,7 @@ export default function DailyWages({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("purposeOfLabour", {
-                      required: "Purpose of Labour required!",
-                    })}
+                    {...register("purposeOfLabour")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -384,9 +382,7 @@ export default function DailyWages({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("masterLabourName", {
-                      required: "Number of Master Labour required!",
-                    })}
+                    {...register("masterLabourName")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -402,9 +398,7 @@ export default function DailyWages({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("masterLabourNumber", {
-                      required: "Mater labour Number required!",
-                    })}
+                    {...register("masterLabourNumber")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -421,9 +415,7 @@ export default function DailyWages({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("numberOfLabour", {
-                      required: "Labour Numbers required!",
-                    })}
+                    {...register("numberOfLabour")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>

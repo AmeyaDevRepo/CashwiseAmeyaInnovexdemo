@@ -202,13 +202,20 @@ export default function Report() {
 
     setLoading(true);
     try {
+      const fromDate = watchedFromDate
+    ? new Date(new Date(watchedFromDate).setHours(0, 0, 0, 0)).toISOString()
+    : null;
+
+  const toDate = watchedToDate
+    ? new Date(new Date(watchedToDate).setHours(23, 59, 59, 999)).toISOString()
+    : null;
       const reportData = {
         accountReportTypes,
         accountFieldTypes,
         users: userId,
         formFields: formFields,
-        fromDate: watchedFromDate?.toISOString(),
-        toDate: watchedToDate?.toISOString(),
+        fromDate,
+        toDate,
       };
       const response = await axios.post(
         `/api/reports/${

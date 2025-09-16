@@ -446,9 +446,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                   <div className="relative">
                     <div className="flex items-center">
                       <input
-                        {...register("serviceProvider", {
-                          required: "Service Provider is Required",
-                        })}
+                        {...register("serviceProvider")}
                         className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("serviceProvider")}
                       />
@@ -583,12 +581,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                 const isChecked = getValues(
                                   `workTypes.${workTypeKey}`
                                 );
-                                if (isChecked) {
-                                  return (
-                                    value > 0 ||
-                                    "Number is required for this work type"
-                                  );
-                                }
+                                
                                 return true;
                               },
                             })}
@@ -615,12 +608,7 @@ export default function Contractor({ closeModal }: expenseFormProps) {
                                 const isChecked = getValues(
                                   `workTypes.${workTypeKey}`
                                 );
-                                if (isChecked) {
-                                  return (
-                                    value > 0 ||
-                                    "Rate is required for this labour type"
-                                  );
-                                }
+                                
                                 return true;
                               },
                             })}

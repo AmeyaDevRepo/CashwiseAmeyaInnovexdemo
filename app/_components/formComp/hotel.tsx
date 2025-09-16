@@ -402,9 +402,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                     <div className="relative">
                       <div className="flex items-center">
                         <input
-                          {...register("serviceProvider", {
-                            required: "Service Provider is Required",
-                          })}
+                          {...register("serviceProvider")}
                           className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
@@ -459,9 +457,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Hotel Name </label>
                   <input
                     type="text"
-                    {...register("hotelName", {
-                      required: "Hotel Name required!",
-                    })}
+                    {...register("hotelName")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -477,9 +473,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("hotelNumber", {
-                      required: "Hotel Number required!",
-                    })}
+                    {...register("hotelNumber")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -495,9 +489,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("numberOfPerson", {
-                      required: "Number of Persons required!",
-                    })}
+                    {...register("numberOfPerson")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
@@ -519,7 +511,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Room Rent</label>
                   <input
                     type="text"
-                    {...register("rent", { required: "Room rent required!" })}
+                    {...register("rent")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
@@ -543,9 +535,7 @@ export default function Hotel({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("days", {
-                      required: "Number of days required!",
-                    })}
+                    {...register("days")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       // Prevent default behavior for up and down arrow keys

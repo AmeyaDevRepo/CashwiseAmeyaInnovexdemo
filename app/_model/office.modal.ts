@@ -37,79 +37,72 @@ const ConveyanceSchema = new Schema({
   ...BaseExpenseSchema.obj, // Spread base schema fields
   modeOfTravel: {
     type: String,
-    required: [true, "Mode of travel is required!"],
+
   },
   startingPlace: {
     type: String,
-    required: [true, "Starting place is required!"],
+
   },
-  endingPlace: { type: String, required: [true, "Ending place is required!"] },
+  endingPlace: { type: String },
   driverNumber: { type: Number },
 });
 
 // Purchase schema
 const PurchaseSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  itemName: { type: String, required: [true, "Item name is required!"] },
-  quantity: { type: Number, required: [true, "Quantity is required!"] },
-  shopName: { type: String, required: [true, "Shop name is required!"] },
+  itemName: { type: String},
+  quantity: { type: Number },
+  shopName: { type: String },
   shopNumber: { type: Number },
 });
 
 // Food schema
 const FoodSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  meal: { type: String, required: [true, "Meal type is required!"] },
+  meal: { type: String },
   numberOfPersons: {
     type: Number,
-    required: [true, "Number of persons is required!"],
   },
   restaurantName: {
     type: String,
-    required: [true, "Restaurant name is required!"],
   },
   restaurantNumber: { type: Number },
 });
 // tea schema
 const TeaSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  meal: { type: String, required: [true, "Meal type is required!"] },
+  meal: { type: String },
   numberOfPersons: {
     type: Number,
-    required: [true, "Number of persons is required!"],
   },
 });
 // hotel schema
 const HotelSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  hotelName: { type: String, required: [true, "Hotel Name is required!"] },
+  hotelName: { type: String},
   hotelNumber: { type: Number },
   documentNo: { type: String },
   numberOfPersons: {
     type: Number,
-    required: [true, "Number of persons is required!"],
   },
-  rent: { type: Number, required: [true, "Hotel Rent is required!"] },
-  days: { type: Number, required: [true, "Days to stay is required!"] },
-  startingDate: { type: Date, required: [true, "Starting Date is required!"] },
-  endingDate: { type: Date, required: [true, "Ending Date is required!"] },
+  rent: { type: Number },
+  days: { type: Number},
+  startingDate: { type: Date},
+  endingDate: { type: Date },
 });
 // labour schema
 const LabourSchema = new Schema({
   ...BaseExpenseSchema.obj,
   purposeOfLabour: {
     type: String,
-    required: [true, "Labour Purpose is required!"],
   },
   documentNo: { type: String },
   masterLabourName: {
     type: String,
-    required: [true, "Master Labour Name is required!"],
   },
   masterLabourNumber: { type: Number },
   numberOfLabours: {
     type: Number,
-    required: [true, "Number of Labours is required!"],
   },
 });
 // courier schema
@@ -117,28 +110,24 @@ const CourierSchema = new Schema({
   ...BaseExpenseSchema.obj,
   customerName: {
     type: String,
-    required: [true, "Customer Name is required!"],
   },
   deliveryMode: {
     type: String,
-    required: [true, "Delivery Mode is required!"],
   },
-  packetType: { type: String, required: [true, "Packet Type is required!"] },
+  packetType: { type: String},
   startingPlace: {
     type: String,
-    required: [true, "Starting Place is required!"],
   },
-  endingPlace: { type: String, required: [true, "Ending Place is required!"] },
+  endingPlace: { type: String},
 });
 // loading schema
 const LoadingSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  workType: { type: String, required: [true, "Work Type is required!"] },
-  material: { type: String, required: [true, "Work Material is required!"] },
+  workType: { type: String},
+  material: { type: String},
   documentNo: { type: String },
   masterLabourName: {
     type: String,
-    required: [true, "Master labour name is required!"],
   },
   loadingDetails: [
     {
@@ -154,23 +143,20 @@ const PorterSchema = new Schema({
   ...BaseExpenseSchema.obj,
   customerName: {
     type: String,
-    required: [true, "Customer Name is required!"],
   },
-  purpose: { type: String, required: [true, "Purpose is required!"] },
+  purpose: { type: String },
   documentNo: { type: String },
   documentType: {
     type: String,
-    required: [true, "Document  Type is required!"],
   },
   vehicleType: {
     type: String,
   },
   startingPlace: {
     type: String,
-    required: [true, "Starting Place is required!"],
   },
   distance: { type: String },
-  endingPlace: { type: String, required: [true, "Ending Place is required!"] },
+  endingPlace: { type: String },
   driverNumber: { type: Number },
 });
 // rider schema
@@ -178,35 +164,31 @@ const RiderSchema = new Schema({
   ...BaseExpenseSchema.obj,
   customerName: {
     type: String,
-    required: [true, "Customer Name is required!"],
   },
   deliveryMode: {
     type: String,
-    required: [true, "Delivery Mode is required!"],
   },
   startingPlace: {
     type: String,
-    required: [true, "Starting Place is required!"],
   },
-  endingPlace: { type: String, required: [true, "Ending Place is required!"] },
+  endingPlace: { type: String },
 });
 // maintenance schema
 const MaintenanceSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  jobName: { type: String, required: [true, "Job Name is required!"] },
-  person: { type: String, required: [true, "Person name is required!"] },
+  jobName: { type: String },
+  person: { type: String },
   numberOfPerson: {
     type: Number,
-    required: [true, "Number of labour is required!"],
   },
-  nameOfItem: { type: String, required: [true, "Item name is required!"] },
-  totalLabour: { type: Number, required: [true, "Total Number is required!"] },
+  nameOfItem: { type: String },
+  totalLabour: { type: Number },
   documentNo: { type: String },
 });
 // other schema
 const OtherSchema = new Schema({
   ...BaseExpenseSchema.obj,
-  nameOfPerson: { type: String, required: [true, "Person Name is required!"] },
+  nameOfPerson: { type: String },
   contactNumber: { type: Number },
   documentNo: { type: String },
 });
@@ -214,7 +196,7 @@ const OtherSchema = new Schema({
 // Define the OfficeExpense schema
 const OfficeExpenseSchema = new Schema(
   {
-    date: { type: String, required: [true, "Date is required!"] },
+    date: { type: String},
     conveyance: { type: [ConveyanceSchema], default: [] },
     purchase: { type: [PurchaseSchema], default: [] },
     food: { type: [FoodSchema], default: [] },

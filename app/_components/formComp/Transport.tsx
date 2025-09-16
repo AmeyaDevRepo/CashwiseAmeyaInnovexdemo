@@ -402,9 +402,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                     <div className="relative">
                       <div className="flex items-center">
                         <input
-                          {...register("serviceProvider", {
-                            required: "Service Provider is Required",
-                          })}
+                          {...register("serviceProvider")}
                           className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
@@ -458,9 +456,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Customer Name</label>
                   <input
                     type="text"
-                    {...register("customerName", {
-                      required: "Customer Name required!",
-                    })}
+                    {...register("customerName")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -487,10 +483,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                               type="radio"
                               id="deliveryMode"
                               value={item}
-                              {...register("purpose", {
-                                required:
-                                  "At least one purpose type is required!",
-                              })}
+                              {...register("purpose")}
                               className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
@@ -533,10 +526,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                             type="radio"
                             id="documentType"
                             value={item}
-                            {...register("documentType", {
-                              required:
-                                "At least one document type is required!",
-                            })}
+                            {...register("documentType")}
                             className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                           />
                           <span className="ml-2">{item}</span>
@@ -607,9 +597,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                     </label>
                     <input
                       type="text"
-                      {...register("startingPlace", {
-                        required: "Starting Place required!",
-                      })}
+                      {...register("startingPlace")}
                       className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </motion.div>
@@ -623,9 +611,7 @@ export default function Transport({ closeModal }: expenseFormProps) {
                     <label className="block font-semibold">Ending Place</label>
                     <input
                       type="text"
-                      {...register("endingPlace", {
-                        required: "Ending Place required!",
-                      })}
+                      {...register("endingPlace")}
                       className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     />
                   </motion.div>

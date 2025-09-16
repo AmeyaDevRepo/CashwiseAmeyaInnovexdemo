@@ -367,7 +367,7 @@ export default function Other({ closeModal }: expenseFormProps) {
                   />
                 </motion.div> */}
                 {/* Service Provider */}
-                {path && path === "/toPayExpense" && (
+                {/* {path && path === "/toPayExpense" && (
                   <div className="space-y-2">
                     <label className="block text-sm font-medium ">
                       Service Provider
@@ -375,9 +375,7 @@ export default function Other({ closeModal }: expenseFormProps) {
                     <div className="relative">
                       <div className="flex items-center">
                         <input
-                          {...register("serviceProvider", {
-                            required: "Service Provider is Required",
-                          })}
+                          {...register("serviceProvider")}
                           className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
@@ -420,9 +418,9 @@ export default function Other({ closeModal }: expenseFormProps) {
                         )}
                     </div>
                   </div>
-                )}
+                )} */}
                 {/* name of person */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -433,14 +431,12 @@ export default function Other({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("nameOfPerson", {
-                      required: "Name of Person required!",
-                    })}
+                    {...register("nameOfPerson")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
                 {/* Number of Persons */}
-                <motion.div
+                {/* <motion.div
                   className="space-y-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -451,12 +447,10 @@ export default function Other({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("contactNumber", {
-                      required: "Persons Contact Number required!",
-                    })}
+                    {...register("contactNumber")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
-                </motion.div>
+                </motion.div> */}
 
                 {/* amount */}
                 <motion.div

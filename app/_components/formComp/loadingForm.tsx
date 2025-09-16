@@ -411,9 +411,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                     <div className="relative">
                       <div className="flex items-center">
                         <input
-                          {...register("serviceProvider", {
-                            required: "Service Provider is Required",
-                          })}
+                          {...register("serviceProvider")}
                           className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                           onFocus={() => setVisibleDropdown("serviceProvider")}
                         />
@@ -479,9 +477,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                             type="radio"
                             id="workType"
                             value={item}
-                            {...register("workType", {
-                              required: "Work Type is required!",
-                            })}
+                            {...register("workType")}
                             className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                           />
                           <span className="ml-2">{item}</span>
@@ -512,9 +508,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Work Material </label>
                   <input
                     type="text"
-                    {...register("material", {
-                      required: "Work Material required!",
-                    })}
+                    {...register("material")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -530,9 +524,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("masterLabourName", {
-                      required: "Master labour name required!",
-                    })}
+                    {...register("masterLabourName")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -581,12 +573,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                                 const isChecked = getValues(
                                   `loadingTypes.${loadingTypeKey}`
                                 );
-                                if (isChecked) {
-                                  return (
-                                    value > 0 ||
-                                    "Number is required for this work type"
-                                  );
-                                }
+                                
                                 return true;
                               },
                             })}
@@ -613,12 +600,7 @@ export default function LoadingForm({ closeModal }: expenseFormProps) {
                                 const isChecked = getValues(
                                   `loadingTypes.${loadingTypeKey}`
                                 );
-                                if (isChecked) {
-                                  return (
-                                    value > 0 ||
-                                    "Rate is required for this labour type"
-                                  );
-                                }
+                                
                                 return true;
                               },
                             })}

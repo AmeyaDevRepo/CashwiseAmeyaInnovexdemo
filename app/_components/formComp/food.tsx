@@ -385,9 +385,7 @@ export default function Food({ closeModal }: expenseFormProps) {
                     </label>
                     <div className="relative">
                       <input
-                        {...register("serviceProvider", {
-                          required: "Service Provider is Required",
-                        })}
+                        {...register("serviceProvider")}
                         className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                         onFocus={() => setVisibleDropdown("serviceProvider")}
                       />
@@ -451,10 +449,7 @@ export default function Food({ closeModal }: expenseFormProps) {
                               type="radio"
                               id="meal"
                               value={item}
-                              {...register("meal", {
-                                required:
-                                  "At least one meal of food is required!",
-                              })}
+                              {...register("meal")}
                               className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
@@ -488,9 +483,7 @@ export default function Food({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("numberOfPerson", {
-                      required: "Number of Person required!",
-                    })}
+                    {...register("numberOfPerson")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -506,9 +499,7 @@ export default function Food({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="text"
-                    {...register("nameOfRestaurant", {
-                      required: "Restaurant Name required!",
-                    })}
+                    {...register("nameOfRestaurant")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -525,9 +516,7 @@ export default function Food({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("restaurantNumber", {
-                      required: "Restaurant Number required!",
-                    })}
+                    {...register("restaurantNumber")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>

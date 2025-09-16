@@ -366,10 +366,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                               type="radio"
                               id="rechargeType"
                               value={item}
-                              {...register("rechargeType", {
-                                required:
-                                  "At least one rechargeType is required!",
-                              })}
+                              {...register("rechargeType")}
                               className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                             />
                             <span className="ml-2">{item}</span>
@@ -415,13 +412,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                         <input
                           type="tel"
                           placeholder="Enter 10-digit phone number"
-                          {...register("phoneNumber", {
-                            required: watchRechargeType === "Mobile" ? "Phone number is required" : false,
-                            pattern: {
-                              value: /^[0-9]{10}$/,
-                              message: "Please enter a valid 10-digit phone number"
-                            }
-                          })}
+                          {...register("phoneNumber")}
                           className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none bg-white"
                         />
                         {errors.phoneNumber && (
@@ -445,9 +436,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                               <input
                                 type="radio"
                                 value={planType}
-                                {...register("planType", {
-                                  required: watchRechargeType === "Mobile" ? "Plan type is required" : false,
-                                })}
+                                {...register("planType")}
                                 className="mr-2 h-4 w-4 border-gray-300 rounded focus:ring-blue-500 accent-blue-500"
                               />
                               <span className="ml-2">{planType}</span>
@@ -472,9 +461,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                         <Controller
                           control={control}
                           name="billDateFrom"
-                          rules={{
-                            required: watchRechargeType === "Mobile" ? "Bill date from is required" : false,
-                          }}
+                         
                           render={({ field: { onChange, value } }) => (
                             <div className="relative w-full">
                               <DatePicker
@@ -505,9 +492,7 @@ export default function Recharge({ closeModal }: expenseFormProps) {
                         <Controller
                           control={control}
                           name="billDateTo"
-                          rules={{
-                            required: watchRechargeType === "Mobile" ? "Bill date to is required" : false,
-                          }}
+                          
                           render={({ field: { onChange, value } }) => (
                             <div className="relative w-full">
                               <DatePicker

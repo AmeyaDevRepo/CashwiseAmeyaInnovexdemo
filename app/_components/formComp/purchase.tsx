@@ -357,9 +357,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Name of Item</label>
                   <input
                     type="text"
-                    {...register("nameOfItem", {
-                      required: "Item name required!",
-                    })}
+                    {...register("nameOfItem")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -374,9 +372,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   <input
                     type="text"
                     min="0"
-                    {...register("quantity", {
-                      required: "Quantity required!",
-                    })}
+                    {...register("quantity")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                     onKeyDown={(event) => {
                       if (
@@ -398,9 +394,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   <label className="block font-semibold">Name of Shop</label>
                   <input
                     type="text"
-                    {...register("nameOfShop", {
-                      required: "Shop Name required!",
-                    })}
+                    {...register("nameOfShop")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>
@@ -416,9 +410,7 @@ export default function Purchase({ closeModal }: expenseFormProps) {
                   </label>
                   <input
                     type="tel"
-                    {...register("shopNumber", {
-                      required: "Shopkeeper Number required!",
-                    })}
+                    {...register("shopNumber")}
                     className="w-full p-2 border-b-2 border-gray-200 focus:border-blue-500 outline-none"
                   />
                 </motion.div>

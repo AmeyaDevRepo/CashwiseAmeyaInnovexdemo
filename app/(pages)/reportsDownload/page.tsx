@@ -25,7 +25,7 @@ export default function Report() {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [reportType, setReportType] = React.useState<string>("users");
   const [accountReportTypes, setAccountReportTypes] =
-    React.useState<string>("credit-debit");
+    React.useState<string>("expense");
   const [resultData, setResultData] = React.useState<any>(null);
   const [transactionTypes, setTransactionTypes] = React.useState<string[]>([]);
   const [formFields, setFormFields] = React.useState<string[]>([]);
@@ -98,7 +98,7 @@ export default function Report() {
   };
 
   const resetFilters = () => {
-    setAccountReportTypes("credit-debit");
+    setAccountReportTypes("expense");
     setTransactionTypes([]);
     setFormFields([]);
     setUserId([]);
@@ -430,10 +430,10 @@ export default function Report() {
                           <Select
                             style={{ width: "100%" }}
                             placeholder="Select Fields (optional)"
-                            value={accountReportTypes || "credit-debit"}
+                            value={accountReportTypes || "expense"}
                             onChange={(value) => setAccountReportTypes(value)}
                             options={[
-                              { label: "Credit-Debit", value: "credit-debit" },
+                              // { label: "Credit-Debit", value: "credit-debit" },
                               { label: "Expense", value: "expense" },
                             ]}
                           />
@@ -449,7 +449,7 @@ export default function Report() {
                               value={accountFieldTypes || "all"}
                               onChange={(value) => setAccountFieldTypes(value)}
                               options={[
-                                { label: "All Fields", value: "all" },
+                                // { label: "All Fields", value: "all" },
                                 { label: "Office", value: "office" },
                               ]}
                             />

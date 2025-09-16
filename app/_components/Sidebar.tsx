@@ -55,12 +55,12 @@ const Sidebar = () => {
         label: "Account",
         path: "/account",
       },
-      {
-        type: "item",
-        icon: <TiGroup />,
-        label: "Group",
-        path: "/group",
-      },
+      // {
+      //   type: "item",
+      //   icon: <TiGroup />,
+      //   label: "Group",
+      //   path: "/group",
+      // },
     ];
 
     if (isAdminOrManager) {
@@ -75,11 +75,11 @@ const Sidebar = () => {
               label: "Account Dashboard",
               path: "/admin/account",
             },
-            {
-              icon: <GiPostOffice />,
-              label: "Office Dashboard",
-              path: "/admin/dashboard",
-            },
+            // {
+            //   icon: <GiPostOffice />,
+            //   label: "Office Dashboard",
+            //   path: "/admin/dashboard",
+            // },
             // ...(canAccessToPayForm
             //   ? [
             //       {
@@ -108,12 +108,12 @@ const Sidebar = () => {
           label: "Reports",
           path: "/reportsDownload",
         },
-        {
-          type: "item",
-          icon: <FaGaugeHigh />,
-          label: "Expense Limit",
-          path: "/admin/expenseLimit",
-        },
+        // {
+        //   type: "item",
+        //   icon: <FaGaugeHigh />,
+        //   label: "Expense Limit",
+        //   path: "/admin/expenseLimit",
+        // },
         // {
         //   type: "item",
         //   icon: <FaSitemap />,
@@ -283,8 +283,7 @@ const Sidebar = () => {
             <div className="flex flex-col items-center gap-4">
               <span className="flex items-center gap-4 text-2xl border-b py-2 font-bold text-blue-500">
                 <div className="flex items-center gap-2">
-                  <span>Ameya</span>
-                  <Image src={AmeyaInnovexLogo} alt="" width={50} height={50} />
+                  <Image src={AmeyaInnovexLogo} alt="" width={70} height={70} />
                 </div>
               </span>
               <span className="flex items-center gap-4 text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">

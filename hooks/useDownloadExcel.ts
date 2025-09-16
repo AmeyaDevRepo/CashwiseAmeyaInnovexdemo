@@ -156,7 +156,7 @@ export const useDownloadExcel = () => {
         });
 
         const timestamp = new Date().toISOString().split("T")[0]; // YYYY-MM-DD format
-        const filename = `Intertech_Cashwise_${format}_report_${timestamp}.xlsx`;
+        const filename = `Ameya_Cashwise_${format}_report_${timestamp}.xlsx`;
 
         saveAs(blob, filename);
 

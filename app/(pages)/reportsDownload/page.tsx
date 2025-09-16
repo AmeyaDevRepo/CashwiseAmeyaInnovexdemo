@@ -36,7 +36,7 @@ export default function Report() {
   const [mounted, setMounted] = React.useState(false);
   const { downloadExcel } = useDownloadExcel();
   const [accountFieldTypes, setAccountFieldTypes] =
-    React.useState<string>("all");
+    React.useState<string>("office");
   const {
     control,
     handleSubmit,
@@ -213,10 +213,10 @@ export default function Report() {
       const response = await axios.post("/api/reports/userReports", reportData);
       if (response.status === 200) {
         setResultData(response.data.data);
-        // const result = await downloadExcel({
-        //   data: response.data.data,
-        //   format: "excel",
-        // });
+        const result = await downloadExcel({
+          data: response.data.data,
+          format: "excel",
+        });
 
         // if (result.success) {
         //   console.log("Download completed successfully");
@@ -438,13 +438,11 @@ export default function Report() {
                               options={[
                                 { label: "All Fields", value: "all" },
                                 { label: "Office", value: "office" },
-                                { label: "Travel", value: "travel" },
-                                { label: "ToPay", value: "toPay" },
                               ]}
                             />
                           </div>
                         )}
-                        {accountReportTypes === "expense" && (
+                        {/* {accountReportTypes === "expense" && (
                           <div className="group">
                             <label className="block text-sm font-semibold text-gray-700 mb-3 group-hover:text-blue-600 transition-colors">
                               📝 Form Fields
@@ -482,7 +480,7 @@ export default function Report() {
                               }))}
                             />
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </div>
                   )}
@@ -758,19 +756,20 @@ export default function Report() {
                     >
                       🔄 Reset Filters
                     </button>
-
-                    {/* <button
-                      onClick={() => handleReportDownload("excel")}
-                      disabled={isDownloadDisabled() || loading}
-                      className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                        isDownloadDisabled() || loading
-                          ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                          : "bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl shadow-green-500/25"
-                      }`}
-                    >
-                      {loading ? "⏳ Generating..." : "📊 Download Excel"}
-                    </button> */}
-                    {!resultData && (
+                    {accountReportTypes === "expense" && (
+                      <button
+                        onClick={() => handleReportDownload("excel")}
+                        disabled={isDownloadDisabled() || loading}
+                        className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                          isDownloadDisabled() || loading
+                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            : "bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl shadow-green-500/25"
+                        }`}
+                      >
+                        {loading ? "⏳ Generating..." : "📊 Download Excel"}
+                      </button>
+                    )}
+                    {!resultData && accountReportTypes === "credit-debit" && (
                       <button
                         onClick={() => handleReportDownload("pdf")}
                         disabled={isDownloadDisabled() || loading}
@@ -783,7 +782,7 @@ export default function Report() {
                         {loading ? "⏳ Generating..." : "📄 Generate PDF"}
                       </button>
                     )}
-                    {resultData && (
+                    {resultData && accountReportTypes === "credit-debit" && (
                       <StyledPDFGenerator
                         userData={resultData}
                         setResultData={setResultData}

@@ -137,9 +137,9 @@ export default function Report() {
     }
 
     // Rule 3: dateRange ≤ 1 month
-    if (toDate.diff(fromDate, "months").months > 1) {
-      return "Date range cannot be greater than 1 month";
-    }
+    // if (toDate.diff(fromDate, "months").months > 1) {
+    //   return "Date range cannot be greater than 1 month";
+    // }
 
     return null;
   };
@@ -669,8 +669,8 @@ export default function Report() {
                             placeholderText="dd/mm/yyyy"
                             minDate={watchedFromDate ?? undefined}
                             maxDate={today} // Ensures today is selectable
-                            className={`date-picker-popper border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm  ${
-                              errors.toDate
+                             className={`date-picker-popper border-2 rounded-xl w-full text-sm px-4 py-3 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 bg-white/80 backdrop-blur-sm  ${
+                              errors.fromDate
                                 ? "border-red-400"
                                 : "border-gray-200 hover:border-blue-300"
                             }`}
@@ -777,9 +777,9 @@ export default function Report() {
                       <button
                         onClick={() => handleReportDownload("excel")}
                         disabled={isDownloadDisabled() || loading}
-                        className={`px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                        className={`rounded-lg px-2 ${
                           isDownloadDisabled() || loading
-                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            ? "bg-gray-300 text-gray-500"
                             : "bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl shadow-green-500/25"
                         }`}
                       >

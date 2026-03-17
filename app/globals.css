@@ -10,7 +10,9 @@
 .hide-scrollbar {
   scrollbar-width: none;
 }
-
+.custom-date-popper {
+  z-index: 99999 !important;
+}
 /* General overflow behavior */
 .hide-scrollbar {
   overflow-x: auto; /* Enable horizontal scrolling */

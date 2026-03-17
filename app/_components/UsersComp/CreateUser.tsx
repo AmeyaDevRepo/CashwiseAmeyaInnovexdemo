@@ -36,7 +36,7 @@ const CreateUser = ({ closeModal, userData }: CreateUserProps) => {
       createdBy: userData.createdBy,
       role: userData.role,
       phone: userData.phone,
-      type: userData.type,
+      type: userData.type || 'Other',
     },
   });
 
@@ -235,7 +235,7 @@ const CreateUser = ({ closeModal, userData }: CreateUserProps) => {
                     To Pay
                   </motion.option> */}
                 </motion.select>
-                {/* <motion.div
+                 <motion.div
                   initial={{ opacity: 0, x: -20, scale: 0.95 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   transition={{
@@ -267,11 +267,11 @@ const CreateUser = ({ closeModal, userData }: CreateUserProps) => {
                     <motion.option value="office" whileHover={{ scale: 1.05 }}>
                       Office
                     </motion.option>
-                    <motion.option value="toPay" whileHover={{ scale: 1.05 }}>
-                      To Pay
+                    <motion.option value="other" whileHover={{ scale: 1.05 }}>
+                      Other
                     </motion.option>
                   </motion.select>
-                </motion.div> */}
+                </motion.div> 
                 <AnimatePresence>
                   {errors.role && (
                     <motion.p

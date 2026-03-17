@@ -32,6 +32,7 @@ import Loader from "./Loader";
 import { GiPayMoney, GiPostOffice } from "react-icons/gi";
 import { TiGroup } from "react-icons/ti";
 import AmeyaInnovexLogo from "../_images/AmeyaInnovexLogo.png";
+import { deleteCookie } from "cookies-next/lib";
 const Sidebar = () => {
   const user:any = useAppSelector(selectUser);
   const [isOpen, setIsOpen] = useState(false);
@@ -208,11 +209,18 @@ const Sidebar = () => {
   const handleLogout = async () => {
     setIsLoading(true);
     try {
-      const response = await client.post("/users/logout");
-      if (response.status === 200) {
-        showSuccess(response?.data?.message);
-        window.location.href = "/login";
-      }
+      deleteCookie("accessToken");
+      deleteCookie("accessTokenExpire");
+      deleteCookie("refreshToken");
+      deleteCookie("role")
+      localStorage.clear()
+              window.location.href = "/login";
+
+      // const response = await client.post("/users/logout");
+      // if (response.status === 200) {
+      //   showSuccess(response?.data?.message);
+      //   window.location.href = "/login";
+      // }
     } catch (error: any) {
       console.error("Error during logout:", error);
       showError(error.response?.data?.message || "Something went wrong!");

@@ -13,7 +13,7 @@ export async function creditMessageAlert(
       message: "184059",
       variables_values: `${var1}  | ${var2} |${var3}`,
       route: "dlt",
-      numbers: `${7011616143},${9891402128},${number}`,
+      // numbers: `${7011616143},${9891402128},${number}`,
     //   numbers: '7542918414',
     }),
     {
